@@ -230,20 +230,92 @@ export default function TouristDashboard() {
     )
   }
 
+  // Calculate stats
+  const stats = {
+    total: requests.length,
+    pending: requests.filter(r => r.status === 'PENDING').length,
+    accepted: requests.filter(r => r.status === 'ACCEPTED').length,
+    completed: requests.filter(r => r.review).length,
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">Your Dashboard</h1>
-            <p className="mt-2 text-gray-600">Logged in as {email}</p>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+      {/* Header */}
+      <div className="bg-white border-b shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Tourist Dashboard</h1>
+              <p className="mt-2 text-gray-600">Logged in as {email}</p>
+            </div>
+            <div className="flex gap-4">
+              <a
+                href="/booking"
+                className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all"
+              >
+                New Booking
+              </a>
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 text-gray-600 hover:text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-50"
+              >
+                Logout
+              </button>
+            </div>
           </div>
-          <button
-            onClick={handleLogout}
-            className="px-4 py-2 text-gray-600 hover:text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-50"
-          >
-            Logout
-          </button>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Total Requests</p>
+                <p className="text-3xl font-bold text-gray-900 mt-2">{stats.total}</p>
+              </div>
+              <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-2xl">📝</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Pending</p>
+                <p className="text-3xl font-bold text-yellow-600 mt-2">{stats.pending}</p>
+              </div>
+              <div className="h-12 w-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                <span className="text-2xl">⏳</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Accepted</p>
+                <p className="text-3xl font-bold text-green-600 mt-2">{stats.accepted}</p>
+              </div>
+              <div className="h-12 w-12 bg-green-100 rounded-full flex items-center justify-center">
+                <span className="text-2xl">✅</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Reviewed</p>
+                <p className="text-3xl font-bold text-purple-600 mt-2">{stats.completed}</p>
+              </div>
+              <div className="h-12 w-12 bg-purple-100 rounded-full flex items-center justify-center">
+                <span className="text-2xl">⭐</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {error && (
@@ -253,108 +325,160 @@ export default function TouristDashboard() {
         )}
 
         {requests.length === 0 ? (
-          <div className="bg-white rounded-lg shadow p-12 text-center">
-            <svg
-              className="mx-auto h-12 w-12 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <div className="bg-white rounded-lg shadow-lg p-12 text-center">
+            <div className="text-6xl mb-4">🌍</div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">No requests yet</h3>
+            <p className="text-gray-600 mb-6">Start your adventure by booking a local guide!</p>
+            <a
+              href="/booking"
+              className="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
-            <h3 className="mt-2 text-sm font-medium text-gray-900">No requests yet</h3>
-            <p className="mt-1 text-sm text-gray-500">You haven't made any tour requests.</p>
+              Book Your First Trip
+            </a>
           </div>
         ) : (
           <div className="grid gap-6">
-            {requests.map((request) => (
-              <div key={request.id} className="bg-white rounded-lg shadow overflow-hidden">
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900">{request.city}</h3>
-                      <p className="text-sm text-gray-500">
-                        {request.serviceType.replace('_', ' ').charAt(0).toUpperCase() +
-                         request.serviceType.replace('_', ' ').slice(1)}
-                      </p>
-                    </div>
-                    <span className={`px-3 py-1 text-sm font-semibold rounded-full ${getStatusBadge(request.status)}`}>
-                      {request.status}
-                    </span>
-                  </div>
+            {requests.map((request) => {
+              const dates = request.dates as { start: string; end?: string }
+              const isAccepted = request.status === 'ACCEPTED'
+              const isPending = request.status === 'PENDING'
 
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 text-sm">
-                    <div>
-                      <p className="text-gray-500">Time</p>
-                      <p className="font-medium text-gray-900">{request.preferredTime}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-500">Guests</p>
-                      <p className="font-medium text-gray-900">{request.numberOfGuests}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-500">Group Type</p>
-                      <p className="font-medium text-gray-900 capitalize">{request.groupType}</p>
-                    </div>
-                    <div>
-                      <p className="text-gray-500">Requested</p>
-                      <p className="font-medium text-gray-900">
-                        {new Date(request.createdAt).toLocaleDateString()}
-                      </p>
-                    </div>
-                  </div>
-
-                  {request.selections.length > 0 && (
-                    <div className="border-t border-gray-200 pt-4">
-                      <p className="text-sm font-medium text-gray-700 mb-2">Matched with:</p>
-                      {request.selections.map((selection, idx) => (
-                        <div key={idx} className="flex items-center justify-between bg-gray-50 rounded-lg p-3">
-                          <div>
-                            <p className="font-medium text-gray-900">{selection.student.name}</p>
-                            {selection.student.averageRating && (
-                              <div className="flex items-center mt-1">
-                                <span className="text-yellow-500 text-sm">★</span>
-                                <span className="text-sm text-gray-600 ml-1">
-                                  {selection.student.averageRating.toFixed(1)}
-                                </span>
-                              </div>
-                            )}
-                          </div>
+              return (
+                <div
+                  key={request.id}
+                  className={`bg-white rounded-lg shadow-lg overflow-hidden border-l-4 ${
+                    isAccepted ? 'border-green-500' : isPending ? 'border-yellow-500' : 'border-gray-300'
+                  }`}
+                >
+                  <div className="p-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3">
+                          <h3 className="text-xl font-bold text-gray-900">{request.city}</h3>
+                          <span className={`px-3 py-1 text-xs font-semibold rounded-full ${getStatusBadge(request.status)}`}>
+                            {request.status}
+                          </span>
                         </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {request.review && (
-                    <div className="border-t border-gray-200 pt-4 mt-4">
-                      <p className="text-sm font-medium text-gray-700 mb-2">Your Review:</p>
-                      <div className="bg-blue-50 rounded-lg p-3">
-                        <div className="flex items-center mb-2">
-                          {Array.from({ length: 5 }).map((_, i) => (
-                            <span
-                              key={i}
-                              className={`text-lg ${
-                                i < request.review!.rating ? 'text-yellow-500' : 'text-gray-300'
-                              }`}
-                            >
-                              ★
-                            </span>
-                          ))}
-                        </div>
-                        {request.review.comment && (
-                          <p className="text-sm text-gray-700">{request.review.comment}</p>
-                        )}
+                        <p className="text-sm text-gray-600 mt-1">
+                          {request.serviceType.replace('_', ' ').charAt(0).toUpperCase() +
+                           request.serviceType.replace('_', ' ').slice(1)}
+                        </p>
                       </div>
                     </div>
-                  )}
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 text-sm bg-gray-50 p-4 rounded-lg">
+                      <div>
+                        <p className="text-gray-500 font-medium">📅 Dates</p>
+                        <p className="font-semibold text-gray-900">
+                          {new Date(dates.start).toLocaleDateString()}
+                          {dates.end && ` - ${new Date(dates.end).toLocaleDateString()}`}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-gray-500 font-medium">⏰ Time</p>
+                        <p className="font-semibold text-gray-900 capitalize">{request.preferredTime}</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-500 font-medium">👥 Guests</p>
+                        <p className="font-semibold text-gray-900">
+                          {request.numberOfGuests} ({request.groupType})
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-gray-500 font-medium">📝 Requested</p>
+                        <p className="font-semibold text-gray-900">
+                          {new Date(request.createdAt).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </div>
+
+                    {request.selections.length > 0 && (
+                      <div className="border-t border-gray-200 pt-4 mt-4">
+                        <p className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                          <span>🎓</span>
+                          {isAccepted ? 'Your Guide:' : 'Matched Guides:'}
+                        </p>
+                        <div className="space-y-2">
+                          {request.selections.map((selection, idx) => (
+                            <div key={idx} className={`flex items-center justify-between rounded-lg p-4 ${
+                              isAccepted ? 'bg-green-50 border-2 border-green-200' : 'bg-gray-50 border border-gray-200'
+                            }`}>
+                              <div className="flex-1">
+                                <p className="font-semibold text-gray-900 text-lg">{selection.student.name}</p>
+                                {selection.student.averageRating && (
+                                  <div className="flex items-center mt-1">
+                                    <div className="flex">
+                                      {Array.from({ length: 5 }).map((_, i) => (
+                                        <span
+                                          key={i}
+                                          className={i < Math.round(selection.student.averageRating!) ? 'text-yellow-500' : 'text-gray-300'}
+                                        >
+                                          ⭐
+                                        </span>
+                                      ))}
+                                    </div>
+                                    <span className="text-sm text-gray-600 ml-2 font-medium">
+                                      {selection.student.averageRating.toFixed(1)} / 5.0
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                              {isAccepted && (
+                                <div className="ml-4">
+                                  <span className="px-3 py-1 bg-green-600 text-white rounded-full text-xs font-bold">
+                                    Confirmed
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {request.review && (
+                      <div className="border-t border-gray-200 pt-4 mt-4">
+                        <p className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                          <span>💬</span>
+                          Your Review:
+                        </p>
+                        <div className="bg-purple-50 rounded-lg p-4 border-2 border-purple-200">
+                          <div className="flex items-center mb-2">
+                            {Array.from({ length: 5 }).map((_, i) => (
+                              <span
+                                key={i}
+                                className={`text-2xl ${
+                                  i < request.review!.rating ? 'text-yellow-500' : 'text-gray-300'
+                                }`}
+                              >
+                                ★
+                              </span>
+                            ))}
+                            <span className="ml-2 font-bold text-gray-900">{request.review.rating}/5</span>
+                          </div>
+                          {request.review.comment && (
+                            <p className="text-gray-700 mt-2 italic">"{request.review.comment}"</p>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {isAccepted && !request.review && (
+                      <div className="mt-4 pt-4 border-t border-gray-200">
+                        <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                          <p className="text-sm text-blue-800 mb-2">
+                            <strong>📌 Next Steps:</strong> Contact your guide to finalize details and payment arrangements.
+                          </p>
+                          <p className="text-xs text-blue-600">
+                            After your trip, you can leave a review to help other travelers!
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         )}
       </div>
