@@ -14,6 +14,9 @@ export default function Home() {
             </h1>
           </div>
           <nav className="flex items-center space-x-4">
+            <Link href="/student">
+              <Button variant="outline">I&apos;m a Student</Button>
+            </Link>
             <Link href="/booking">
               <Button>Book a Guide</Button>
             </Link>
