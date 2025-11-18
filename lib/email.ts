@@ -1,19 +1,35 @@
 import nodemailer from 'nodemailer'
 
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST,
-  port: parseInt(process.env.EMAIL_PORT || '587'),
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-})
+// Mock mode - set to true to bypass actual email sending
+const MOCK_EMAIL_MODE = process.env.MOCK_EMAIL === 'true' || true
+
+const transporter = MOCK_EMAIL_MODE
+  ? null
+  : nodemailer.createTransport({
+      host: process.env.EMAIL_HOST,
+      port: parseInt(process.env.EMAIL_PORT || '587'),
+      secure: false,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    })
 
 export async function sendVerificationEmail(
   email: string,
   code: string
 ): Promise<void> {
+  // Mock mode - just log the code
+  if (MOCK_EMAIL_MODE) {
+    console.log('\n===========================================')
+    console.log('📧 MOCK EMAIL - Verification Code')
+    console.log('===========================================')
+    console.log(`To: ${email}`)
+    console.log(`Code: ${code}`)
+    console.log(`Expires: 10 minutes`)
+    console.log('===========================================\n')
+    return
+  }
   const html = `
     <!DOCTYPE html>
     <html>
@@ -102,7 +118,7 @@ export async function sendVerificationEmail(
     </html>
   `
 
-  await transporter.sendMail({
+  await transporter!.sendMail({
     from: process.env.EMAIL_FROM,
     to: email,
     subject: 'Verify Your Email - WanderNest Booking',
@@ -114,6 +130,16 @@ export async function sendBookingConfirmation(
   email: string,
   requestId: string
 ): Promise<void> {
+  // Mock mode - just log
+  if (MOCK_EMAIL_MODE) {
+    console.log('\n===========================================')
+    console.log('📧 MOCK EMAIL - Booking Confirmation')
+    console.log('===========================================')
+    console.log(`To: ${email}`)
+    console.log(`Request ID: ${requestId}`)
+    console.log('===========================================\n')
+    return
+  }
   const html = `
     <!DOCTYPE html>
     <html>
@@ -188,7 +214,7 @@ export async function sendBookingConfirmation(
     </html>
   `
 
-  await transporter.sendMail({
+  await transporter!.sendMail({
     from: process.env.EMAIL_FROM,
     to: email,
     subject: '✅ Booking Request Confirmed - WanderNest',
@@ -200,6 +226,17 @@ export async function sendStudentRequestNotification(
   student: any,
   touristRequest: any
 ): Promise<void> {
+  // Mock mode - just log
+  if (MOCK_EMAIL_MODE) {
+    console.log('\n===========================================')
+    console.log('📧 MOCK EMAIL - Student Request Notification')
+    console.log('===========================================')
+    console.log(`To: ${student.email}`)
+    console.log(`Student: ${student.name}`)
+    console.log(`Request: ${touristRequest.city} - ${touristRequest.serviceType}`)
+    console.log('===========================================\n')
+    return
+  }
   const dates = touristRequest.dates as { start: string; end?: string }
   const startDate = new Date(dates.start).toLocaleDateString('en-US', {
     month: 'long',
@@ -356,7 +393,7 @@ export async function sendStudentRequestNotification(
     </html>
   `
 
-  await transporter.sendMail({
+  await transporter!.sendMail({
     from: process.env.EMAIL_FROM,
     to: student.email,
     subject: `🎉 New Request: ${touristRequest.serviceType === 'itinerary_help' ? 'Itinerary Help' : 'Guided Experience'} in ${touristRequest.city}`,
@@ -369,6 +406,17 @@ export async function sendTouristAcceptanceNotification(
   student: any,
   touristRequest: any
 ): Promise<void> {
+  // Mock mode - just log
+  if (MOCK_EMAIL_MODE) {
+    console.log('\n===========================================')
+    console.log('📧 MOCK EMAIL - Tourist Acceptance Notification')
+    console.log('===========================================')
+    console.log(`To: ${touristEmail}`)
+    console.log(`Guide: ${student.name}`)
+    console.log(`City: ${touristRequest.city}`)
+    console.log('===========================================\n')
+    return
+  }
   const dates = touristRequest.dates as { start: string; end?: string }
   const startDate = new Date(dates.start).toLocaleDateString('en-US', {
     month: 'long',
@@ -475,7 +523,7 @@ export async function sendTouristAcceptanceNotification(
     </html>
   `
 
-  await transporter.sendMail({
+  await transporter!.sendMail({
     from: process.env.EMAIL_FROM,
     to: touristEmail,
     subject: `🎉 Your student guide in ${touristRequest.city} has accepted!`,
@@ -487,6 +535,17 @@ export async function sendStudentConfirmation(
   student: any,
   touristRequest: any
 ): Promise<void> {
+  // Mock mode - just log
+  if (MOCK_EMAIL_MODE) {
+    console.log('\n===========================================')
+    console.log('📧 MOCK EMAIL - Student Confirmation')
+    console.log('===========================================')
+    console.log(`To: ${student.email}`)
+    console.log(`Tourist: ${touristRequest.email}`)
+    console.log(`City: ${touristRequest.city}`)
+    console.log('===========================================\n')
+    return
+  }
   const dates = touristRequest.dates as { start: string; end?: string }
   const startDate = new Date(dates.start).toLocaleDateString('en-US', {
     month: 'long',
@@ -573,7 +632,7 @@ export async function sendStudentConfirmation(
     </html>
   `
 
-  await transporter.sendMail({
+  await transporter!.sendMail({
     from: process.env.EMAIL_FROM,
     to: student.email,
     subject: '✅ You Got the Job! Tourist Contact Details',
