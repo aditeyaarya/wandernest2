@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 export default function MainLanding() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-      <div className="max-w-4xl mx-auto px-4 text-center space-y-12">
+      <header className="max-w-4xl mx-auto px-4 text-center space-y-12">
         {/* Brand */}
         <div className="space-y-4">
           <div className="flex justify-center items-center space-x-3">
