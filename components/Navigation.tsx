@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Globe, Menu, X, User, LogOut, LayoutDashboard, ChevronLeft } from 'lucide-react'
 import { useSession, signOut } from 'next-auth/react'
 import { useState } from 'react'
+import { STUDENT_SIGNUP_FORM_URL } from '@/lib/constants'
 
 interface NavigationProps {
   variant?: 'default' | 'tourist' | 'student' | 'admin'
@@ -21,7 +22,7 @@ export default function Navigation({ variant = 'default', showBackButton = false
   }
 
   return (
-    <header className="border-b border-border/30 glass-card sticky top-0 z-50 shadow-soft animate-fade-in-down">
+    <header className="border-b border-white/20 glass-card sticky top-0 z-50 shadow-premium animate-fade-in-down backdrop-blur-xl">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -46,13 +47,17 @@ export default function Navigation({ variant = 'default', showBackButton = false
 
             {!session && variant === 'default' && (
               <>
-                <Link href="/student">
+                {/* TODO: Once student portal is production-ready, replace Google Form URL with internal route */}
+                {/* Temporary redirect to Google Form while building student onboarding flow */}
+                {/* <Link href="/student"> */}
+                <a href={STUDENT_SIGNUP_FORM_URL} target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" className="hover-lift border-2 hover:border-secondary hover:text-secondary transition-all">
                     I&apos;m a Student
                   </Button>
-                </Link>
+                </a>
+                {/* </Link> */}
                 <Link href="/booking">
-                  <Button className="bg-primary hover:bg-primary/90 transition-all shadow-premium text-primary-foreground">
+                  <Button className="gradient-vibrant hover:opacity-90 transition-all shadow-premium text-white font-semibold">
                     Book a Guide
                   </Button>
                 </Link>
@@ -62,12 +67,12 @@ export default function Navigation({ variant = 'default', showBackButton = false
             {!session && variant === 'tourist' && (
               <>
                 <Link href="/">
-                  <Button variant="ghost" className="hover-lift hover:bg-primary/10 hover:text-primary">
+                  <Button variant="ghost" className="hover-lift hover:bg-secondary/10 hover:text-secondary">
                     <ChevronLeft className="w-4 h-4 mr-1" /> Back to Home
                   </Button>
                 </Link>
                 <Link href="/booking">
-                  <Button className="bg-primary hover:bg-primary/90 transition-all shadow-premium text-primary-foreground">
+                  <Button className="gradient-vibrant hover:opacity-90 transition-all shadow-premium text-white font-semibold">
                     Book a Guide
                   </Button>
                 </Link>
@@ -93,7 +98,7 @@ export default function Navigation({ variant = 'default', showBackButton = false
               <>
                 {session.user?.userType === 'tourist' && (
                   <Link href="/tourist/dashboard">
-                    <Button variant="ghost" className="hover-lift hover:bg-primary/10 hover:text-primary">
+                    <Button variant="ghost" className="hover-lift hover:bg-secondary/10 hover:text-secondary">
                       <LayoutDashboard className="w-4 h-4 mr-2" />
                       Dashboard
                     </Button>
@@ -158,13 +163,22 @@ export default function Navigation({ variant = 'default', showBackButton = false
 
             {!session && variant === 'default' && (
               <>
-                <Link href="/student" onClick={() => setMobileMenuOpen(false)}>
+                {/* TODO: Once student portal is production-ready, replace Google Form URL with internal route */}
+                {/* Temporary redirect to Google Form while building student onboarding flow */}
+                {/* <Link href="/student" onClick={() => setMobileMenuOpen(false)}> */}
+                <a
+                  href={STUDENT_SIGNUP_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   <Button variant="outline" className="w-full border-2 hover:border-secondary hover:text-secondary">
                     I&apos;m a Student
                   </Button>
-                </Link>
+                </a>
+                {/* </Link> */}
                 <Link href="/booking" onClick={() => setMobileMenuOpen(false)}>
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-premium">
+                  <Button className="w-full gradient-vibrant hover:opacity-90 text-white font-semibold shadow-premium">
                     Book a Guide
                   </Button>
                 </Link>
@@ -174,12 +188,12 @@ export default function Navigation({ variant = 'default', showBackButton = false
             {!session && variant === 'tourist' && (
               <>
                 <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start hover:bg-primary/10 hover:text-primary">
+                  <Button variant="ghost" className="w-full justify-start hover:bg-secondary/10 hover:text-secondary">
                     <ChevronLeft className="w-4 h-4 mr-2" /> Back to Home
                   </Button>
                 </Link>
                 <Link href="/booking" onClick={() => setMobileMenuOpen(false)}>
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-premium">
+                  <Button className="w-full gradient-vibrant hover:opacity-90 text-white font-semibold shadow-premium">
                     Book a Guide
                   </Button>
                 </Link>
@@ -213,7 +227,7 @@ export default function Navigation({ variant = 'default', showBackButton = false
                 </div>
                 {session.user?.userType === 'tourist' && (
                   <Link href="/tourist/dashboard" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="ghost" className="w-full justify-start hover:bg-primary/10 hover:text-primary">
+                    <Button variant="ghost" className="w-full justify-start hover:bg-secondary/10 hover:text-secondary">
                       <LayoutDashboard className="w-4 h-4 mr-2" />
                       Dashboard
                     </Button>
