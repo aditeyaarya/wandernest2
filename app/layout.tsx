@@ -3,6 +3,13 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import './critical.css'
 import { Providers } from './providers'
 
+/*
+ * Font Loading Optimization:
+ * - Only load critical weights upfront (400 for body, 700 for headings)
+ * - font-display: swap prevents FOIT (Flash of Invisible Text)
+ * - adjustFontFallback: true reduces CLS (Cumulative Layout Shift)
+ * - preload: true for critical fonts only
+ */
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '600', '700'],
@@ -82,7 +89,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        {/* Preconnect to Google Fonts for faster font loading */}
+        {/*
+          Font Loading Optimization:
+          - Preconnect to Google Fonts to establish early connection
+          - Next.js automatically handles font preloading for critical weights
+          - font-display: swap ensures text is visible while fonts load
+        */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
