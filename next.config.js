@@ -89,6 +89,24 @@ const nextConfig = {
     return config;
   },
 
+  // Webpack configuration for enhanced source map control
+  webpack: (config, { dev, isServer }) => {
+    // Configure source maps for production builds
+    if (!dev) {
+      config.devtool = 'source-map';
+
+      // Ensure source maps are generated for all first-party code
+      // This includes main-app.js, page.js, layout.js and other bundles
+      config.optimization = {
+        ...config.optimization,
+        // Keep module IDs readable for better debugging
+        moduleIds: 'named',
+      };
+    }
+
+    return config;
+  },
+
   // Headers are now configured in vercel.json for better Vercel integration
 }
 
