@@ -1,8 +1,7 @@
-import Link from 'next/link'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
 import Navigation from '@/components/Navigation'
-import { Plane, GraduationCap } from 'lucide-react'
+import TouristCTA from '@/components/cta/TouristCTA'
+import StudentCTA from '@/components/cta/StudentCTA'
 import { getWebsiteStructuredData, getOrganizationStructuredData } from '@/lib/structuredData'
 import { STUDENT_SIGNUP_FORM_URL } from '@/lib/constants'
 
@@ -68,7 +67,7 @@ export default function MainLanding() {
               </p>
             </div>
 
-            {/* Two Large CTAs */}
+            {/* Two Large CTAs - Redesigned with image-based tiles matching Experience India style */}
             <div className="grid md:grid-cols-2 gap-8 pt-8 max-w-5xl mx-auto">
               {/* Tourist CTA */}
               <Link href="/tourist" className="animate-fade-in-up">
