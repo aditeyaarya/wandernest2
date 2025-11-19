@@ -72,9 +72,9 @@ export default function MainLanding() {
             <div className="grid md:grid-cols-2 gap-8 pt-8 max-w-5xl mx-auto">
               {/* Tourist CTA */}
               <Link href="/tourist" className="animate-fade-in-up">
-                <div className="group cursor-pointer backdrop-blur-md rounded-3xl shadow-xl hover:shadow-2xl border-2 border-white/40 hover:border-blue-400/80 transition-all duration-500 hover-lift relative overflow-hidden">
+                <div className="group cursor-pointer backdrop-blur-md rounded-3xl shadow-xl hover:shadow-2xl border-2 border-slate-200/60 dark:border-white/40 hover:border-blue-400/80 dark:hover:border-blue-400/80 transition-all duration-500 hover-lift relative overflow-hidden">
                   {/* Background Image */}
-                  <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                  <div className="absolute inset-0 opacity-20 dark:opacity-20 group-hover:opacity-30 transition-opacity duration-500">
                     <Image
                       src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=800&q=80"
                       alt="Beautiful London cityscape with iconic architecture"
@@ -85,8 +85,8 @@ export default function MainLanding() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/40 via-blue-400/30 to-cyan-500/40" />
-                  <div className="absolute inset-0 bg-white/75 backdrop-blur-md" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-blue-400/15 to-cyan-500/20 dark:from-blue-500/40 dark:via-blue-400/30 dark:to-cyan-500/40" />
+                  <div className="absolute inset-0 bg-white/85 dark:bg-slate-900/75 backdrop-blur-md" />
 
                   <div className="relative z-10 p-10">
                     <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
@@ -114,9 +114,9 @@ export default function MainLanding() {
               {/* Temporary redirect to Google Form while building student onboarding flow */}
               {/* <Link href="/student" className="animate-fade-in-up delay-100"> */}
               <a href={STUDENT_SIGNUP_FORM_URL} target="_blank" rel="noopener noreferrer" className="animate-fade-in-up delay-100">
-                <div className="group cursor-pointer backdrop-blur-md rounded-3xl shadow-xl hover:shadow-2xl border-2 border-white/40 hover:border-purple-400/80 transition-all duration-500 hover-lift relative overflow-hidden">
+                <div className="group cursor-pointer backdrop-blur-md rounded-3xl shadow-xl hover:shadow-2xl border-2 border-slate-200/60 dark:border-white/40 hover:border-purple-400/80 dark:hover:border-purple-400/80 transition-all duration-500 hover-lift relative overflow-hidden">
                   {/* Background Image */}
-                  <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+                  <div className="absolute inset-0 opacity-20 dark:opacity-20 group-hover:opacity-30 transition-opacity duration-500">
                     <Image
                       src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80"
                       alt="University students collaborating and learning together"
@@ -127,8 +127,8 @@ export default function MainLanding() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/40 via-purple-400/30 to-pink-500/40" />
-                  <div className="absolute inset-0 bg-white/75 backdrop-blur-md" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-purple-400/15 to-pink-500/20 dark:from-purple-500/40 dark:via-purple-400/30 dark:to-pink-500/40" />
+                  <div className="absolute inset-0 bg-white/85 dark:bg-slate-900/75 backdrop-blur-md" />
 
                   <div className="relative z-10 p-10">
                     <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
@@ -275,7 +275,7 @@ export default function MainLanding() {
             </div>
 
             {/* Footer Note */}
-            <p className="text-sm text-white/80 pt-16 animate-fade-in text-shadow">
+            <p className="text-sm text-white/90 dark:text-white/80 pt-16 animate-fade-in text-shadow">
               © {new Date().getFullYear()} WanderNest. Connecting cultures, one guide at a time.
             </p>
           </div>
