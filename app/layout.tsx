@@ -3,23 +3,34 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import './critical.css'
 import { Providers } from './providers'
 import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
+/*
+ * Font Loading Optimization:
+ * - Only load critical weights upfront (400 for body, 700 for headings)
+ * - font-display: swap prevents FOIT (Flash of Invisible Text)
+ * - adjustFontFallback: true reduces CLS (Cumulative Layout Shift)
+ * - preload: true for critical fonts only
+ */
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '600', '700'], // Reduced from 5 to 3 weights
+  weight: ['400'], // Only critical weight for body text
   variable: '--font-inter',
   display: 'swap',
   preload: true,
   fallback: ['system-ui', '-apple-system', 'sans-serif'],
+  adjustFontFallback: true,
 })
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '600', '700', '900'], // Reduced from 6 to 4 weights
+  weight: ['700'], // Only critical weight for headings
   variable: '--font-playfair',
   display: 'swap',
   preload: true,
   fallback: ['Georgia', 'serif'],
+  adjustFontFallback: true,
 })
 
 export const metadata: Metadata = {
@@ -81,15 +92,26 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        {/* Preconnect to Google Fonts for faster font loading */}
+        {/*
+          Font Loading Optimization:
+          - Preconnect to Google Fonts to establish early connection
+          - Next.js automatically handles font preloading for critical weights
+          - font-display: swap ensures text is visible while fonts load
+        */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-        {/* Preconnect to image CDN */}
+        {/* DNS prefetch for third-party resources */}
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
       </head>
       <body className={inter.className}>
-        {/* Defer non-critical CSS loading */}
+        {/*
+          Non-Critical CSS Loading Strategy:
+          - Uses media="print" trick to load CSS asynchronously without blocking render
+          - Switches to media="all" on load to apply styles
+          - strategy="afterInteractive" ensures it loads after page is interactive
+          - This defers ~700+ lines of non-critical styles (animations, effects, etc.)
+        */}
         <Script
           id="load-non-critical-css"
           strategy="afterInteractive"
