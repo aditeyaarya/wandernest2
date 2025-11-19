@@ -2,9 +2,6 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './critical.css'
 import { Providers } from './providers'
-import Script from 'next/script'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 
 /*
  * Font Loading Optimization:
@@ -105,30 +102,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://images.unsplash.com" />
       </head>
       <body className={inter.className}>
-        {/*
-          Non-Critical CSS Loading Strategy:
-          - Uses media="print" trick to load CSS asynchronously without blocking render
-          - Switches to media="all" on load to apply styles
-          - strategy="afterInteractive" ensures it loads after page is interactive
-          - This defers ~700+ lines of non-critical styles (animations, effects, etc.)
-        */}
-        <Script
-          id="load-non-critical-css"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = '/non-critical.css';
-                link.media = 'print';
-                link.onload = function() { this.media = 'all'; };
-                document.head.appendChild(link);
-              })();
-            `
-          }}
-        />
-
         <Providers>
           <div className="min-h-screen relative">
             {/* Gradient overlay with new color scheme - removed background image for faster LCP */}
@@ -138,8 +111,6 @@ export default function RootLayout({
             </div>
           </div>
         </Providers>
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   )
