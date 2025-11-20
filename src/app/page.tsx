@@ -6,7 +6,6 @@ import Navigation from '@/components/Navigation'
 import TouristCTA from '@/components/cta/TouristCTA'
 import StudentCTA from '@/components/cta/StudentCTA'
 import { getWebsiteStructuredData, getOrganizationStructuredData } from '@/lib/structuredData'
-import { STUDENT_SIGNUP_FORM_URL } from '@/lib/constants'
 
 export default function MainLanding() {
   const structuredData = getWebsiteStructuredData()
@@ -125,10 +124,7 @@ export default function MainLanding() {
               </Link>
 
               {/* Student CTA */}
-              {/* TODO: Once student portal is production-ready, replace Google Form URL with internal route */}
-              {/* Temporary redirect to Google Form while building student onboarding flow */}
-              {/* <Link href="/student" className="animate-fade-in-up delay-100 block"> */}
-              <a href={STUDENT_SIGNUP_FORM_URL} target="_blank" rel="noopener noreferrer" className="animate-fade-in-up delay-100 block">
+              <Link href="/student" className="animate-fade-in-up delay-100 block">
                 <div className="group cursor-pointer rounded-2xl shadow-xl hover:shadow-elevated transition-all duration-500 relative overflow-hidden h-[200px] md:h-[225px] hover:scale-105 hover:-translate-y-2 focus-visible:outline-3 focus-visible:outline-purple-500 focus-visible:outline-offset-4">
                   {/* Photo - Fully visible like a photo card */}
                   <div className="absolute inset-0">
@@ -180,8 +176,7 @@ export default function MainLanding() {
                     </div>
                   </div>
                 </div>
-              </a>
-              {/* </Link> */}
+              </Link>
             </div>
 
             {/* Visual Features Section with Images */}

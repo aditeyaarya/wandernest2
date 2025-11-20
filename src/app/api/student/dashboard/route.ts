@@ -6,41 +6,21 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET(req: NextRequest) {
   try {
-    // Get token from cookie or header
-    const token =
-      req.cookies.get('student_token')?.value ||
-      req.headers.get('authorization')?.replace('Bearer ', '')
+    // Get student identifier from query parameters (email or ID)
+    const { searchParams } = new URL(req.url)
+    const studentEmail = searchParams.get('email')
+    const studentId = searchParams.get('id')
 
-    if (!token) {
+    if (!studentEmail && !studentId) {
       return NextResponse.json(
-        { error: 'Unauthorized - No token provided' },
-        { status: 401 }
-      )
-    }
-
-    // Find session
-    const session = await prisma.studentSession.findUnique({
-      where: { token },
-    })
-
-    if (!session || !session.studentId) {
-      return NextResponse.json(
-        { error: 'Invalid or expired session' },
-        { status: 401 }
-      )
-    }
-
-    // Check if session is expired
-    if (new Date() > session.expiresAt) {
-      return NextResponse.json(
-        { error: 'Session expired' },
-        { status: 401 }
+        { error: 'Student email or ID required' },
+        { status: 400 }
       )
     }
 
     // Get student with all related data
-    const student = await prisma.student.findUnique({
-      where: { id: session.studentId },
+    const student = await prisma.student.findFirst({
+      where: studentEmail ? { email: studentEmail } : { id: studentId! },
       include: {
         requestSelections: {
           include: {
