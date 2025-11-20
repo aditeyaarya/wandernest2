@@ -8,7 +8,7 @@ import { z } from 'zod';
 const onboardingSchema = z.object({
   // Authentication
   email: z.string().email(),
-  googleId: z.string(),
+  googleId: z.string().optional(),
 
   // Personal Details
   name: z.string().min(1),
@@ -114,16 +114,18 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Check if googleId is already used
-    const existingGoogleId = await prisma.student.findUnique({
-      where: { googleId: validatedData.googleId },
-    });
+    // Check if googleId is already used (only if provided)
+    if (validatedData.googleId) {
+      const existingGoogleId = await prisma.student.findUnique({
+        where: { googleId: validatedData.googleId },
+      });
 
-    if (existingGoogleId) {
-      return NextResponse.json(
-        { error: 'This Google account is already registered' },
-        { status: 400 }
-      );
+      if (existingGoogleId) {
+        return NextResponse.json(
+          { error: 'This Google account is already registered' },
+          { status: 400 }
+        );
+      }
     }
 
     // Calculate profile completeness
@@ -135,7 +137,6 @@ export async function POST(req: NextRequest) {
         // Authentication
         email: validatedData.email,
         googleId: validatedData.googleId,
-        emailVerified: true,
 
         // Personal Details
         name: validatedData.name,
