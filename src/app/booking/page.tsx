@@ -6,6 +6,8 @@ import { BookingForm } from '@/components/booking/BookingForm'
 // import { useSession, signIn } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { Globe, AlertTriangle } from 'lucide-react'
+import FAQAccordion from '@/components/shared/FAQAccordion'
+import { paymentFAQs } from '@/lib/faq/data'
 
 // AUTH DISABLED FOR DEVELOPMENT - DATABASE_URL not configured
 export default function BookingPage() {
@@ -107,6 +109,11 @@ export default function BookingPage() {
           {/* DEV MODE: Direct access to booking form */}
           <div className="relative animate-fade-in-up delay-200">
             <BookingForm />
+          </div>
+
+          {/* FAQ Section */}
+          <div className="mt-16 animate-fade-in-up delay-300">
+            <FAQAccordion faqs={paymentFAQs} title="Common Questions" />
           </div>
         </main>
       </div>
