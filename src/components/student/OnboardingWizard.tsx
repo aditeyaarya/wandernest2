@@ -14,7 +14,7 @@ import { AvailabilityStep } from './AvailabilityStep';
 import { ServicePreferencesStep } from './ServicePreferencesStep';
 import { SafetyComplianceStep } from './SafetyComplianceStep';
 import { ReviewSubmitStep } from './ReviewSubmitStep';
-import { FormProgressHeader } from './FormProgressHeader';
+import { FormProgressHeader } from '@/components/shared/FormProgressHeader';
 
 export type OnboardingFormData = {
   // Step 1: Basic Profile - Personal Details
