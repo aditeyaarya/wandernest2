@@ -67,29 +67,29 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
       </div>
 
       {/* Personal Details Section */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h3 className="font-bold text-blue-900 mb-3">Personal Details</h3>
+      <div className="bg-[hsl(var(--ui-blue-primary)/0.1)] border border-[hsl(var(--ui-blue-primary)/0.3)] rounded-lg p-4">
+        <h3 className="font-bold text-[hsl(var(--ui-blue-primary))] mb-3">Personal Details</h3>
         <div className="space-y-4">
 
         {/* Name */}
         <div className="space-y-2">
           <Label htmlFor="name">
-            Full Name (as on ID) <span className="text-red-500">*</span>
+            Full Name (as on ID) <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <Input
             id="name"
             value={formData.name}
             onChange={(e) => updateFormData({ name: e.target.value })}
             placeholder="Enter your full name"
-            className={errors.name ? 'border-red-500' : ''}
+            className={errors.name ? 'border-[hsl(var(--ui-error))]' : ''}
           />
-          {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
+          {errors.name && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.name}</p>}
         </div>
 
         {/* Date of Birth */}
         <div className="space-y-2">
           <Label htmlFor="dateOfBirth">
-            Date of Birth <span className="text-red-500">*</span>
+            Date of Birth <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <Input
             id="dateOfBirth"
@@ -97,16 +97,16 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
             value={formData.dateOfBirth}
             onChange={(e) => updateFormData({ dateOfBirth: e.target.value })}
             max={new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split('T')[0]}
-            className={errors.dateOfBirth ? 'border-red-500' : ''}
+            className={errors.dateOfBirth ? 'border-[hsl(var(--ui-error))]' : ''}
           />
           <p className="text-xs text-gray-500">You must be at least 18 years old</p>
-          {errors.dateOfBirth && <p className="text-sm text-red-500">{errors.dateOfBirth}</p>}
+          {errors.dateOfBirth && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.dateOfBirth}</p>}
         </div>
 
         {/* Gender */}
         <div className="space-y-2">
           <Label>
-            Gender <span className="text-red-500">*</span>
+            Gender <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <RadioGroup
             value={formData.gender}
@@ -131,31 +131,31 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
               </Label>
             </div>
           </RadioGroup>
-          {errors.gender && <p className="text-sm text-red-500">{errors.gender}</p>}
+          {errors.gender && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.gender}</p>}
         </div>
 
         {/* Nationality */}
         <div className="space-y-2">
           <Label htmlFor="nationality">
-            Nationality <span className="text-red-500">*</span>
+            Nationality <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <Input
             id="nationality"
             value={formData.nationality}
             onChange={(e) => updateFormData({ nationality: e.target.value })}
             placeholder="e.g., Indian, Chinese, French"
-            className={errors.nationality ? 'border-red-500' : ''}
+            className={errors.nationality ? 'border-[hsl(var(--ui-error))]' : ''}
           />
           <p className="text-xs text-gray-500">
             This helps us match you with visitors from your home country
           </p>
-          {errors.nationality && <p className="text-sm text-red-500">{errors.nationality}</p>}
+          {errors.nationality && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.nationality}</p>}
         </div>
 
         {/* Phone Number */}
         <div className="space-y-2">
           <Label htmlFor="phoneNumber">
-            Phone Number <span className="text-red-500">*</span>
+            Phone Number <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <Input
             id="phoneNumber"
@@ -163,10 +163,10 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
             value={formData.phoneNumber}
             onChange={(e) => updateFormData({ phoneNumber: e.target.value })}
             placeholder="+33 6 12 34 56 78"
-            className={errors.phoneNumber ? 'border-red-500' : ''}
+            className={errors.phoneNumber ? 'border-[hsl(var(--ui-error))]' : ''}
           />
           <p className="text-xs text-gray-500">Include country code</p>
-          {errors.phoneNumber && <p className="text-sm text-red-500">{errors.phoneNumber}</p>}
+          {errors.phoneNumber && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.phoneNumber}</p>}
         </div>
 
         {/* Email Address (read-only) */}
@@ -185,10 +185,10 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
         {/* City */}
         <div className="space-y-2">
           <Label htmlFor="city">
-            Current City <span className="text-red-500">*</span>
+            Current City <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <Select value={formData.city} onValueChange={(value) => updateFormData({ city: value, campus: '' })}>
-            <SelectTrigger className={errors.city ? 'border-red-500' : ''}>
+            <SelectTrigger className={errors.city ? 'border-[hsl(var(--ui-error))]' : ''}>
               <SelectValue placeholder="Select your city" />
             </SelectTrigger>
             <SelectContent>
@@ -202,14 +202,14 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
           <p className="text-xs text-gray-500">
             Where are you currently studying?
           </p>
-          {errors.city && <p className="text-sm text-red-500">{errors.city}</p>}
+          {errors.city && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.city}</p>}
         </div>
 
         {/* Campus */}
         {formData.city && (
           <div className="space-y-2">
             <Label htmlFor="campus">
-              Campus <span className="text-red-500">*</span>
+              Campus <span className="text-[hsl(var(--ui-error))]">*</span>
             </Label>
             <Select value={formData.campus} onValueChange={(value) => {
               updateFormData({
@@ -218,7 +218,7 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
                 institute: value !== 'Other' ? value : formData.institute
               });
             }}>
-              <SelectTrigger className={errors.campus ? 'border-red-500' : ''}>
+              <SelectTrigger className={errors.campus ? 'border-[hsl(var(--ui-error))]' : ''}>
                 <SelectValue placeholder="Select your campus/university" />
               </SelectTrigger>
               <SelectContent>
@@ -237,55 +237,55 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
                 className="mt-2"
               />
             )}
-            {errors.campus && <p className="text-sm text-red-500">{errors.campus}</p>}
+            {errors.campus && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.campus}</p>}
           </div>
         )}
         </div>
       </div>
 
       {/* Academic Details Section */}
-      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-        <h3 className="font-bold text-purple-900 mb-3">Academic Details</h3>
+      <div className="bg-[hsl(var(--ui-purple-primary)/0.1)] border border-[hsl(var(--ui-purple-primary)/0.3)] rounded-lg p-4">
+        <h3 className="font-bold text-[hsl(var(--ui-purple-primary))] mb-3">Academic Details</h3>
         <div className="space-y-4">
 
         {/* University Name */}
         <div className="space-y-2">
           <Label htmlFor="institute">
-            University Name <span className="text-red-500">*</span>
+            University Name <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <Input
             id="institute"
             value={formData.campus === 'Other' ? formData.institute : formData.campus}
             onChange={(e) => updateFormData({ institute: e.target.value })}
             placeholder="e.g., Sorbonne University, Imperial College London"
-            className={errors.institute ? 'border-red-500' : ''}
+            className={errors.institute ? 'border-[hsl(var(--ui-error))]' : ''}
             disabled={formData.campus !== 'Other' && !!formData.campus}
           />
-          {errors.institute && <p className="text-sm text-red-500">{errors.institute}</p>}
+          {errors.institute && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.institute}</p>}
         </div>
 
         {/* Program/Degree */}
         <div className="space-y-2">
           <Label htmlFor="programDegree">
-            Program/Degree <span className="text-red-500">*</span>
+            Program/Degree <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <Input
             id="programDegree"
             value={formData.programDegree}
             onChange={(e) => updateFormData({ programDegree: e.target.value })}
             placeholder="e.g., MSc Computer Science, BA Economics"
-            className={errors.programDegree ? 'border-red-500' : ''}
+            className={errors.programDegree ? 'border-[hsl(var(--ui-error))]' : ''}
           />
-          {errors.programDegree && <p className="text-sm text-red-500">{errors.programDegree}</p>}
+          {errors.programDegree && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.programDegree}</p>}
         </div>
 
         {/* Year of Study */}
         <div className="space-y-2">
           <Label htmlFor="yearOfStudy">
-            Year of Study <span className="text-red-500">*</span>
+            Year of Study <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <Select value={formData.yearOfStudy} onValueChange={(value) => updateFormData({ yearOfStudy: value })}>
-            <SelectTrigger className={errors.yearOfStudy ? 'border-red-500' : ''}>
+            <SelectTrigger className={errors.yearOfStudy ? 'border-[hsl(var(--ui-error))]' : ''}>
               <SelectValue placeholder="Select your year of study" />
             </SelectTrigger>
             <SelectContent>
@@ -296,28 +296,28 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
               ))}
             </SelectContent>
           </Select>
-          {errors.yearOfStudy && <p className="text-sm text-red-500">{errors.yearOfStudy}</p>}
+          {errors.yearOfStudy && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.yearOfStudy}</p>}
         </div>
 
         {/* Expected Graduation Year */}
         <div className="space-y-2">
           <Label htmlFor="expectedGraduation">
-            Expected Graduation Year <span className="text-red-500">*</span>
+            Expected Graduation Year <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <Input
             id="expectedGraduation"
             value={formData.expectedGraduation}
             onChange={(e) => updateFormData({ expectedGraduation: e.target.value })}
             placeholder="e.g., 2025, June 2026"
-            className={errors.expectedGraduation ? 'border-red-500' : ''}
+            className={errors.expectedGraduation ? 'border-[hsl(var(--ui-error))]' : ''}
           />
-          {errors.expectedGraduation && <p className="text-sm text-red-500">{errors.expectedGraduation}</p>}
+          {errors.expectedGraduation && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.expectedGraduation}</p>}
         </div>
 
         {/* Languages */}
         <div className="space-y-3">
           <Label>
-            Languages You Speak <span className="text-red-500">*</span>
+            Languages You Speak <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <p className="text-sm text-gray-600">Select all languages you're comfortable guiding in</p>
           <div className="flex flex-wrap gap-2">
@@ -328,7 +328,7 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
                 onClick={() => toggleLanguage(language)}
                 className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                   formData.languages.includes(language)
-                    ? 'bg-purple-600 text-white'
+                    ? 'bg-[hsl(var(--ui-purple-primary))] text-white'
                     : 'bg-white text-gray-700 border hover:bg-gray-100'
                 }`}
               >
@@ -358,13 +358,13 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
                 {formData.languages.map((language) => (
                   <span
                     key={language}
-                    className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm flex items-center gap-2"
+                    className="px-3 py-1 bg-[hsl(var(--ui-purple-primary)/0.2)] text-[hsl(var(--ui-purple-primary))] rounded-full text-sm flex items-center gap-2"
                   >
                     {language}
                     <button
                       type="button"
                       onClick={() => toggleLanguage(language)}
-                      className="text-purple-600 hover:text-purple-800 font-bold"
+                      className="text-[hsl(var(--ui-purple-accent))] hover:text-[hsl(var(--ui-purple-primary))] font-bold"
                     >
                       ×
                     </button>
@@ -373,13 +373,13 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
               </div>
             </div>
           )}
-          {errors.languages && <p className="text-sm text-red-500">{errors.languages}</p>}
+          {errors.languages && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.languages}</p>}
         </div>
         </div>
       </div>
 
-      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-        <p className="text-sm text-green-900">
+      <div className="bg-[hsl(var(--ui-success)/0.1)] border border-[hsl(var(--ui-success)/0.3)] rounded-lg p-4">
+        <p className="text-sm text-[hsl(var(--ui-success))]">
           <strong>Note:</strong> Make sure your name matches your student ID card exactly, as we'll verify this in the next step.
         </p>
       </div>

@@ -47,8 +47,8 @@ export function StudentProfileCard({
     <Card
       className={`relative transition-all duration-300 hover-lift-lg cursor-pointer group ${
         isSelected
-          ? 'ring-4 ring-blue-400 shadow-glow-blue bg-gradient-to-br from-blue-50/50 to-white'
-          : 'shadow-premium hover:shadow-elevated bg-white border-2 border-gray-100 hover:border-blue-200'
+          ? 'ring-4 ring-ui-blue-primary shadow-glow-blue bg-gradient-to-br from-ui-blue-primary/10 to-white'
+          : 'shadow-premium hover:shadow-elevated bg-white border-2 border-gray-100 hover:border-ui-blue-secondary'
       }`}
       onClick={() => onToggleSelect(student.studentId)}
     >
@@ -91,7 +91,7 @@ export function StudentProfileCard({
         {/* Experience Stats */}
         <div className="grid grid-cols-2 gap-4 mb-4 p-4 bg-gradient-to-br from-gray-50 to-blue-50/30 rounded-xl border border-gray-200/50 shadow-soft">
           <div>
-            <div className="flex items-center gap-1 text-blue-600 mb-1">
+            <div className="flex items-center gap-1 text-ui-blue-primary mb-1">
               <TrendingUp className="h-4 w-4" />
               <span className="text-xs font-semibold">Experience</span>
             </div>
@@ -124,15 +124,15 @@ export function StudentProfileCard({
             <div className="flex items-center gap-2">
               {student.noShowCount === 0 && student.tripsHosted > 0 ? (
                 <>
-                  <CheckCircle2 className="h-4 w-4 text-green-500" />
-                  <span className="text-sm text-green-700 font-medium">
+                  <CheckCircle2 className="h-4 w-4 text-ui-success" />
+                  <span className="text-sm text-ui-success font-medium">
                     Perfect attendance
                   </span>
                 </>
               ) : student.noShowCount > 0 ? (
                 <>
-                  <XCircle className="h-4 w-4 text-red-500" />
-                  <span className="text-sm text-red-600">
+                  <XCircle className="h-4 w-4 text-ui-error" />
+                  <span className="text-sm text-ui-error">
                     {student.noShowCount} no-show{student.noShowCount > 1 ? 's' : ''}
                   </span>
                 </>
@@ -154,15 +154,15 @@ export function StudentProfileCard({
 
         {/* Match Reasons */}
         {student.matchReasons.length > 0 && (
-          <div className="mb-4 p-4 bg-gradient-to-br from-blue-50 to-cyan-50/50 rounded-xl border-2 border-blue-200/60 shadow-soft">
-            <p className="text-xs font-bold text-blue-700 uppercase mb-2 flex items-center gap-1">
+          <div className="mb-4 p-4 bg-gradient-to-br from-ui-blue-primary/10 to-ui-blue-secondary/30 rounded-xl border-2 border-ui-blue-secondary shadow-soft">
+            <p className="text-xs font-bold text-ui-blue-accent uppercase mb-2 flex items-center gap-1">
               <CheckCircle2 className="h-3 w-3" />
               Why this guide?
             </p>
             <ul className="space-y-1.5">
               {student.matchReasons.slice(0, 3).map((reason, index) => (
-                <li key={index} className="text-sm text-blue-900 flex items-start font-medium">
-                  <span className="mr-2 text-blue-500">•</span>
+                <li key={index} className="text-sm text-ui-blue-accent flex items-start font-medium">
+                  <span className="mr-2 text-ui-blue-primary">•</span>
                   <span>{reason}</span>
                 </li>
               ))}

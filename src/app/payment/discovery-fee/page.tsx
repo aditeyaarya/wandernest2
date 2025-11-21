@@ -119,7 +119,7 @@ export default function DiscoveryFeePage() {
           contact: phone,
         },
         theme: {
-          color: '#2563eb',
+          color: '#5a87d4',
         },
         modal: {
           ondismiss: function() {
@@ -138,13 +138,13 @@ export default function DiscoveryFeePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-ui-blue-secondary to-ui-purple-secondary">
       {/* Header */}
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2">
             <span className="text-2xl">🌍</span>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-ui-blue-primary to-ui-purple-primary bg-clip-text text-transparent">
               WanderNest
             </h1>
           </Link>
@@ -163,39 +163,39 @@ export default function DiscoveryFeePage() {
 
           <Card className="p-8">
             <div className="mb-6">
-              <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg mb-4">
+              <div className="flex items-center justify-between p-4 bg-ui-blue-secondary rounded-lg mb-4">
                 <div>
                   <h3 className="font-semibold text-lg">Discovery Fee</h3>
                   <p className="text-sm text-gray-600">Access to curated local guides</p>
                 </div>
                 <div className="text-right">
-                  <div className="text-3xl font-bold text-blue-600">₹99</div>
+                  <div className="text-3xl font-bold text-ui-blue-primary">₹99</div>
                   <div className="text-sm text-gray-500">One-time payment</div>
                 </div>
               </div>
 
               <div className="space-y-2 text-sm text-gray-600 mb-6">
                 <div className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
+                  <span className="text-ui-success mr-2">✓</span>
                   <span>Access to verified student guides in your destination</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
+                  <span className="text-ui-success mr-2">✓</span>
                   <span>Direct communication with matched guides</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
+                  <span className="text-ui-success mr-2">✓</span>
                   <span>Secure and verified platform</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
+                  <span className="text-ui-success mr-2">✓</span>
                   <span>Support local students</span>
                 </div>
               </div>
             </div>
 
             {error && (
-              <Alert className="mb-6 bg-red-50 border-red-200 text-red-800">
+              <Alert className="mb-6 bg-ui-error/10 border-ui-error/25 text-ui-error">
                 {error}
               </Alert>
             )}
@@ -243,11 +243,11 @@ export default function DiscoveryFeePage() {
           <div className="mt-6 text-center text-sm text-gray-600">
             <p>
               By proceeding with the payment, you agree to our{' '}
-              <Link href="/terms" className="text-blue-600 hover:underline">
+              <Link href="/terms" className="text-ui-blue-primary hover:underline">
                 Terms of Service
               </Link>{' '}
               and{' '}
-              <Link href="/privacy" className="text-blue-600 hover:underline">
+              <Link href="/privacy" className="text-ui-blue-primary hover:underline">
                 Privacy Policy
               </Link>
             </p>

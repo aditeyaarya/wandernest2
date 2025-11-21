@@ -74,7 +74,7 @@ export function PreferencesStep({ data, errors, updateData }: Props) {
       {/* Languages */}
       <div className="space-y-2">
         <Label>
-          Preferred Languages <span className="text-red-500">*</span>
+          Preferred Languages <span className="text-ui-error">*</span>
         </Label>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {LANGUAGES.map((language) => (
@@ -94,7 +94,7 @@ export function PreferencesStep({ data, errors, updateData }: Props) {
           ))}
         </div>
         {errors.preferredLanguages && (
-          <p className="text-sm text-red-500">{errors.preferredLanguages}</p>
+          <p className="text-sm text-ui-error">{errors.preferredLanguages}</p>
         )}
       </div>
 
@@ -129,12 +129,12 @@ export function PreferencesStep({ data, errors, updateData }: Props) {
       {/* Service Type */}
       <div className="space-y-2">
         <Label>
-          Service Type <span className="text-red-500">*</span>
+          Service Type <span className="text-ui-error">*</span>
         </Label>
         <RadioGroup
           value={data.serviceType}
           onValueChange={(value: any) => updateData({ serviceType: value })}
-          className={errors.serviceType ? 'border border-red-500 rounded p-4' : ''}
+          className={errors.serviceType ? 'border border-ui-error rounded p-4' : ''}
         >
           <div className="flex items-start space-x-2 p-3 border rounded hover:bg-gray-50">
             <RadioGroupItem value="itinerary_help" id="itinerary_help" />
@@ -160,14 +160,14 @@ export function PreferencesStep({ data, errors, updateData }: Props) {
           </div>
         </RadioGroup>
         {errors.serviceType && (
-          <p className="text-sm text-red-500">{errors.serviceType}</p>
+          <p className="text-sm text-ui-error">{errors.serviceType}</p>
         )}
       </div>
 
       {/* Interests */}
       <div className="space-y-2">
         <Label>
-          Interests <span className="text-red-500">*</span>
+          Interests <span className="text-ui-error">*</span>
         </Label>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {INTERESTS.map((interest) => (
@@ -175,7 +175,7 @@ export function PreferencesStep({ data, errors, updateData }: Props) {
               key={interest.value}
               className={`flex items-center space-x-2 p-3 border rounded cursor-pointer transition-colors ${
                 data.interests?.includes(interest.value)
-                  ? 'bg-blue-50 border-blue-500'
+                  ? 'bg-ui-blue-primary/10 border-ui-blue-primary'
                   : 'hover:bg-gray-50'
               }`}
               onClick={() => toggleInterest(interest.value)}
@@ -194,7 +194,7 @@ export function PreferencesStep({ data, errors, updateData }: Props) {
             </div>
           ))}
         </div>
-        {errors.interests && <p className="text-sm text-red-500">{errors.interests}</p>}
+        {errors.interests && <p className="text-sm text-ui-error">{errors.interests}</p>}
       </div>
 
       {/* Budget Range */}
@@ -214,7 +214,7 @@ export function PreferencesStep({ data, errors, updateData }: Props) {
           />
           <div className="flex justify-between text-sm text-gray-600">
             <span>$50</span>
-            <span className="font-bold text-blue-600">
+            <span className="font-bold text-ui-blue-primary">
               ${data.budget || 150}
             </span>
             <span>$500+</span>

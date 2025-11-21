@@ -2,13 +2,17 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const alertVariants = cva(
-  "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground",
+  "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4",
   {
     variants: {
       variant: {
-        default: "bg-background text-foreground",
+        default: "bg-[hsl(var(--ui-info)/0.1)] border-[hsl(var(--ui-info)/0.5)] text-[hsl(var(--ui-info))] dark:bg-[hsl(var(--ui-info)/0.15)] dark:border-[hsl(var(--ui-info)/0.4)] dark:text-[hsl(var(--ui-info))] [&>svg]:text-[hsl(var(--ui-info))]",
         destructive:
-          "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
+          "bg-[hsl(var(--ui-error)/0.1)] border-[hsl(var(--ui-error)/0.5)] text-[hsl(var(--ui-error))] dark:bg-[hsl(var(--ui-error)/0.15)] dark:border-[hsl(var(--ui-error)/0.4)] dark:text-[hsl(var(--ui-error))] [&>svg]:text-[hsl(var(--ui-error))]",
+        success:
+          "bg-[hsl(var(--ui-success)/0.1)] border-[hsl(var(--ui-success)/0.5)] text-[hsl(var(--ui-success))] dark:bg-[hsl(var(--ui-success)/0.15)] dark:border-[hsl(var(--ui-success)/0.4)] dark:text-[hsl(var(--ui-success))] [&>svg]:text-[hsl(var(--ui-success))]",
+        warning:
+          "bg-[hsl(var(--ui-warning)/0.1)] border-[hsl(var(--ui-warning)/0.5)] text-[hsl(var(--ui-warning))] dark:bg-[hsl(var(--ui-warning)/0.15)] dark:border-[hsl(var(--ui-warning)/0.4)] dark:text-[hsl(var(--ui-warning))] [&>svg]:text-[hsl(var(--ui-warning))]",
       },
     },
     defaultVariants: {

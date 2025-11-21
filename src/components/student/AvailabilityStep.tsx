@@ -181,9 +181,9 @@ export function AvailabilityStep({ formData, updateFormData, errors }: Availabil
       </div>
 
       {/* Important Notice */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h3 className="font-bold text-blue-900 mb-2">⏰ Important Guidelines:</h3>
-        <ul className="text-sm text-blue-800 space-y-1 list-disc list-inside">
+      <div className="bg-[hsl(var(--ui-blue-primary)/0.1)] border border-[hsl(var(--ui-blue-primary)/0.3)] rounded-lg p-4">
+        <h3 className="font-bold text-[hsl(var(--ui-blue-primary))] mb-2">⏰ Important Guidelines:</h3>
+        <ul className="text-sm text-[hsl(var(--ui-blue-accent))] space-y-1 list-disc list-inside">
           <li>Most experiences are 3-4 hours long</li>
           <li>Time blocks must be at least 3 hours</li>
           <li>Be realistic - only set times you can consistently commit to</li>
@@ -206,7 +206,7 @@ export function AvailabilityStep({ formData, updateFormData, errors }: Availabil
                 onClick={() => setSelectedDay(day.value)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   selectedDay === day.value
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-[hsl(var(--ui-blue-primary))] text-white'
                     : 'bg-white text-gray-700 border hover:bg-gray-100'
                 }`}
               >
@@ -286,7 +286,7 @@ export function AvailabilityStep({ formData, updateFormData, errors }: Availabil
               (day) =>
                 day.slots.length > 0 && (
                   <div key={day.value} className="border rounded-lg p-4">
-                    <h4 className="font-bold text-blue-900 mb-2">{day.label}</h4>
+                    <h4 className="font-bold text-[hsl(var(--ui-blue-primary))] mb-2">{day.label}</h4>
                     <div className="space-y-2">
                       {day.slots.map((slot, index) => {
                         const globalIndex = formData.availability.indexOf(slot);
@@ -324,19 +324,19 @@ export function AvailabilityStep({ formData, updateFormData, errors }: Availabil
           </div>
         )}
 
-        {errors.availability && <p className="text-sm text-red-500">{errors.availability}</p>}
+        {errors.availability && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.availability}</p>}
       </div>
 
       {/* Timezone */}
       <div className="space-y-2">
         <Label htmlFor="timezone">
-          Timezone <span className="text-red-500">*</span>
+          Timezone <span className="text-[hsl(var(--ui-error))]">*</span>
         </Label>
         <select
           id="timezone"
           value={formData.timezone}
           onChange={(e) => updateFormData({ timezone: e.target.value })}
-          className={`w-full px-3 py-2 border rounded-lg ${errors.timezone ? 'border-red-500' : ''}`}
+          className={`w-full px-3 py-2 border rounded-lg ${errors.timezone ? 'border-[hsl(var(--ui-error))]' : ''}`}
         >
           {TIMEZONE_OPTIONS.map((tz) => (
             <option key={tz.value} value={tz.value}>
@@ -347,13 +347,13 @@ export function AvailabilityStep({ formData, updateFormData, errors }: Availabil
         <p className="text-xs text-gray-500">
           Your local timezone for scheduling guide sessions. Tourists will see availability times converted to their timezone.
         </p>
-        {errors.timezone && <p className="text-sm text-red-500">{errors.timezone}</p>}
+        {errors.timezone && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.timezone}</p>}
       </div>
 
       {/* Preferred Guide Durations */}
       <div className="space-y-3">
         <Label>
-          Preferred Guide Durations <span className="text-red-500">*</span>
+          Preferred Guide Durations <span className="text-[hsl(var(--ui-error))]">*</span>
         </Label>
         <p className="text-sm text-gray-600">What session lengths do you prefer to offer?</p>
         <div className="flex flex-wrap gap-2">
@@ -364,7 +364,7 @@ export function AvailabilityStep({ formData, updateFormData, errors }: Availabil
               onClick={() => toggleDuration(duration)}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 formData.preferredDurations.includes(duration)
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-[hsl(var(--ui-blue-primary))] text-white'
                   : 'bg-white text-gray-700 border hover:bg-gray-100'
               }`}
             >
@@ -373,11 +373,11 @@ export function AvailabilityStep({ formData, updateFormData, errors }: Availabil
           ))}
         </div>
         {formData.preferredDurations.length > 0 && (
-          <p className="text-sm text-green-700">
+          <p className="text-sm text-[hsl(var(--ui-success))]">
             Selected: {formData.preferredDurations.join(', ')}
           </p>
         )}
-        {errors.preferredDurations && <p className="text-sm text-red-500">{errors.preferredDurations}</p>}
+        {errors.preferredDurations && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.preferredDurations}</p>}
       </div>
 
       {/* One-Time Unavailability Exceptions */}
@@ -457,8 +457,8 @@ export function AvailabilityStep({ formData, updateFormData, errors }: Availabil
       </div>
 
       {/* Tip */}
-      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-        <p className="text-sm text-green-900">
+      <div className="bg-[hsl(var(--ui-success)/0.1)] border border-[hsl(var(--ui-success)/0.3)] rounded-lg p-4">
+        <p className="text-sm text-[hsl(var(--ui-success))]">
           💡 <strong>Tip:</strong> Start with a realistic schedule. You can always add more slots later
           as you get more comfortable. Quality experiences are better than overcommitting!
         </p>

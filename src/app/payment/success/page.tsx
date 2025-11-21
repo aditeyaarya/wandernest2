@@ -45,13 +45,13 @@ export default function PaymentSuccessPage() {
   }, [paymentId, router, redirectUrl])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-ui-blue-secondary to-ui-purple-secondary">
       {/* Header */}
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2">
             <span className="text-2xl">🌍</span>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-ui-blue-primary to-ui-purple-primary bg-clip-text text-transparent">
               WanderNest
             </h1>
           </Link>
@@ -64,9 +64,9 @@ export default function PaymentSuccessPage() {
           <Card className="p-8 text-center">
             {/* Success Icon */}
             <div className="mb-6">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+              <div className="w-20 h-20 bg-ui-success/15 rounded-full flex items-center justify-center mx-auto">
                 <svg
-                  className="w-12 h-12 text-green-600"
+                  className="w-12 h-12 text-ui-success"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -81,7 +81,7 @@ export default function PaymentSuccessPage() {
               </div>
             </div>
 
-            <h1 className="text-3xl font-bold mb-4 text-green-600">
+            <h1 className="text-3xl font-bold mb-4 text-ui-success">
               Payment Successful!
             </h1>
 
@@ -103,7 +103,7 @@ export default function PaymentSuccessPage() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Status:</span>
-                    <span className="text-green-600 font-semibold">{paymentDetails.status}</span>
+                    <span className="text-ui-success font-semibold">{paymentDetails.status}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Date:</span>

@@ -22,7 +22,7 @@ export default function TouristLanding() {
         {/* Dark overlay for text contrast */}
         <div className="absolute inset-0 bg-black/25 backdrop-blur-[4px]" />
         {/* Gradient overlay for visual depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-indigo-600/15 to-purple-600/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/20 via-ui-blue-accent/15 to-ui-purple-primary/20" />
       </div>
       <div className="absolute inset-0 pattern-dots opacity-15" />
 
@@ -74,10 +74,10 @@ export default function TouristLanding() {
                     loading="lazy"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-blue-300/20" />
+                <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/20 to-ui-blue-secondary/20" />
                 <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
                 <div className="relative z-10 p-8">
-                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-ui-blue-primary to-ui-blue-accent text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <GraduationCap className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold mb-3">Verified Students</h3>
@@ -99,10 +99,10 @@ export default function TouristLanding() {
                     loading="lazy"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-purple-300/20" />
+                <div className="absolute inset-0 bg-gradient-to-br from-ui-purple-primary/20 to-ui-purple-secondary/20" />
                 <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
                 <div className="relative z-10 p-8">
-                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-ui-purple-primary to-ui-purple-accent text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <MessageCircle className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold mb-3">Personalized Experience</h3>
@@ -124,10 +124,10 @@ export default function TouristLanding() {
                     loading="lazy"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-400/20 to-pink-300/20" />
+                <div className="absolute inset-0 bg-gradient-to-br from-ui-purple-primary/20 to-ui-purple-secondary/20" />
                 <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
                 <div className="relative z-10 p-8">
-                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-ui-purple-primary to-ui-purple-accent text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <Star className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold mb-3">Authentic Adventures</h3>
@@ -146,7 +146,7 @@ export default function TouristLanding() {
                   <div className="w-20 h-20 gradient-ocean rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-glow-blue group-hover:scale-110 transition-all duration-300">
                     1
                   </div>
-                  <h3 className="font-bold text-lg text-white group-hover:text-blue-200 transition-colors">Submit Your Request</h3>
+                  <h3 className="font-bold text-lg text-white group-hover:text-ui-blue-accent transition-colors">Submit Your Request</h3>
                   <p className="text-sm text-white/90 leading-relaxed font-medium">
                     Tell us about your trip preferences, dates, and interests
                   </p>
@@ -156,17 +156,17 @@ export default function TouristLanding() {
                   <div className="w-20 h-20 gradient-vibrant rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-glow-purple group-hover:scale-110 transition-all duration-300">
                     2
                   </div>
-                  <h3 className="font-bold text-lg text-white group-hover:text-purple-200 transition-colors">Get Matched with Guides</h3>
+                  <h3 className="font-bold text-lg text-white group-hover:text-ui-purple-accent transition-colors">Get Matched with Guides</h3>
                   <p className="text-sm text-white/90 leading-relaxed font-medium">
                     We match you with verified student guides who fit your needs
                   </p>
                 </div>
 
                 <div className="text-center space-y-4 group hover-lift">
-                  <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-soft group-hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-ui-success to-ui-success rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-soft group-hover:scale-110 transition-all duration-300">
                     3
                   </div>
-                  <h3 className="font-bold text-lg text-white group-hover:text-green-200 transition-colors">Experience the City</h3>
+                  <h3 className="font-bold text-lg text-white group-hover:text-ui-success transition-colors">Experience the City</h3>
                   <p className="text-sm text-white/90 leading-relaxed font-medium">
                     Connect directly with your guide and enjoy an authentic local experience
                   </p>
@@ -221,19 +221,19 @@ export default function TouristLanding() {
             </div>
 
             {/* Marketplace Disclaimer */}
-            <div className="mt-16 bg-gradient-to-br from-amber-50 to-yellow-100/50 border-2 border-amber-300/60 rounded-3xl p-6 md:p-8 max-w-4xl mx-auto shadow-premium hover-lift animate-fade-in-up delay-400">
+            <div className="mt-16 bg-gradient-to-br from-amber-50 to-yellow-100/50 border-2 border-ui-warning/60 rounded-3xl p-6 md:p-8 max-w-4xl mx-auto shadow-premium hover-lift animate-fade-in-up delay-400">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-soft">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-ui-warning to-ui-warning text-white shadow-soft">
                     <AlertTriangle className="w-6 h-6" />
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h2 className="font-bold text-amber-900 mb-3 text-lg">Important Notice</h2>
-                  <p className="text-sm text-amber-900 mb-3 leading-relaxed">
+                  <h2 className="font-bold text-ui-warning mb-3 text-lg">Important Notice</h2>
+                  <p className="text-sm text-ui-warning mb-3 leading-relaxed">
                     <strong>WanderNest is a marketplace connector only.</strong> We facilitate connections between tourists and local student guides but do not:
                   </p>
-                  <ul className="space-y-2 text-sm text-amber-900">
+                  <ul className="space-y-2 text-sm text-ui-warning">
                     <li className="flex items-start">
                       <span className="mr-2 mt-0.5">•</span>
                       <span>Handle any payments or financial transactions</span>
@@ -251,7 +251,7 @@ export default function TouristLanding() {
                       <span>Assume liability for guide-tourist interactions</span>
                     </li>
                   </ul>
-                  <p className="text-sm text-amber-900 mt-3 leading-relaxed">
+                  <p className="text-sm text-ui-warning mt-3 leading-relaxed">
                     All arrangements, payments, and services are agreed upon directly between you and your guide.
                   </p>
                 </div>

@@ -23,9 +23,9 @@ export default function TouristCTA() {
         imageAlt="Traveler standing on mountain overlooking scenic European landscape"
         headline="Tourist"
         description="Explore with a local student guide. Personalized and authentic experiences."
-        gradientFrom="from-blue-600/40"
-        gradientVia="via-blue-700/50"
-        gradientTo="to-cyan-600/40"
+        gradientFrom="from-ui-blue-primary/40"
+        gradientVia="via-ui-blue-accent/50"
+        gradientTo="to-ui-blue-accent/40"
       />
     </Link>
   )

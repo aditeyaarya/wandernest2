@@ -167,7 +167,7 @@ export function VerificationModal({ email, formData, onSuccess, onClose }: Props
 
           {/* Error Message */}
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded p-3 text-sm text-red-800">
+            <div className="bg-ui-error/10 border border-ui-error/30 rounded p-3 text-sm text-ui-error">
               {error}
             </div>
           )}
@@ -197,7 +197,7 @@ export function VerificationModal({ email, formData, onSuccess, onClose }: Props
               variant="link"
               onClick={handleResendCode}
               disabled={isVerifying}
-              className="text-blue-600"
+              className="text-ui-blue-primary"
             >
               Resend Code
             </Button>

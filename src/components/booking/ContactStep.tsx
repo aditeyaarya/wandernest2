@@ -43,7 +43,7 @@ export function ContactStep({ data, errors, updateData }: Props) {
       {/* Email */}
       <div className="space-y-2">
         <Label htmlFor="email">
-          Email Address <span className="text-red-500">*</span>
+          Email Address <span className="text-ui-error">*</span>
         </Label>
         <Input
           id="email"
@@ -51,9 +51,9 @@ export function ContactStep({ data, errors, updateData }: Props) {
           placeholder="your.email@example.com"
           value={data.email}
           onChange={(e) => updateData({ email: e.target.value })}
-          className={errors.email ? 'border-red-500' : ''}
+          className={errors.email ? 'border-ui-error' : ''}
         />
-        {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
+        {errors.email && <p className="text-sm text-ui-error">{errors.email}</p>}
         <p className="text-xs text-gray-500">
           We'll send a verification code to this email
         </p>
@@ -109,12 +109,12 @@ export function ContactStep({ data, errors, updateData }: Props) {
       {/* Contact Method Preference */}
       <div className="space-y-2">
         <Label>
-          Preferred Contact Method <span className="text-red-500">*</span>
+          Preferred Contact Method <span className="text-ui-error">*</span>
         </Label>
         <RadioGroup
           value={data.contactMethod}
           onValueChange={(value: any) => updateData({ contactMethod: value })}
-          className={errors.contactMethod ? 'border border-red-500 rounded p-4' : ''}
+          className={errors.contactMethod ? 'border border-ui-error rounded p-4' : ''}
         >
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="email" id="contact_email" />
@@ -140,7 +140,7 @@ export function ContactStep({ data, errors, updateData }: Props) {
           )}
         </RadioGroup>
         {errors.contactMethod && (
-          <p className="text-sm text-red-500">{errors.contactMethod}</p>
+          <p className="text-sm text-ui-error">{errors.contactMethod}</p>
         )}
       </div>
 
@@ -171,18 +171,18 @@ export function ContactStep({ data, errors, updateData }: Props) {
           <Label htmlFor="termsConsent" className="font-normal text-sm cursor-pointer leading-relaxed">
             I agree to the Terms of Service and Privacy Policy, and I understand that{' '}
             <strong>WanderNest is a marketplace connector only</strong> and does not handle payments, guarantee service quality, or assume liability for guide interactions.
-            <span className="text-red-500 ml-1">*</span>
+            <span className="text-ui-error ml-1">*</span>
           </Label>
         </div>
         {errors.termsAccepted && (
-          <p className="text-sm text-red-500">{errors.termsAccepted}</p>
+          <p className="text-sm text-ui-error">{errors.termsAccepted}</p>
         )}
       </div>
 
       {/* Privacy Notice */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h3 className="font-semibold text-blue-900 mb-2">🔒 Privacy Notice</h3>
-        <p className="text-sm text-blue-800">
+      <div className="bg-ui-blue-secondary/20 border border-ui-blue-secondary rounded-lg p-4">
+        <h3 className="font-semibold text-ui-blue-primary mb-2">🔒 Privacy Notice</h3>
+        <p className="text-sm text-ui-blue-accent">
           Your contact information will only be shared with your matched guide after
           you accept their proposal. We take your privacy seriously and never share
           your data with third parties.

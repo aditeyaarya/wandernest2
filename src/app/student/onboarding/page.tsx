@@ -101,13 +101,13 @@ export default function StudentOnboarding() {
           {/* Dark overlay for text contrast */}
           <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
           {/* Gradient overlay for visual depth */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/15 via-blue-600/10 to-pink-600/15" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--ui-purple-accent))]/15 via-[hsl(var(--ui-blue-primary))]/10 to-[hsl(var(--ui-purple-primary))]/15" />
         </div>
         <div className="absolute inset-0 pattern-dots opacity-10" />
 
         <div className="relative z-10 flex items-center justify-center min-h-screen">
           <div className="text-center glass-card rounded-3xl p-8 shadow-premium animate-fade-in">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[hsl(var(--ui-blue-accent))] mx-auto"></div>
             <p className="mt-4 text-gray-700 font-medium">Loading...</p>
           </div>
         </div>

@@ -36,7 +36,7 @@ export default function MainLanding() {
         {/* Dark overlay for text contrast */}
         <div className="absolute inset-0 bg-black/25 backdrop-blur-[4px]" />
         {/* Gradient overlay for visual depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/15 to-pink-600/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-accent/15 via-ui-purple-accent/10 to-ui-purple-primary/15" />
       </div>
       <div className="absolute inset-0 pattern-dots opacity-20" />
 
@@ -55,7 +55,7 @@ export default function MainLanding() {
                 <br />
                 <span className="relative inline-block">
                   with Local Student Guides
-                  <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform" />
+                  <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-ui-blue-primary via-ui-purple-primary to-ui-purple-accent rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform" />
                 </span>
               </h1>
 
@@ -70,7 +70,7 @@ export default function MainLanding() {
             <div className="grid md:grid-cols-2 gap-6 pt-8 max-w-4xl mx-auto">
               {/* Tourist CTA */}
               <Link href="/tourist" className="animate-fade-in-up block">
-                <div className="group cursor-pointer rounded-2xl shadow-xl hover:shadow-elevated transition-all duration-500 relative overflow-hidden h-[200px] md:h-[225px] hover:scale-105 hover:-translate-y-2 focus-visible:outline-3 focus-visible:outline-blue-500 focus-visible:outline-offset-4">
+                <div className="group cursor-pointer rounded-2xl shadow-xl hover:shadow-elevated transition-all duration-500 relative overflow-hidden h-[200px] md:h-[225px] hover:scale-105 hover:-translate-y-2 focus-visible:outline-3 focus-visible:outline-ui-blue-accent focus-visible:outline-offset-4">
                   {/* Photo - Fully visible like a photo card */}
                   <div className="absolute inset-0">
                     <Image
@@ -93,7 +93,7 @@ export default function MainLanding() {
                   <div className="relative z-10 h-full flex flex-col justify-end p-4 md:p-5">
                     {/* Default state content - Always visible */}
                     <div className="space-y-2">
-                      <div className="inline-flex p-2 rounded-xl bg-blue-500/90 backdrop-blur-sm text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <div className="inline-flex p-2 rounded-xl bg-ui-blue-primary/90 backdrop-blur-sm text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <Plane className="w-5 h-5" />
                       </div>
 
@@ -113,7 +113,7 @@ export default function MainLanding() {
                       </p>
 
                       <div className="pt-1">
-                        <span className="inline-flex items-center text-xs md:text-sm font-serif font-semibold text-white bg-blue-600/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg hover:bg-blue-500/90 transition-colors">
+                        <span className="inline-flex items-center text-xs md:text-sm font-serif font-semibold text-white bg-ui-blue-accent/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg hover:bg-ui-blue-primary/90 transition-colors">
                           Explore as Tourist
                           <span className="ml-2 group-hover:translate-x-2 transition-transform inline-block">→</span>
                         </span>
@@ -125,7 +125,7 @@ export default function MainLanding() {
 
               {/* Student CTA */}
               <Link href="/student" className="animate-fade-in-up delay-100 block">
-                <div className="group cursor-pointer rounded-2xl shadow-xl hover:shadow-elevated transition-all duration-500 relative overflow-hidden h-[200px] md:h-[225px] hover:scale-105 hover:-translate-y-2 focus-visible:outline-3 focus-visible:outline-purple-500 focus-visible:outline-offset-4">
+                <div className="group cursor-pointer rounded-2xl shadow-xl hover:shadow-elevated transition-all duration-500 relative overflow-hidden h-[200px] md:h-[225px] hover:scale-105 hover:-translate-y-2 focus-visible:outline-3 focus-visible:outline-ui-purple-accent focus-visible:outline-offset-4">
                   {/* Photo - Fully visible like a photo card */}
                   <div className="absolute inset-0">
                     <Image
@@ -148,7 +148,7 @@ export default function MainLanding() {
                   <div className="relative z-10 h-full flex flex-col justify-end p-4 md:p-5">
                     {/* Default state content - Always visible */}
                     <div className="space-y-2">
-                      <div className="inline-flex p-2 rounded-xl bg-purple-500/90 backdrop-blur-sm text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <div className="inline-flex p-2 rounded-xl bg-ui-purple-primary/90 backdrop-blur-sm text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <GraduationCap className="w-5 h-5" />
                       </div>
 
@@ -168,7 +168,7 @@ export default function MainLanding() {
                       </p>
 
                       <div className="pt-1">
-                        <span className="inline-flex items-center text-xs md:text-sm font-serif font-semibold text-white bg-purple-600/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg hover:bg-purple-500/90 transition-colors">
+                        <span className="inline-flex items-center text-xs md:text-sm font-serif font-semibold text-white bg-ui-purple-accent/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg hover:bg-ui-purple-primary/90 transition-colors">
                           Start Guiding
                           <span className="ml-2 group-hover:translate-x-2 transition-transform inline-block">→</span>
                         </span>
@@ -196,15 +196,15 @@ export default function MainLanding() {
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-start">
-                      <span className="mr-2 text-blue-600 dark:text-blue-400 font-bold">✓</span>
+                      <span className="mr-2 text-ui-blue-accent dark:text-ui-blue-primary font-bold">✓</span>
                       <span className="text-foreground">Hidden local spots and neighborhood favorites</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="mr-2 text-blue-600 dark:text-blue-400 font-bold">✓</span>
+                      <span className="mr-2 text-ui-blue-accent dark:text-ui-blue-primary font-bold">✓</span>
                       <span className="text-foreground">Cultural insights from a local perspective</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="mr-2 text-blue-600 dark:text-blue-400 font-bold">✓</span>
+                      <span className="mr-2 text-ui-blue-accent dark:text-ui-blue-primary font-bold">✓</span>
                       <span className="text-foreground">Personalized recommendations for your interests</span>
                     </li>
                   </ul>
@@ -246,15 +246,15 @@ export default function MainLanding() {
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-start">
-                      <span className="mr-2 text-purple-600 dark:text-purple-400 font-bold">✓</span>
+                      <span className="mr-2 text-ui-purple-accent dark:text-ui-purple-primary font-bold">✓</span>
                       <span className="text-foreground">Background-verified student credentials</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="mr-2 text-purple-600 dark:text-purple-400 font-bold">✓</span>
+                      <span className="mr-2 text-ui-purple-accent dark:text-ui-purple-primary font-bold">✓</span>
                       <span className="text-foreground">Multilingual guides for better communication</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="mr-2 text-purple-600 dark:text-purple-400 font-bold">✓</span>
+                      <span className="mr-2 text-ui-purple-accent dark:text-ui-purple-primary font-bold">✓</span>
                       <span className="text-foreground">Rated and reviewed by past travelers</span>
                     </li>
                   </ul>
@@ -272,15 +272,15 @@ export default function MainLanding() {
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-start">
-                      <span className="mr-2 text-green-600 dark:text-green-400 font-bold">✓</span>
+                      <span className="mr-2 text-ui-success font-bold">✓</span>
                       <span className="text-foreground">Customized itineraries based on your preferences</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="mr-2 text-green-600 dark:text-green-400 font-bold">✓</span>
+                      <span className="mr-2 text-ui-success font-bold">✓</span>
                       <span className="text-foreground">Flexible scheduling around your travel plans</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="mr-2 text-green-600 dark:text-green-400 font-bold">✓</span>
+                      <span className="mr-2 text-ui-success font-bold">✓</span>
                       <span className="text-foreground">Small group or one-on-one experiences</span>
                     </li>
                   </ul>

@@ -21,7 +21,7 @@ export default function StudentLandingPage() {
         {/* Dark overlay for text contrast */}
         <div className="absolute inset-0 bg-black/25 backdrop-blur-[4px]" />
         {/* Gradient overlay for visual depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-pink-600/15 to-blue-600/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ui-purple-primary/20 via-ui-purple-accent/15 to-ui-blue-primary/20" />
       </div>
       <div className="absolute inset-0 pattern-grid opacity-15" />
 
@@ -77,30 +77,30 @@ export default function StudentLandingPage() {
                 <h2 className="text-4xl font-bold text-center mb-12">Why Guide with WanderNest?</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-2xl p-6 shadow-sm hover-lift group">
-                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-ui-blue-primary to-ui-blue-secondary text-white mb-4 group-hover:scale-110 transition-transform duration-300">
                     <DollarSign className="w-7 h-7" />
                   </div>
-                  <h3 className="font-bold text-lg mb-2 group-hover:text-blue-700 transition-colors">Earn More</h3>
+                  <h3 className="font-bold text-lg mb-2 group-hover:text-ui-blue-accent transition-colors">Earn More</h3>
                   <p className="text-sm text-gray-700 leading-relaxed font-medium">
                     Make significantly more than standard campus jobs with flexible hours
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-2xl p-6 shadow-soft hover:shadow-premium hover-lift-lg group border-2 border-purple-100/60 hover:border-purple-300/60 transition-all">
+                <div className="bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-2xl p-6 shadow-soft hover:shadow-premium hover-lift-lg group border-2 border-ui-purple-primary/60 hover:border-ui-purple-accent/60 transition-all">
                   <div className="inline-flex p-3 rounded-xl gradient-vibrant text-white mb-4 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 shadow-glow-purple">
                     <Clock className="w-7 h-7" />
                   </div>
-                  <h3 className="font-bold text-lg mb-2 group-hover:text-purple-700 transition-colors">Fully Flexible</h3>
+                  <h3 className="font-bold text-lg mb-2 group-hover:text-ui-purple-accent transition-colors">Fully Flexible</h3>
                   <p className="text-sm text-gray-700 leading-relaxed font-medium">
                     Choose your own time slots and work around your class schedule
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-2xl p-6 shadow-soft hover:shadow-premium hover-lift-lg group border-2 border-green-100/60 hover:border-green-300/60 transition-all">
-                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-soft">
+                <div className="bg-gradient-to-br from-green-50 to-green-100/50 rounded-2xl p-6 shadow-soft hover:shadow-premium hover-lift-lg group border-2 border-ui-success/60 hover:border-ui-success/60 transition-all">
+                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-ui-success to-ui-success text-white mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-soft">
                     <Users className="w-7 h-7" />
                   </div>
-                  <h3 className="font-bold text-lg mb-2 group-hover:text-green-700 transition-colors">Cultural Connection</h3>
+                  <h3 className="font-bold text-lg mb-2 group-hover:text-ui-success transition-colors">Cultural Connection</h3>
                   <p className="text-sm text-gray-700 leading-relaxed font-medium">
                     Meet visitors from your home country and share your culture
                   </p>
@@ -117,7 +117,7 @@ export default function StudentLandingPage() {
                   <div className="w-20 h-20 gradient-ocean rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-glow-blue group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                     1
                   </div>
-                  <h3 className="font-bold text-lg text-white group-hover:text-blue-200 transition-colors">Sign In</h3>
+                  <h3 className="font-bold text-lg text-white group-hover:text-ui-blue-primary transition-colors">Sign In</h3>
                   <p className="text-sm text-white/90 leading-relaxed font-medium">
                     Use your student email (.edu) to sign in with Google
                   </p>
@@ -127,17 +127,17 @@ export default function StudentLandingPage() {
                   <div className="w-20 h-20 gradient-vibrant rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-glow-purple group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
                     2
                   </div>
-                  <h3 className="font-bold text-lg text-white group-hover:text-purple-200 transition-colors">Verify Status</h3>
+                  <h3 className="font-bold text-lg text-white group-hover:text-ui-purple-primary transition-colors">Verify Status</h3>
                   <p className="text-sm text-white/90 leading-relaxed font-medium">
                     Upload your student ID to confirm your enrollment
                   </p>
                 </div>
 
                 <div className="text-center space-y-4 group hover-lift">
-                  <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-soft group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-ui-success to-ui-success rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-soft group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                     3
                   </div>
-                  <h3 className="font-bold text-lg text-white group-hover:text-green-200 transition-colors">Create Profile</h3>
+                  <h3 className="font-bold text-lg text-white group-hover:text-ui-success transition-colors">Create Profile</h3>
                   <p className="text-sm text-white/90 leading-relaxed font-medium">
                     Describe your ideal day-out and share your expertise
                   </p>
@@ -147,7 +147,7 @@ export default function StudentLandingPage() {
                   <div className="w-20 h-20 gradient-sunset rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-soft group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
                     4
                   </div>
-                  <h3 className="font-bold text-lg text-white group-hover:text-pink-200 transition-colors">Get Requests</h3>
+                  <h3 className="font-bold text-lg text-white group-hover:text-ui-purple-primary transition-colors">Get Requests</h3>
                   <p className="text-sm text-white/90 leading-relaxed font-medium">
                     Set your availability and start receiving booking requests
                   </p>
@@ -160,7 +160,7 @@ export default function StudentLandingPage() {
               <h2 className="text-4xl font-bold text-center mb-10 text-white text-shadow-lg">Common Questions</h2>
 
               <div className="space-y-4">
-                <details className="group rounded-xl border-2 border-gray-200 p-5 hover:border-blue-400 hover:shadow-soft transition-all hover-lift relative overflow-hidden">
+                <details className="group rounded-xl border-2 border-gray-200 p-5 hover:border-ui-blue-secondary hover:shadow-soft transition-all hover-lift relative overflow-hidden">
                   <div className="absolute inset-0 opacity-5">
                     <Image
                       src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80"
@@ -174,8 +174,8 @@ export default function StudentLandingPage() {
                   <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
                   <div className="relative z-10">
                   <summary className="font-bold cursor-pointer list-none flex justify-between items-center">
-                    <span className="text-lg group-hover:text-blue-700 transition-colors">How much time do I need to commit?</span>
-                    <CheckCircle className="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform" />
+                    <span className="text-lg group-hover:text-ui-blue-accent transition-colors">How much time do I need to commit?</span>
+                    <CheckCircle className="w-5 h-5 text-ui-blue-secondary group-open:rotate-180 transition-transform" />
                   </summary>
                   <p className="text-gray-600 pt-4 leading-relaxed">
                     Most experiences are 3-4 hours. You set your own availability blocks and can update them anytime.
@@ -184,7 +184,7 @@ export default function StudentLandingPage() {
                   </div>
                 </details>
 
-                <details className="group rounded-xl border-2 border-gray-200 p-5 hover:border-purple-400 hover:shadow-soft transition-all hover-lift relative overflow-hidden">
+                <details className="group rounded-xl border-2 border-gray-200 p-5 hover:border-ui-purple-secondary hover:shadow-soft transition-all hover-lift relative overflow-hidden">
                   <div className="absolute inset-0 opacity-5">
                     <Image
                       src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80"
@@ -198,8 +198,8 @@ export default function StudentLandingPage() {
                   <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
                   <div className="relative z-10">
                   <summary className="font-bold cursor-pointer list-none flex justify-between items-center">
-                    <span className="text-lg group-hover:text-purple-700 transition-colors">Do I need to speak multiple languages?</span>
-                    <CheckCircle className="w-5 h-5 text-purple-600 group-open:rotate-180 transition-transform" />
+                    <span className="text-lg group-hover:text-ui-purple-accent transition-colors">Do I need to speak multiple languages?</span>
+                    <CheckCircle className="w-5 h-5 text-ui-purple-secondary group-open:rotate-180 transition-transform" />
                   </summary>
                   <p className="text-gray-600 pt-4 leading-relaxed">
                     No! We match you with visitors from your home country, so you can communicate in your native language.
@@ -208,7 +208,7 @@ export default function StudentLandingPage() {
                   </div>
                 </details>
 
-                <details className="group rounded-xl border-2 border-gray-200 p-5 hover:border-green-400 hover:shadow-soft transition-all hover-lift relative overflow-hidden">
+                <details className="group rounded-xl border-2 border-gray-200 p-5 hover:border-ui-success hover:shadow-soft transition-all hover-lift relative overflow-hidden">
                   <div className="absolute inset-0 opacity-5">
                     <Image
                       src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80"
@@ -222,8 +222,8 @@ export default function StudentLandingPage() {
                   <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
                   <div className="relative z-10">
                   <summary className="font-bold cursor-pointer list-none flex justify-between items-center">
-                    <span className="text-lg group-hover:text-green-700 transition-colors">What about exam periods?</span>
-                    <CheckCircle className="w-5 h-5 text-green-600 group-open:rotate-180 transition-transform" />
+                    <span className="text-lg group-hover:text-ui-success transition-colors">What about exam periods?</span>
+                    <CheckCircle className="w-5 h-5 text-ui-success group-open:rotate-180 transition-transform" />
                   </summary>
                   <p className="text-gray-600 pt-4 leading-relaxed">
                     You can mark specific dates or periods when you&apos;re unavailable (like exam weeks or holidays).
@@ -232,7 +232,7 @@ export default function StudentLandingPage() {
                   </div>
                 </details>
 
-                <details className="group rounded-xl border-2 border-gray-200 p-5 hover:border-pink-400 hover:shadow-soft transition-all hover-lift relative overflow-hidden">
+                <details className="group rounded-xl border-2 border-gray-200 p-5 hover:border-ui-purple-secondary hover:shadow-soft transition-all hover-lift relative overflow-hidden">
                   <div className="absolute inset-0 opacity-5">
                     <Image
                       src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&q=80"
@@ -246,8 +246,8 @@ export default function StudentLandingPage() {
                   <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
                   <div className="relative z-10">
                   <summary className="font-bold cursor-pointer list-none flex justify-between items-center">
-                    <span className="text-lg group-hover:text-pink-700 transition-colors">How do I get paid?</span>
-                    <CheckCircle className="w-5 h-5 text-pink-600 group-open:rotate-180 transition-transform" />
+                    <span className="text-lg group-hover:text-ui-purple-accent transition-colors">How do I get paid?</span>
+                    <CheckCircle className="w-5 h-5 text-ui-purple-secondary group-open:rotate-180 transition-transform" />
                   </summary>
                   <p className="text-gray-600 pt-4 leading-relaxed">
                     You arrange payment directly with tourists. WanderNest is a marketplace connector only -

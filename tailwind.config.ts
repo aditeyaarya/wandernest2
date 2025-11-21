@@ -21,6 +21,24 @@ const config: Config = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+
+        // Standardized UI Color System (Soft Blues & Purples)
+        'ui-blue': {
+          primary: 'hsl(var(--ui-blue-primary))',
+          secondary: 'hsl(var(--ui-blue-secondary))',
+          accent: 'hsl(var(--ui-blue-accent))',
+        },
+        'ui-purple': {
+          primary: 'hsl(var(--ui-purple-primary))',
+          secondary: 'hsl(var(--ui-purple-secondary))',
+          accent: 'hsl(var(--ui-purple-accent))',
+        },
+        'ui-success': 'hsl(var(--ui-success))',
+        'ui-warning': 'hsl(var(--ui-warning))',
+        'ui-error': 'hsl(var(--ui-error))',
+        'ui-info': 'hsl(var(--ui-info))',
+
+        // Legacy semantic colors (mapped to new system)
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',

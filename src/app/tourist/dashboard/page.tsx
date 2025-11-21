@@ -86,11 +86,11 @@ export default function TouristDashboard() {
 
   const getStatusBadge = (status: string) => {
     const styles = {
-      PENDING: 'bg-yellow-100 text-yellow-800',
-      MATCHED: 'bg-blue-100 text-blue-800',
-      ACCEPTED: 'bg-green-100 text-green-800',
+      PENDING: 'bg-ui-warning/20 text-ui-warning',
+      MATCHED: 'bg-ui-blue-accent/20 text-ui-blue-accent',
+      ACCEPTED: 'bg-ui-success/20 text-ui-success',
       EXPIRED: 'bg-gray-100 text-gray-800',
-      CANCELLED: 'bg-red-100 text-red-800',
+      CANCELLED: 'bg-ui-error/20 text-ui-error',
     }
     return styles[status as keyof typeof styles] || 'bg-gray-100 text-gray-800'
   }
@@ -110,13 +110,13 @@ export default function TouristDashboard() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-indigo-600/10 to-purple-600/15" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/15 via-ui-blue-accent/10 to-ui-purple-primary/15" />
         </div>
         <div className="absolute inset-0 pattern-grid opacity-10" />
 
         <div className="relative z-10 flex items-center justify-center min-h-screen">
           <div className="text-center glass-card rounded-3xl p-8 shadow-premium animate-fade-in">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-ui-blue-primary mx-auto"></div>
             <p className="mt-4 text-gray-700 font-medium">Loading your bookings...</p>
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function TouristDashboard() {
         {/* Dark overlay for text contrast */}
         <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
         {/* Gradient overlay for visual depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-indigo-600/10 to-purple-600/15" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/15 via-ui-blue-accent/10 to-ui-purple-primary/15" />
       </div>
       <div className="absolute inset-0 pattern-grid opacity-10" />
 
@@ -169,7 +169,7 @@ export default function TouristDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-700">Total Requests</p>
-                <p className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent mt-2">{stats.total}</p>
+                <p className="text-3xl font-bold bg-gradient-to-r from-ui-blue-primary to-ui-blue-accent bg-clip-text text-transparent mt-2">{stats.total}</p>
               </div>
               <div className="h-12 w-12 gradient-ocean rounded-full flex items-center justify-center shadow-soft">
                 <span className="text-2xl">📝</span>
@@ -181,9 +181,9 @@ export default function TouristDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-700">Pending</p>
-                <p className="text-3xl font-bold bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent mt-2">{stats.pending}</p>
+                <p className="text-3xl font-bold text-ui-warning mt-2">{stats.pending}</p>
               </div>
-              <div className="h-12 w-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center shadow-soft">
+              <div className="h-12 w-12 bg-ui-warning rounded-full flex items-center justify-center shadow-soft">
                 <span className="text-2xl">⏳</span>
               </div>
             </div>
@@ -193,9 +193,9 @@ export default function TouristDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-700">Accepted</p>
-                <p className="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mt-2">{stats.accepted}</p>
+                <p className="text-3xl font-bold text-ui-success mt-2">{stats.accepted}</p>
               </div>
-              <div className="h-12 w-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-soft">
+              <div className="h-12 w-12 bg-ui-success rounded-full flex items-center justify-center shadow-soft">
                 <span className="text-2xl">✅</span>
               </div>
             </div>
@@ -205,7 +205,7 @@ export default function TouristDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-700">Reviewed</p>
-                <p className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-700 bg-clip-text text-transparent mt-2">{stats.completed}</p>
+                <p className="text-3xl font-bold bg-gradient-to-r from-ui-purple-primary to-ui-purple-accent bg-clip-text text-transparent mt-2">{stats.completed}</p>
               </div>
               <div className="h-12 w-12 gradient-vibrant rounded-full flex items-center justify-center shadow-soft">
                 <span className="text-2xl">⭐</span>
@@ -215,8 +215,8 @@ export default function TouristDashboard() {
         </div>
 
         {error && (
-          <div className="glass-card bg-red-50/90 border-2 border-red-300 rounded-2xl p-4 mb-6 shadow-premium animate-scale-in">
-            <p className="text-red-700 font-semibold">{error}</p>
+          <div className="glass-card bg-ui-error/20 border-2 border-ui-error/40 rounded-2xl p-4 mb-6 shadow-premium animate-scale-in">
+            <p className="text-ui-error font-semibold">{error}</p>
           </div>
         )}
 
@@ -243,7 +243,7 @@ export default function TouristDashboard() {
                 <div
                   key={request.id}
                   className={`glass-card rounded-2xl shadow-premium overflow-hidden border-2 border-white/40 border-l-4 hover-lift animate-fade-in ${
-                    isAccepted ? 'border-l-green-500' : isPending ? 'border-l-yellow-500' : 'border-l-gray-400'
+                    isAccepted ? 'border-l-ui-success' : isPending ? 'border-l-ui-warning' : 'border-l-gray-400'
                   }`}
                 >
                   <div className="p-6">
@@ -297,7 +297,7 @@ export default function TouristDashboard() {
                         <div className="space-y-2">
                           {request.selections.map((selection, idx) => (
                             <div key={idx} className={`flex items-center justify-between rounded-lg p-4 ${
-                              isAccepted ? 'bg-green-50 border-2 border-green-200' : 'bg-gray-50 border border-gray-200'
+                              isAccepted ? 'bg-ui-success/10 border-2 border-ui-success/30' : 'bg-gray-50 border border-gray-200'
                             }`}>
                               <div className="flex-1">
                                 <p className="font-semibold text-gray-900 text-lg">{selection.student.name}</p>
@@ -307,7 +307,7 @@ export default function TouristDashboard() {
                                       {Array.from({ length: 5 }).map((_, i) => (
                                         <span
                                           key={i}
-                                          className={i < Math.round(selection.student.averageRating!) ? 'text-yellow-500' : 'text-gray-300'}
+                                          className={i < Math.round(selection.student.averageRating!) ? 'text-ui-warning' : 'text-gray-300'}
                                         >
                                           ⭐
                                         </span>
@@ -321,7 +321,7 @@ export default function TouristDashboard() {
                               </div>
                               {isAccepted && (
                                 <div className="ml-4">
-                                  <span className="px-3 py-1 bg-green-600 text-white rounded-full text-xs font-bold">
+                                  <span className="px-3 py-1 bg-ui-success text-white rounded-full text-xs font-bold">
                                     Confirmed
                                   </span>
                                 </div>
@@ -338,13 +338,13 @@ export default function TouristDashboard() {
                           <span>💬</span>
                           Your Review:
                         </p>
-                        <div className="bg-purple-50 rounded-lg p-4 border-2 border-purple-200">
+                        <div className="bg-ui-purple-accent/10 rounded-lg p-4 border-2 border-ui-purple-accent/30">
                           <div className="flex items-center mb-2">
                             {Array.from({ length: 5 }).map((_, i) => (
                               <span
                                 key={i}
                                 className={`text-2xl ${
-                                  i < request.review!.rating ? 'text-yellow-500' : 'text-gray-300'
+                                  i < request.review!.rating ? 'text-ui-warning' : 'text-gray-300'
                                 }`}
                               >
                                 ★
@@ -361,11 +361,11 @@ export default function TouristDashboard() {
 
                     {isAccepted && !request.review && (
                       <div className="mt-4 pt-4 border-t border-gray-200">
-                        <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                          <p className="text-sm text-blue-800 mb-2">
+                        <div className="bg-ui-blue-accent/10 rounded-lg p-4 border border-ui-blue-accent/30">
+                          <p className="text-sm text-ui-blue-accent mb-2">
                             <strong>📌 Next Steps:</strong> Contact your guide to finalize details and payment arrangements.
                           </p>
-                          <p className="text-xs text-blue-600">
+                          <p className="text-xs text-ui-blue-accent">
                             After your trip, you can leave a review to help other travelers!
                           </p>
                         </div>

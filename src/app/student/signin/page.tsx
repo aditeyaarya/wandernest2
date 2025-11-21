@@ -2,8 +2,10 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
+import { Button } from '@/components/ui/button';
 import { CheckCircle2 } from 'lucide-react';
 
 export default function StudentSignIn() {
@@ -34,7 +36,7 @@ export default function StudentSignIn() {
         {/* Dark overlay for text contrast */}
         <div className="absolute inset-0 bg-black/25 backdrop-blur-[4px]" />
         {/* Gradient overlay for visual depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/15 to-pink-600/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/20 via-ui-purple-primary/15 to-ui-purple-accent/20" />
       </div>
       <div className="absolute inset-0 pattern-dots opacity-15" />
 
@@ -59,19 +61,19 @@ export default function StudentSignIn() {
                 <h3 className="font-bold text-base">What happens next?</h3>
                 <ul className="text-sm text-gray-600 space-y-3">
                   <li className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-ui-blue-primary flex-shrink-0 mt-0.5" />
                     <span>Complete your profile and verification</span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-ui-purple-primary flex-shrink-0 mt-0.5" />
                     <span>Set your availability and preferences</span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-ui-success flex-shrink-0 mt-0.5" />
                     <span>Start receiving booking requests</span>
                   </li>
                   <li className="flex items-start space-x-3">
-                    <CheckCircle2 className="w-5 h-5 text-pink-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-ui-purple-accent flex-shrink-0 mt-0.5" />
                     <span>Earn money by guiding travelers</span>
                   </li>
                 </ul>

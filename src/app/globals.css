@@ -14,20 +14,41 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Brand colors - Travel-Inspired Teal/Turquoise (WCAG AA: 5.2:1 with white) */
-    --primary: 174 72% 42%;
-    --primary-foreground: 0 0% 100%;
+    /* ========================================
+       STANDARDIZED COLOR SYSTEM
+       Soft Blues & Purples for Pastel/Glassmorphism
+       ======================================== */
 
-    /* Brand colors - Luxury Purple (WCAG AA: 5.1:1 with white) */
-    --secondary: 262 60% 42%;
+    /* Primary UI Colors - Main interactive elements */
+    --ui-blue-primary: 220 70% 65%;          /* Soft periwinkle blue */
+    --ui-purple-primary: 260 65% 65%;        /* Soft lavender purple */
+
+    /* Secondary UI Colors - Borders, outlines, subtle backgrounds */
+    --ui-blue-secondary: 220 60% 80%;        /* Very light blue */
+    --ui-purple-secondary: 260 55% 80%;      /* Very light purple */
+
+    /* Accent UI Colors - Highlights, hover states, active tabs */
+    --ui-blue-accent: 215 75% 55%;           /* Deeper blue for emphasis */
+    --ui-purple-accent: 265 70% 55%;         /* Deeper purple for emphasis */
+
+    /* Semantic Colors - Softened for pastel aesthetic */
+    --ui-success: 150 50% 60%;               /* Soft green */
+    --ui-warning: 45 85% 70%;                /* Soft yellow */
+    --ui-error: 0 70% 70%;                   /* Soft red */
+    --ui-info: 200 70% 65%;                  /* Soft cyan-blue */
+
+    /* Legacy Brand Colors (kept for backwards compatibility) */
+    --primary: 220 70% 65%;                  /* Maps to ui-blue-primary */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 260 65% 65%;                /* Maps to ui-purple-primary */
     --secondary-foreground: 0 0% 100%;
 
     /* Muted colors for subtle elements */
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    /* Accent color - Warm Coral */
-    --accent: 14 91% 65%;
+    /* Accent color */
+    --accent: 265 70% 55%;                   /* Maps to ui-purple-accent */
     --accent-foreground: 0 0% 100%;
 
     /* Semantic colors */
@@ -65,11 +86,33 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    /* Brand colors - Brighter for dark mode (maintains WCAG AA) */
-    --primary: 174 72% 55%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* ========================================
+       STANDARDIZED COLOR SYSTEM - DARK MODE
+       Brighter variations for dark backgrounds
+       ======================================== */
 
-    --secondary: 262 60% 52%;
+    /* Primary UI Colors - Main interactive elements */
+    --ui-blue-primary: 220 70% 70%;          /* Brighter soft blue */
+    --ui-purple-primary: 260 65% 70%;        /* Brighter soft purple */
+
+    /* Secondary UI Colors - Borders, outlines, subtle backgrounds */
+    --ui-blue-secondary: 220 50% 40%;        /* Darker blue for dark mode */
+    --ui-purple-secondary: 260 45% 40%;      /* Darker purple for dark mode */
+
+    /* Accent UI Colors - Highlights, hover states, active tabs */
+    --ui-blue-accent: 215 75% 60%;           /* Bright blue for emphasis */
+    --ui-purple-accent: 265 70% 60%;         /* Bright purple for emphasis */
+
+    /* Semantic Colors - Adjusted for dark mode visibility */
+    --ui-success: 150 50% 65%;               /* Brighter soft green */
+    --ui-warning: 45 85% 75%;                /* Brighter soft yellow */
+    --ui-error: 0 70% 75%;                   /* Brighter soft red */
+    --ui-info: 200 70% 70%;                  /* Brighter soft cyan-blue */
+
+    /* Legacy Brand Colors (kept for backwards compatibility) */
+    --primary: 220 70% 70%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 260 65% 70%;
     --secondary-foreground: 210 40% 98%;
 
     /* Muted colors for subtle elements */
@@ -77,7 +120,7 @@
     --muted-foreground: 215 20.2% 65.1%;
 
     /* Accent color */
-    --accent: 14 91% 70%;
+    --accent: 265 70% 60%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     /* Semantic colors */
@@ -331,18 +374,25 @@
     }
   }
 
-  /* Gradient backgrounds - Used in CTAs and buttons */
-  /* Updated for WCAG AA contrast: all gradients now meet 4.5:1 with white text */
+  /* ========================================
+     GRADIENT UTILITIES - Standardized Color System
+     Soft blues and purples for pastel aesthetic
+     ======================================== */
+
   .gradient-vibrant {
-    background: linear-gradient(135deg, hsl(262 60% 42%) 0%, hsl(174 80% 38%) 100%);
+    background: linear-gradient(135deg, hsl(var(--ui-purple-accent)) 0%, hsl(var(--ui-blue-accent)) 100%);
   }
 
   .gradient-sunset {
-    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--secondary)) 100%);
+    background: linear-gradient(135deg, hsl(var(--ui-purple-primary)) 0%, hsl(var(--ui-purple-accent)) 100%);
   }
 
   .gradient-ocean {
-    background: linear-gradient(135deg, hsl(174 80% 36%) 0%, hsl(174 75% 46%) 100%);
+    background: linear-gradient(135deg, hsl(var(--ui-blue-primary)) 0%, hsl(var(--ui-blue-accent)) 100%);
+  }
+
+  .gradient-blue-purple {
+    background: linear-gradient(135deg, hsl(var(--ui-blue-primary)) 0%, hsl(var(--ui-purple-primary)) 100%);
   }
 
   /* Premium Shadow Utilities - Heavily used across cards and buttons */
@@ -359,11 +409,11 @@
   }
 
   .shadow-glow-blue {
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.4), 0 10px 40px -10px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 30px hsla(var(--ui-blue-accent), 0.4), 0 10px 40px -10px hsla(var(--ui-blue-accent), 0.3);
   }
 
   .shadow-glow-purple {
-    box-shadow: 0 0 30px rgba(168, 85, 247, 0.4), 0 10px 40px -10px rgba(168, 85, 247, 0.3);
+    box-shadow: 0 0 30px hsla(var(--ui-purple-accent), 0.4), 0 10px 40px -10px hsla(var(--ui-purple-accent), 0.3);
   }
 
   /* Hover effects - Used on cards and interactive elements */
@@ -391,9 +441,8 @@
   }
 
   /* Gradient text - Used in headers and branding */
-  /* Updated to match new gradient-vibrant colors for consistency */
   .text-gradient-vibrant {
-    background: linear-gradient(135deg, hsl(262 60% 52%) 0%, hsl(280 55% 50%) 50%, hsl(300 75% 70%) 100%);
+    background: linear-gradient(135deg, hsl(var(--ui-purple-accent)) 0%, hsl(var(--ui-purple-primary)) 50%, hsl(var(--ui-blue-primary)) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

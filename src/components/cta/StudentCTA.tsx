@@ -24,9 +24,9 @@ export default function StudentCTA() {
         imageAlt="University students walking on campus with books and backpacks"
         headline="Student"
         description="Earn by guiding travelers. Show your city and share local insights."
-        gradientFrom="from-purple-600/40"
-        gradientVia="via-purple-700/50"
-        gradientTo="to-pink-600/40"
+        gradientFrom="from-ui-purple-primary/40"
+        gradientVia="via-ui-purple-accent/50"
+        gradientTo="to-ui-purple-accent/40"
       />
     </Link>
   )
