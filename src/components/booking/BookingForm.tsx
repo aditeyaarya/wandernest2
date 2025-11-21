@@ -274,7 +274,7 @@ export function BookingForm() {
 
         {/* Submit Error */}
         {errors.submit && (
-          <div className="mt-4 p-4 glass-frosted bg-gradient-to-br from-red-50 to-red-100/50 border-2 border-red-300 rounded-2xl text-red-800 text-sm shadow-soft">
+          <div className="mt-4 p-4 glass-frosted bg-gradient-to-br from-ui-error/10 to-ui-error/20 border-2 border-ui-error/30 rounded-2xl text-ui-error text-sm shadow-soft">
             {errors.submit}
           </div>
         )}

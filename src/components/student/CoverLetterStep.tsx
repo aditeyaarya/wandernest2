@@ -93,15 +93,15 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
       </div>
 
       {/* Guidance */}
-      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-        <h3 className="font-bold text-purple-900 mb-2">What to Include:</h3>
-        <ul className="text-sm text-purple-800 space-y-1 list-disc list-inside">
+      <div className="bg-[hsl(var(--ui-purple-primary)/0.1)] border border-[hsl(var(--ui-purple-primary)/0.3)] rounded-lg p-4">
+        <h3 className="font-bold text-[hsl(var(--ui-purple-primary))] mb-2">What to Include:</h3>
+        <ul className="text-sm text-[hsl(var(--ui-purple-accent))] space-y-1 list-disc list-inside">
           <li>Specific places, neighborhoods, cafés, or restaurants you'd recommend</li>
           <li>Practical advice (metro tips, tipping culture, local norms)</li>
           <li>At least one personal touch or story that makes it unique</li>
           <li>What makes you the perfect guide for someone from your country</li>
         </ul>
-        <p className="text-xs text-purple-700 mt-3">
+        <p className="text-xs text-[hsl(var(--ui-purple-accent))] mt-3">
           💡 AI help is allowed, but make it personal and non-generic. Tourists want authentic recommendations!
         </p>
       </div>
@@ -109,7 +109,7 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
       {/* Cover Letter */}
       <div className="space-y-2">
         <Label htmlFor="coverLetter">
-          Cover Letter <span className="text-red-500">*</span>
+          Cover Letter <span className="text-[hsl(var(--ui-error))]">*</span>
         </Label>
         <Textarea
           id="coverLetter"
@@ -117,11 +117,11 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
           onChange={(e) => updateFormData({ coverLetter: e.target.value })}
           placeholder={`Example: "As an Indian student studying at Sorbonne, I know all the best spots in Paris for fellow Indians! I'd start with a walk through Le Marais, grab coffee at Café de Flore, then lunch at a hidden gem serving amazing Lebanese food (the closest you'll find to Indian spices!). I'll show you how to navigate the metro like a local, explain French dining etiquette, and take you to my favorite sunset spot at Sacré-Cœur. Having lived here for 2 years, I know exactly what newcomers from India need to know..."`}
           rows={12}
-          className={errors.coverLetter ? 'border-red-500' : ''}
+          className={errors.coverLetter ? 'border-[hsl(var(--ui-error))]' : ''}
         />
         <div className="flex justify-between items-center">
-          {errors.coverLetter && <p className="text-sm text-red-500">{errors.coverLetter}</p>}
-          <p className={`text-xs ml-auto ${charCount < minChars ? 'text-orange-600' : 'text-green-600'}`}>
+          {errors.coverLetter && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.coverLetter}</p>}
+          <p className={`text-xs ml-auto ${charCount < minChars ? 'text-[hsl(var(--ui-warning))]' : 'text-[hsl(var(--ui-success))]'}`}>
             {charCount} / {minChars} characters minimum
           </p>
         </div>
@@ -130,7 +130,7 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
       {/* Languages */}
       <div className="space-y-3">
         <Label>
-          Languages You Speak <span className="text-red-500">*</span>
+          Languages You Speak <span className="text-[hsl(var(--ui-error))]">*</span>
         </Label>
         <p className="text-sm text-gray-600">Select all languages you're comfortable guiding in</p>
         <div className="flex flex-wrap gap-2">
@@ -141,7 +141,7 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
               onClick={() => toggleLanguage(language)}
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 formData.languages.includes(language)
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-[hsl(var(--ui-blue-primary))] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -171,13 +171,13 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
               {formData.languages.map((language) => (
                 <span
                   key={language}
-                  className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm flex items-center gap-2"
+                  className="px-3 py-1 bg-[hsl(var(--ui-blue-primary)/0.2)] text-[hsl(var(--ui-blue-primary))] rounded-full text-sm flex items-center gap-2"
                 >
                   {language}
                   <button
                     type="button"
                     onClick={() => toggleLanguage(language)}
-                    className="text-blue-600 hover:text-blue-800 font-bold"
+                    className="text-[hsl(var(--ui-blue-accent))] hover:text-[hsl(var(--ui-blue-primary))] font-bold"
                   >
                     ×
                   </button>
@@ -186,13 +186,13 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
             </div>
           </div>
         )}
-        {errors.languages && <p className="text-sm text-red-500">{errors.languages}</p>}
+        {errors.languages && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.languages}</p>}
       </div>
 
       {/* Interests */}
       <div className="space-y-3">
         <Label>
-          Your Interests & Expertise <span className="text-red-500">*</span>
+          Your Interests & Expertise <span className="text-[hsl(var(--ui-error))]">*</span>
         </Label>
         <p className="text-sm text-gray-600">What aspects of {city || 'the city'} are you most knowledgeable about?</p>
         <div className="flex flex-wrap gap-2">
@@ -203,7 +203,7 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
               onClick={() => toggleInterest(interest)}
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 formData.interests.includes(interest)
-                  ? 'bg-purple-600 text-white'
+                  ? 'bg-[hsl(var(--ui-purple-primary))] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -233,13 +233,13 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
               {formData.interests.map((interest) => (
                 <span
                   key={interest}
-                  className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm flex items-center gap-2"
+                  className="px-3 py-1 bg-[hsl(var(--ui-purple-primary)/0.2)] text-[hsl(var(--ui-purple-primary))] rounded-full text-sm flex items-center gap-2"
                 >
                   {interest}
                   <button
                     type="button"
                     onClick={() => toggleInterest(interest)}
-                    className="text-purple-600 hover:text-purple-800 font-bold"
+                    className="text-[hsl(var(--ui-purple-accent))] hover:text-[hsl(var(--ui-purple-primary))] font-bold"
                   >
                     ×
                   </button>
@@ -248,13 +248,13 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
             </div>
           </div>
         )}
-        {errors.interests && <p className="text-sm text-red-500">{errors.interests}</p>}
+        {errors.interests && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.interests}</p>}
       </div>
 
       {/* Skills / Areas of Interest */}
       <div className="space-y-3">
         <Label>
-          Skills or Areas of Interest <span className="text-red-500">*</span>
+          Skills or Areas of Interest <span className="text-[hsl(var(--ui-error))]">*</span>
         </Label>
         <p className="text-sm text-gray-600">What skills or areas can you help visitors with?</p>
         <div className="flex flex-wrap gap-2">
@@ -265,7 +265,7 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
               onClick={() => toggleSkill(skill)}
               className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 formData.skills.includes(skill)
-                  ? 'bg-green-600 text-white'
+                  ? 'bg-[hsl(var(--ui-success))] text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -295,13 +295,13 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
               {formData.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm flex items-center gap-2"
+                  className="px-3 py-1 bg-[hsl(var(--ui-success)/0.2)] text-[hsl(var(--ui-success))] rounded-full text-sm flex items-center gap-2"
                 >
                   {skill}
                   <button
                     type="button"
                     onClick={() => toggleSkill(skill)}
-                    className="text-green-600 hover:text-green-800 font-bold"
+                    className="text-[hsl(var(--ui-success))] hover:text-[hsl(var(--ui-success))] font-bold"
                   >
                     ×
                   </button>
@@ -310,7 +310,7 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
             </div>
           </div>
         )}
-        {errors.skills && <p className="text-sm text-red-500">{errors.skills}</p>}
+        {errors.skills && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.skills}</p>}
       </div>
 
       {/* Preferred Guide Style */}
@@ -338,7 +338,7 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
       {/* Bio */}
       <div className="space-y-2">
         <Label htmlFor="bio">
-          Short Bio <span className="text-red-500">*</span>
+          Short Bio <span className="text-[hsl(var(--ui-error))]">*</span>
         </Label>
         <Textarea
           id="bio"
@@ -346,10 +346,10 @@ export function CoverLetterStep({ formData, updateFormData, errors, city }: Cove
           onChange={(e) => updateFormData({ bio: e.target.value })}
           placeholder="A brief introduction about yourself (e.g., your major, hobbies, why you love your city...)"
           rows={4}
-          className={errors.bio ? 'border-red-500' : ''}
+          className={errors.bio ? 'border-[hsl(var(--ui-error))]' : ''}
         />
         <p className="text-xs text-gray-500">This will appear on your guide profile (minimum 50 characters)</p>
-        {errors.bio && <p className="text-sm text-red-500">{errors.bio}</p>}
+        {errors.bio && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.bio}</p>}
       </div>
     </div>
   );

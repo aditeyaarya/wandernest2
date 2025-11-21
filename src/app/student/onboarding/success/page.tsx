@@ -20,7 +20,7 @@ export default function OnboardingSuccess() {
         {/* Dark overlay for text contrast */}
         <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
         {/* Gradient overlay for visual depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-600/15 via-blue-600/10 to-purple-600/15" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--ui-success))]/15 via-[hsl(var(--ui-blue-primary))]/10 to-[hsl(var(--ui-purple-primary))]/15" />
       </div>
       <div className="absolute inset-0 pattern-dots opacity-10" />
 
@@ -33,7 +33,7 @@ export default function OnboardingSuccess() {
               <div className="p-1.5 rounded-lg gradient-ocean text-white group-hover:scale-110 transition-transform duration-300 shadow-soft">
                 <Globe className="w-6 h-6" />
               </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-[hsl(var(--ui-blue-accent))] to-[hsl(var(--ui-purple-accent))] bg-clip-text text-transparent">
                 WanderNest
               </h1>
             </Link>
@@ -45,7 +45,7 @@ export default function OnboardingSuccess() {
           <div className="max-w-2xl w-full text-center space-y-8 animate-fade-in-up">
           {/* Success Icon */}
           <div className="flex justify-center animate-scale-in">
-            <div className="w-24 h-24 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-premium hover:scale-110 transition-transform duration-300">
+            <div className="w-24 h-24 bg-gradient-to-br from-[hsl(var(--ui-success))] to-[hsl(var(--ui-success))]/80 rounded-full flex items-center justify-center shadow-premium hover:scale-110 transition-transform duration-300">
               <svg
                 className="w-12 h-12 text-white"
                 fill="none"
@@ -89,7 +89,7 @@ export default function OnboardingSuccess() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 gradient-vibrant rounded-full flex items-center justify-center shadow-soft">
+                <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[hsl(var(--ui-purple-accent))] to-[hsl(var(--ui-blue-accent))] rounded-full flex items-center justify-center shadow-soft">
                   <span className="text-white font-bold">2</span>
                 </div>
                 <div>
@@ -102,7 +102,7 @@ export default function OnboardingSuccess() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-soft">
+                <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[hsl(var(--ui-success))] to-[hsl(var(--ui-success))]/80 rounded-full flex items-center justify-center shadow-soft">
                   <span className="text-white font-bold">3</span>
                 </div>
                 <div>
@@ -117,12 +117,12 @@ export default function OnboardingSuccess() {
           </div>
 
           {/* Important Info */}
-          <div className="glass-frosted bg-gradient-to-br from-yellow-50 to-amber-100/50 border-2 border-yellow-300/60 rounded-3xl p-6 shadow-premium hover-lift animate-fade-in delay-300">
+          <div className="glass-frosted bg-gradient-to-br from-[hsl(var(--ui-warning))]/20 to-[hsl(var(--ui-warning))]/30 border-2 border-[hsl(var(--ui-warning))]/60 rounded-3xl p-6 shadow-premium hover-lift animate-fade-in delay-300">
             <div className="flex items-start gap-3">
               <div className="text-2xl">📧</div>
               <div className="text-left">
-                <h3 className="font-bold text-yellow-900 mb-2">Check Your Email</h3>
-                <p className="text-sm text-yellow-800">
+                <h3 className="font-bold text-[hsl(var(--ui-warning))]/90 mb-2">Check Your Email</h3>
+                <p className="text-sm text-[hsl(var(--ui-warning))]/80">
                   We've sent a confirmation email with next steps. Please check your inbox
                   (and spam folder) for updates from our team.
                 </p>

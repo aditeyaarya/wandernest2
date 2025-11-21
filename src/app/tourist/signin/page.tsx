@@ -4,6 +4,7 @@ import { signIn, useSession } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import Navigation from '@/components/Navigation'
 
@@ -52,7 +53,7 @@ export default function TouristSignIn() {
         {/* Dark overlay for text contrast */}
         <div className="absolute inset-0 bg-black/25 backdrop-blur-[4px]" />
         {/* Gradient overlay for visual depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-indigo-600/15 to-purple-600/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/20 via-ui-blue-accent/15 to-ui-purple-primary/20" />
       </div>
       <div className="absolute inset-0 pattern-grid opacity-15" />
 
@@ -78,8 +79,8 @@ export default function TouristSignIn() {
 
           {/* Error Message */}
           {error && (
-            <div className="glass-card bg-red-50/90 border-2 border-red-300 rounded-2xl p-4 shadow-premium animate-scale-in">
-              <p className="text-sm text-red-800 font-semibold">
+            <div className="glass-card bg-ui-error/10 border-2 border-ui-error/30 rounded-2xl p-4 shadow-premium animate-scale-in">
+              <p className="text-sm text-ui-error font-semibold">
                 {error === 'OAuthSignin'
                   ? 'Error occurred while signing in with Google'
                   : error === 'OAuthCallback'
@@ -161,11 +162,11 @@ export default function TouristSignIn() {
             <div className="text-center text-sm text-gray-500">
               <p>
                 By signing in, you agree to our{' '}
-                <Link href="/terms" className="text-blue-600 hover:underline">
+                <Link href="/terms" className="text-ui-blue-primary hover:underline">
                   Terms of Service
                 </Link>{' '}
                 and{' '}
-                <Link href="/privacy" className="text-blue-600 hover:underline">
+                <Link href="/privacy" className="text-ui-blue-primary hover:underline">
                   Privacy Policy
                 </Link>
               </p>
@@ -173,12 +174,12 @@ export default function TouristSignIn() {
           </div>
 
           {/* Dev Warning Box */}
-          <div className="glass-frosted bg-yellow-50/90 border-2 border-yellow-300 rounded-2xl p-6 shadow-soft hover-lift">
+          <div className="glass-frosted bg-ui-warning/10 border-2 border-ui-warning/30 rounded-2xl p-6 shadow-soft hover-lift">
             <div className="flex items-start space-x-3">
               <div className="text-2xl">⚠️</div>
               <div>
-                <h3 className="font-bold text-yellow-900 mb-2">Development Mode</h3>
-                <p className="text-sm text-yellow-800">
+                <h3 className="font-bold text-ui-warning mb-2">Development Mode</h3>
+                <p className="text-sm text-ui-warning/80">
                   You're using a temporary bypass for local development. The "Dev Login" button will log you in as a test user without Google authentication. This will be removed when Google OAuth is properly configured.
                 </p>
               </div>
@@ -186,12 +187,12 @@ export default function TouristSignIn() {
           </div>
 
           {/* Info Box */}
-          <div className="glass-frosted bg-blue-50/90 border-2 border-blue-300 rounded-2xl p-6 shadow-soft hover-lift">
+          <div className="glass-frosted bg-ui-blue-primary/10 border-2 border-ui-blue-primary/30 rounded-2xl p-6 shadow-soft hover-lift">
             <div className="flex items-start space-x-3">
               <div className="text-2xl">ℹ️</div>
               <div>
-                <h3 className="font-bold text-blue-900 mb-2">Why sign in?</h3>
-                <ul className="list-disc list-inside text-sm text-blue-800 space-y-1">
+                <h3 className="font-bold text-ui-blue-accent mb-2">Why sign in?</h3>
+                <ul className="list-disc list-inside text-sm text-ui-blue-accent/80 space-y-1">
                   <li>Manage all your bookings in one place</li>
                   <li>Track your trip requests and guide matches</li>
                   <li>Save time on future bookings</li>
@@ -207,7 +208,7 @@ export default function TouristSignIn() {
               Are you a student guide?{' '}
               <Link
                 href="/student/signin"
-                className="text-blue-600 hover:underline font-medium"
+                className="text-ui-blue-primary hover:underline font-medium"
               >
                 Sign in as Student
               </Link>

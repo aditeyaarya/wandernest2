@@ -25,7 +25,7 @@ export default function SuccessPage({
         {/* Dark overlay for text contrast */}
         <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
         {/* Gradient overlay for visual depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-600/15 via-blue-600/10 to-purple-600/15" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ui-success/15 via-ui-blue-primary/10 to-ui-purple-primary/15" />
       </div>
       <div className="absolute inset-0 pattern-dots opacity-10" />
 
@@ -34,7 +34,7 @@ export default function SuccessPage({
           <div className="glass-card rounded-3xl border-2 border-white/40 shadow-premium p-8 md:p-12 text-center space-y-6 animate-fade-in-up hover-lift">
             {/* Success Icon */}
             <div className="flex justify-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-soft animate-scale-in">
+              <div className="w-20 h-20 bg-gradient-to-br from-ui-success to-ui-success rounded-full flex items-center justify-center shadow-soft animate-scale-in">
                 <svg
                   className="w-12 h-12 text-white"
                   fill="none"
@@ -74,15 +74,15 @@ export default function SuccessPage({
             )}
 
             {/* Marketplace Reminder */}
-            <div className="glass-frosted bg-yellow-50/90 border-2 border-yellow-300 rounded-2xl p-6 text-left mb-4 shadow-soft">
-              <h2 className="text-xl font-bold text-yellow-900 mb-3 flex items-center">
+            <div className="glass-frosted bg-ui-warning/10 border-2 border-ui-warning rounded-2xl p-6 text-left mb-4 shadow-soft">
+              <h2 className="text-xl font-bold text-ui-warning mb-3 flex items-center">
                 <span className="mr-2">⚠️</span>
                 Important Reminder
               </h2>
-              <p className="text-sm text-yellow-800 mb-2">
+              <p className="text-sm text-ui-warning mb-2">
                 <strong>WanderNest is a marketplace platform only.</strong> Please remember:
               </p>
-              <ul className="space-y-2 text-sm text-yellow-800">
+              <ul className="space-y-2 text-sm text-ui-warning">
                 <li className="flex items-start">
                   <span className="mr-2">•</span>
                   <span>All payments are negotiated and handled directly between you and your guide</span>
@@ -99,9 +99,9 @@ export default function SuccessPage({
             </div>
 
             {/* What's Next */}
-            <div className="glass-frosted bg-blue-50/90 border-2 border-blue-300 rounded-2xl p-6 text-left shadow-soft">
-              <h2 className="text-xl font-bold text-blue-900 mb-4">What's Next?</h2>
-              <ul className="space-y-3 text-blue-800">
+            <div className="glass-frosted bg-ui-blue-primary/10 border-2 border-ui-blue-accent rounded-2xl p-6 text-left shadow-soft">
+              <h2 className="text-xl font-bold text-ui-blue-primary mb-4">What's Next?</h2>
+              <ul className="space-y-3 text-ui-blue-primary">
                 <li className="flex items-start">
                   <span className="mr-2">📧</span>
                   <span>We've sent a confirmation email to your inbox</span>
@@ -140,7 +140,7 @@ export default function SuccessPage({
               Questions? Contact us at{' '}
               <a
                 href="mailto:support@wandernest.com"
-                className="text-blue-600 hover:underline font-semibold"
+                className="text-ui-blue-primary hover:underline font-semibold"
               >
                 support@wandernest.com
               </a>

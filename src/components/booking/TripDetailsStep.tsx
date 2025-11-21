@@ -47,10 +47,10 @@ export function TripDetailsStep({ data, errors, updateData }: Props) {
       {/* City Selection */}
       <div className="space-y-2">
         <Label htmlFor="city">
-          Destination City <span className="text-red-500">*</span>
+          Destination City <span className="text-ui-error">*</span>
         </Label>
         <Select value={data.city} onValueChange={(value) => updateData({ city: value })}>
-          <SelectTrigger id="city" className={errors.city ? 'border-red-500' : ''}>
+          <SelectTrigger id="city" className={errors.city ? 'border-ui-error' : ''}>
             <SelectValue placeholder="Select a city" />
           </SelectTrigger>
           <SelectContent>
@@ -61,14 +61,14 @@ export function TripDetailsStep({ data, errors, updateData }: Props) {
             ))}
           </SelectContent>
         </Select>
-        {errors.city && <p className="text-sm text-red-500">{errors.city}</p>}
+        {errors.city && <p className="text-sm text-ui-error">{errors.city}</p>}
       </div>
 
       {/* Date Selection */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="startDate">
-            Start Date <span className="text-red-500">*</span>
+            Start Date <span className="text-ui-error">*</span>
           </Label>
           <Input
             id="startDate"
@@ -79,9 +79,9 @@ export function TripDetailsStep({ data, errors, updateData }: Props) {
             onChange={(e) =>
               updateData({ dates: { ...data.dates, start: e.target.value } })
             }
-            className={errors.dates ? 'border-red-500' : ''}
+            className={errors.dates ? 'border-ui-error' : ''}
           />
-          {errors.dates && <p className="text-sm text-red-500">{errors.dates}</p>}
+          {errors.dates && <p className="text-sm text-ui-error">{errors.dates}</p>}
         </div>
 
         <div className="space-y-2">
@@ -102,12 +102,12 @@ export function TripDetailsStep({ data, errors, updateData }: Props) {
       {/* Time Preference */}
       <div className="space-y-2">
         <Label>
-          Preferred Time of Day <span className="text-red-500">*</span>
+          Preferred Time of Day <span className="text-ui-error">*</span>
         </Label>
         <RadioGroup
           value={data.preferredTime}
           onValueChange={(value: any) => updateData({ preferredTime: value })}
-          className={errors.preferredTime ? 'border border-red-500 rounded p-4' : ''}
+          className={errors.preferredTime ? 'border border-ui-error rounded p-4' : ''}
         >
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="morning" id="morning" />
@@ -129,14 +129,14 @@ export function TripDetailsStep({ data, errors, updateData }: Props) {
           </div>
         </RadioGroup>
         {errors.preferredTime && (
-          <p className="text-sm text-red-500">{errors.preferredTime}</p>
+          <p className="text-sm text-ui-error">{errors.preferredTime}</p>
         )}
       </div>
 
       {/* Number of Guests */}
       <div className="space-y-2">
         <Label htmlFor="numberOfGuests">
-          Number of Guests (1-10) <span className="text-red-500">*</span>
+          Number of Guests (1-10) <span className="text-ui-error">*</span>
         </Label>
         <Input
           id="numberOfGuests"
@@ -145,23 +145,23 @@ export function TripDetailsStep({ data, errors, updateData }: Props) {
           max={10}
           value={data.numberOfGuests}
           onChange={(e) => updateData({ numberOfGuests: parseInt(e.target.value) })}
-          className={errors.numberOfGuests ? 'border-red-500' : ''}
+          className={errors.numberOfGuests ? 'border-ui-error' : ''}
         />
         {errors.numberOfGuests && (
-          <p className="text-sm text-red-500">{errors.numberOfGuests}</p>
+          <p className="text-sm text-ui-error">{errors.numberOfGuests}</p>
         )}
       </div>
 
       {/* Group Type */}
       <div className="space-y-2">
         <Label>
-          Group Type <span className="text-red-500">*</span>
+          Group Type <span className="text-ui-error">*</span>
         </Label>
         <Select
           value={data.groupType}
           onValueChange={(value: any) => updateData({ groupType: value })}
         >
-          <SelectTrigger className={errors.groupType ? 'border-red-500' : ''}>
+          <SelectTrigger className={errors.groupType ? 'border-ui-error' : ''}>
             <SelectValue placeholder="Select group type" />
           </SelectTrigger>
           <SelectContent>
@@ -171,7 +171,7 @@ export function TripDetailsStep({ data, errors, updateData }: Props) {
             <SelectItem value="business">Business Trip</SelectItem>
           </SelectContent>
         </Select>
-        {errors.groupType && <p className="text-sm text-red-500">{errors.groupType}</p>}
+        {errors.groupType && <p className="text-sm text-ui-error">{errors.groupType}</p>}
       </div>
 
       {/* Accessibility Needs */}

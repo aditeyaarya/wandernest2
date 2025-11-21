@@ -71,7 +71,7 @@ function PendingContent() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-blue-600" />
+        <Loader2 className="h-12 w-12 animate-spin text-ui-blue-primary" />
       </div>
     )
   }
@@ -96,11 +96,11 @@ function PendingContent() {
     })
 
     return (
-      <div className="min-h-screen bg-gradient-to-b from-green-50 to-white py-12 px-4">
+      <div className="min-h-screen bg-gradient-to-b from-ui-success/10 to-white py-12 px-4">
         <div className="max-w-3xl mx-auto">
           {/* Success Header */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-full mb-4">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-ui-success rounded-full mb-4">
               <CheckCircle2 className="h-12 w-12 text-white" />
             </div>
             <h1 className="text-4xl font-bold text-gray-900 mb-2">
@@ -112,9 +112,9 @@ function PendingContent() {
           </div>
 
           {/* Student Details Card */}
-          <Card className="mb-6 border-2 border-green-500">
+          <Card className="mb-6 border-2 border-ui-success">
             <CardContent className="p-6">
-              <h2 className="text-2xl font-bold text-green-700 mb-4">
+              <h2 className="text-2xl font-bold text-ui-success mb-4">
                 Your Student Guide
               </h2>
 
@@ -153,20 +153,20 @@ function PendingContent() {
           </Card>
 
           {/* Contact Information */}
-          <Card className="mb-6 bg-blue-50 border-blue-200">
+          <Card className="mb-6 bg-ui-blue-primary/10 border-ui-blue-accent">
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-blue-900 mb-4">
+              <h3 className="text-xl font-bold text-ui-blue-primary mb-4">
                 Contact Information
               </h3>
 
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-blue-600" />
+                  <Mail className="h-5 w-5 text-ui-blue-primary" />
                   <div>
                     <p className="text-sm text-gray-600">Email</p>
                     <a
                       href={`mailto:${student.email}`}
-                      className="text-blue-600 hover:underline font-medium"
+                      className="text-ui-blue-primary hover:underline font-medium"
                     >
                       {student.email}
                     </a>
@@ -175,12 +175,12 @@ function PendingContent() {
 
                 {student.phone && (
                   <div className="flex items-center gap-3">
-                    <Phone className="h-5 w-5 text-blue-600" />
+                    <Phone className="h-5 w-5 text-ui-blue-primary" />
                     <div>
                       <p className="text-sm text-gray-600">Phone</p>
                       <a
                         href={`tel:${student.phone}`}
-                        className="text-blue-600 hover:underline font-medium"
+                        className="text-ui-blue-primary hover:underline font-medium"
                       >
                         {student.phone}
                       </a>
@@ -190,14 +190,14 @@ function PendingContent() {
 
                 {student.whatsapp && (
                   <div className="flex items-center gap-3">
-                    <MessageCircle className="h-5 w-5 text-blue-600" />
+                    <MessageCircle className="h-5 w-5 text-ui-blue-primary" />
                     <div>
                       <p className="text-sm text-gray-600">WhatsApp</p>
                       <a
                         href={`https://wa.me/${student.whatsapp.replace(/[^0-9]/g, '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline font-medium"
+                        className="text-ui-blue-primary hover:underline font-medium"
                       >
                         {student.whatsapp}
                       </a>
@@ -223,8 +223,8 @@ function PendingContent() {
           </Card>
 
           {/* Important Notice */}
-          <Alert className="mb-6 border-yellow-300 bg-yellow-50">
-            <AlertDescription className="text-sm text-yellow-900">
+          <Alert className="mb-6 border-ui-warning bg-ui-warning/10">
+            <AlertDescription className="text-sm text-ui-warning">
               <strong>Important:</strong> WanderNest is a connector platform only. All
               payments and service arrangements are made directly between you and the
               student guide. We recommend meeting in public places for safety.
@@ -235,7 +235,7 @@ function PendingContent() {
           <div className="text-center">
             <Button
               onClick={() => router.push('/tourist/dashboard')}
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-ui-blue-primary hover:bg-ui-blue-accent"
             >
               View My Requests
             </Button>
@@ -260,7 +260,7 @@ function PendingContent() {
             Unfortunately, no guide accepted your request within the time window. You can
             try creating a new request with different criteria or dates.
           </p>
-          <Button onClick={() => router.push('/booking')} className="bg-blue-600">
+          <Button onClick={() => router.push('/booking')} className="bg-ui-blue-primary">
             Create New Request
           </Button>
         </div>
@@ -273,8 +273,8 @@ function PendingContent() {
       <div className="max-w-3xl mx-auto">
         {/* Waiting Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 rounded-full mb-4">
-            <Clock className="h-12 w-12 text-blue-600 animate-pulse" />
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-ui-blue-primary/20 rounded-full mb-4">
+            <Clock className="h-12 w-12 text-ui-blue-primary animate-pulse" />
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-2">
             Waiting for Response
@@ -301,7 +301,7 @@ function PendingContent() {
               </div>
               <div className="flex justify-between">
                 <span className="font-medium">Status:</span>
-                <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-ui-warning/20 text-ui-warning rounded-full text-sm font-medium">
                   Waiting for acceptance
                 </span>
               </div>
@@ -322,8 +322,8 @@ function PendingContent() {
         </Card>
 
         {/* Info Alert */}
-        <Alert className="mb-6 border-blue-200 bg-blue-50">
-          <AlertDescription className="text-sm text-blue-900">
+        <Alert className="mb-6 border-ui-blue-accent bg-ui-blue-primary/10">
+          <AlertDescription className="text-sm text-ui-blue-primary">
             <strong>How it works:</strong> Your request was sent to multiple student guides.
             The first one to accept will be assigned to you. You'll receive an email
             notification as soon as a guide accepts. This page will automatically update.
@@ -360,7 +360,7 @@ export default function PendingPage() {
     <Suspense
       fallback={
         <div className="min-h-screen flex items-center justify-center">
-          <Loader2 className="h-12 w-12 animate-spin text-blue-600" />
+          <Loader2 className="h-12 w-12 animate-spin text-ui-blue-primary" />
         </div>
       }
     >

@@ -70,7 +70,7 @@ export function ServicePreferencesStep({ formData, updateFormData, errors }: Ser
               key={service.id}
               className={`border rounded-lg p-4 cursor-pointer transition-colors ${
                 formData.servicesOffered.includes(service.id)
-                  ? 'border-blue-600 bg-blue-50'
+                  ? 'border-[hsl(var(--ui-blue-primary))] bg-[hsl(var(--ui-blue-primary)/0.1)]'
                   : 'border-gray-300 hover:border-gray-400'
               }`}
               onClick={() => toggleService(service.id)}
@@ -97,8 +97,8 @@ export function ServicePreferencesStep({ formData, updateFormData, errors }: Ser
         </div>
 
         {formData.servicesOffered.length > 0 && (
-          <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-            <p className="text-sm text-green-800">
+          <div className="bg-[hsl(var(--ui-success)/0.1)] border border-[hsl(var(--ui-success)/0.3)] rounded-lg p-3">
+            <p className="text-sm text-[hsl(var(--ui-success))]">
               ✓ {formData.servicesOffered.length} service
               {formData.servicesOffered.length !== 1 ? 's' : ''} selected
             </p>
@@ -106,14 +106,14 @@ export function ServicePreferencesStep({ formData, updateFormData, errors }: Ser
         )}
 
         {errors.servicesOffered && (
-          <p className="text-sm text-red-500">{errors.servicesOffered}</p>
+          <p className="text-sm text-[hsl(var(--ui-error))]">{errors.servicesOffered}</p>
         )}
       </div>
 
       {/* Hourly Rate */}
       <div className="space-y-2">
         <Label htmlFor="hourlyRate">
-          Your Hourly Guide Rate (€) <span className="text-red-500">*</span>
+          Your Hourly Guide Rate (€) <span className="text-[hsl(var(--ui-error))]">*</span>
         </Label>
         <div className="flex items-center gap-2">
           <span className="text-2xl font-bold text-gray-600">€</span>
@@ -125,20 +125,20 @@ export function ServicePreferencesStep({ formData, updateFormData, errors }: Ser
             value={formData.hourlyRate}
             onChange={(e) => updateFormData({ hourlyRate: e.target.value })}
             placeholder="15"
-            className={`max-w-xs ${errors.hourlyRate ? 'border-red-500' : ''}`}
+            className={`max-w-xs ${errors.hourlyRate ? 'border-[hsl(var(--ui-error))]' : ''}`}
           />
           <span className="text-gray-600">per hour</span>
         </div>
         <p className="text-xs text-gray-500">
           Set a fair rate considering your expertise and local market rates
         </p>
-        {errors.hourlyRate && <p className="text-sm text-red-500">{errors.hourlyRate}</p>}
+        {errors.hourlyRate && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.hourlyRate}</p>}
       </div>
 
       {/* Pricing Guidelines */}
-      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-        <h3 className="font-bold text-purple-900 mb-2">💰 Pricing Guidelines</h3>
-        <ul className="text-sm text-purple-800 space-y-1 list-disc list-inside">
+      <div className="bg-[hsl(var(--ui-purple-primary)/0.1)] border border-[hsl(var(--ui-purple-primary)/0.3)] rounded-lg p-4">
+        <h3 className="font-bold text-[hsl(var(--ui-purple-primary))] mb-2">💰 Pricing Guidelines</h3>
+        <ul className="text-sm text-[hsl(var(--ui-purple-accent))] space-y-1 list-disc list-inside">
           <li>Average student guide rate: €12-20 per hour</li>
           <li>Consider your experience, language skills, and local knowledge</li>
           <li>You can adjust your rate later in your dashboard</li>
@@ -172,8 +172,8 @@ export function ServicePreferencesStep({ formData, updateFormData, errors }: Ser
           </div>
         </div>
         {formData.onlineServicesAvailable && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-            <p className="text-sm text-blue-800">
+          <div className="bg-[hsl(var(--ui-blue-primary)/0.1)] border border-[hsl(var(--ui-blue-primary)/0.3)] rounded-lg p-3">
+            <p className="text-sm text-[hsl(var(--ui-blue-accent))]">
               💻 Great! You'll be visible to tourists looking for remote guide services
             </p>
           </div>
@@ -181,9 +181,9 @@ export function ServicePreferencesStep({ formData, updateFormData, errors }: Ser
       </div>
 
       {/* Service Commitment Note */}
-      <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-        <h3 className="font-bold text-orange-900 mb-2">📌 Important</h3>
-        <ul className="text-sm text-orange-800 space-y-1 list-disc list-inside">
+      <div className="bg-[hsl(var(--ui-warning)/0.1)] border border-[hsl(var(--ui-warning)/0.3)] rounded-lg p-4">
+        <h3 className="font-bold text-[hsl(var(--ui-warning))] mb-2">📌 Important</h3>
+        <ul className="text-sm text-[hsl(var(--ui-warning))] space-y-1 list-disc list-inside">
           <li>Commit only to services you're genuinely comfortable providing</li>
           <li>Once you accept a booking, you're expected to honor it</li>
           <li>Cancellations affect your reliability rating</li>

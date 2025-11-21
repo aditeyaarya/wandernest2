@@ -30,7 +30,7 @@ export default function BookingPage() {
         {/* Dark overlay for text contrast */}
         <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
         {/* Gradient overlay for visual depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-purple-600/10 to-pink-600/15" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/15 via-ui-purple-primary/10 to-ui-purple-accent/15" />
       </div>
       <div className="absolute inset-0 pattern-dots opacity-10" />
 
@@ -50,14 +50,14 @@ export default function BookingPage() {
           </div>
 
           {/* Marketplace Disclaimer */}
-          <div className="glass-frosted bg-gradient-to-br from-amber-50 to-yellow-100/50 border-2 border-amber-300 rounded-2xl p-6 mb-8 max-w-4xl mx-auto shadow-premium hover-lift animate-fade-in-up delay-100">
+          <div className="glass-frosted bg-gradient-to-br from-ui-warning/10 to-ui-warning/5 border-2 border-ui-warning rounded-2xl p-6 mb-8 max-w-4xl mx-auto shadow-premium hover-lift animate-fade-in-up delay-100">
             <div className="flex items-start space-x-4">
-              <div className="flex-shrink-0 p-3 rounded-xl bg-amber-500 text-white shadow-soft">
+              <div className="flex-shrink-0 p-3 rounded-xl bg-ui-warning text-white shadow-soft">
                 <AlertTriangle className="w-6 h-6" />
               </div>
               <div>
-                <h2 className="font-bold text-amber-900 mb-2 text-lg">Marketplace Notice</h2>
-                <p className="text-sm text-amber-900 leading-relaxed">
+                <h2 className="font-bold text-ui-warning mb-2 text-lg">Marketplace Notice</h2>
+                <p className="text-sm text-ui-warning leading-relaxed">
                   <strong>WanderNest is a connection platform only.</strong> We do not handle payments, guarantee service quality, or assume liability. All services and payments are arranged directly between you and your chosen guide.
                 </p>
               </div>

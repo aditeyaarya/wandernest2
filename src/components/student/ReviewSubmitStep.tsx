@@ -37,7 +37,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
 
       {/* Personal Details */}
       <div className="border rounded-lg p-6 space-y-3">
-        <h3 className="text-lg font-bold text-blue-900">👤 Personal Details</h3>
+        <h3 className="text-lg font-bold text-[hsl(var(--ui-blue-primary))]">👤 Personal Details</h3>
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div>
             <p className="text-gray-600">Full Name</p>
@@ -78,7 +78,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
 
       {/* Academic Details */}
       <div className="border rounded-lg p-6 space-y-3">
-        <h3 className="text-lg font-bold text-purple-900">🎓 Academic Details</h3>
+        <h3 className="text-lg font-bold text-[hsl(var(--ui-purple-primary))]">🎓 Academic Details</h3>
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div className="col-span-2">
             <p className="text-gray-600">University</p>
@@ -100,7 +100,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
             <p className="text-gray-600 mb-2">Languages ({formData.languages.length})</p>
             <div className="flex flex-wrap gap-2">
               {formData.languages.map((lang) => (
-                <span key={lang} className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">
+                <span key={lang} className="px-3 py-1 bg-[hsl(var(--ui-purple-primary)/0.2)] text-[hsl(var(--ui-purple-primary))] rounded-full text-sm">
                   {lang}
                 </span>
               ))}
@@ -111,12 +111,12 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
 
       {/* Identity Verification */}
       <div className="border rounded-lg p-6 space-y-3">
-        <h3 className="text-lg font-bold text-green-900">🔐 Identity Verification</h3>
+        <h3 className="text-lg font-bold text-[hsl(var(--ui-success))]">🔐 Identity Verification</h3>
         <div className="space-y-3">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-green-600">✓</span>
+                <span className="text-[hsl(var(--ui-success))]">✓</span>
                 <span className="text-sm font-medium">Student ID Card</span>
               </div>
               <p className="text-xs text-gray-600">
@@ -125,7 +125,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
             </div>
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-green-600">✓</span>
+                <span className="text-[hsl(var(--ui-success))]">✓</span>
                 <span className="text-sm font-medium">Government ID</span>
               </div>
               <p className="text-xs text-gray-600">
@@ -134,30 +134,30 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-green-600">✓</span>
+                <span className="text-[hsl(var(--ui-success))]">✓</span>
                 <span className="text-sm font-medium">Verification Selfie</span>
               </div>
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-green-600">✓</span>
+                <span className="text-[hsl(var(--ui-success))]">✓</span>
                 <span className="text-sm font-medium">Profile Photo</span>
               </div>
             </div>
           </div>
           <div className="pt-2 border-t">
             <div className="flex items-start gap-2 text-sm">
-              <span className="text-green-600">✓</span>
+              <span className="text-[hsl(var(--ui-success))]">✓</span>
               <span>Documents ownership confirmed</span>
             </div>
             <div className="flex items-start gap-2 text-sm mt-1">
-              <span className="text-green-600">✓</span>
+              <span className="text-[hsl(var(--ui-success))]">✓</span>
               <span>Verification consent provided</span>
             </div>
           </div>
         </div>
-        <div className="bg-yellow-50 border border-yellow-200 rounded p-3 mt-4">
-          <p className="text-sm text-yellow-900">
+        <div className="bg-[hsl(var(--ui-warning)/0.1)] border border-[hsl(var(--ui-warning)/0.3)] rounded p-3 mt-4">
+          <p className="text-sm text-[hsl(var(--ui-warning))]">
             <strong>Pending Review:</strong> Your documents will be verified by our team before approval.
           </p>
         </div>
@@ -165,7 +165,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
 
       {/* Profile Information */}
       <div className="border rounded-lg p-6 space-y-3">
-        <h3 className="text-lg font-bold text-indigo-900">📝 Profile Information</h3>
+        <h3 className="text-lg font-bold text-[hsl(var(--ui-purple-primary))]">📝 Profile Information</h3>
 
         <div>
           <p className="text-sm text-gray-600 mb-2">Bio ({formData.bio.length} characters):</p>
@@ -178,7 +178,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
           <p className="text-sm text-gray-600 mb-2">Skills ({formData.skills.length}):</p>
           <div className="flex flex-wrap gap-2">
             {formData.skills.map((skill) => (
-              <span key={skill} className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+              <span key={skill} className="px-3 py-1 bg-[hsl(var(--ui-success)/0.2)] text-[hsl(var(--ui-success))] rounded-full text-sm">
                 {skill}
               </span>
             ))}
@@ -203,7 +203,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
           <p className="text-sm text-gray-600 mb-2">Interests ({formData.interests.length}):</p>
           <div className="flex flex-wrap gap-2">
             {formData.interests.map((interest) => (
-              <span key={interest} className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">
+              <span key={interest} className="px-3 py-1 bg-[hsl(var(--ui-purple-primary)/0.2)] text-[hsl(var(--ui-purple-primary))] rounded-full text-sm">
                 {interest}
               </span>
             ))}
@@ -213,7 +213,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
 
       {/* Availability */}
       <div className="border rounded-lg p-6 space-y-3">
-        <h3 className="text-lg font-bold text-blue-900">📅 Availability Schedule</h3>
+        <h3 className="text-lg font-bold text-[hsl(var(--ui-blue-primary))]">📅 Availability Schedule</h3>
 
         <div className="grid grid-cols-2 gap-4 text-sm mb-4">
           <div>
@@ -232,7 +232,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
           <p className="text-sm text-gray-600 mb-2">Preferred Durations:</p>
           <div className="flex flex-wrap gap-2">
             {formData.preferredDurations.map((duration) => (
-              <span key={duration} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+              <span key={duration} className="px-3 py-1 bg-[hsl(var(--ui-blue-primary)/0.2)] text-[hsl(var(--ui-blue-primary))] rounded-full text-sm">
                 {duration}
               </span>
             ))}
@@ -268,7 +268,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
             <p className="text-sm font-medium mb-2">Unavailability Exceptions ({formData.unavailabilityExceptions.length}):</p>
             <div className="space-y-2">
               {formData.unavailabilityExceptions.map((exception, index) => (
-                <div key={index} className="bg-yellow-50 border border-yellow-200 p-2 rounded text-sm">
+                <div key={index} className="bg-[hsl(var(--ui-warning)/0.1)] border border-[hsl(var(--ui-warning)/0.3)] p-2 rounded text-sm">
                   <p className="font-medium">
                     {new Date(exception.date).toLocaleDateString('en-US', {
                       weekday: 'short',
@@ -287,14 +287,14 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
 
       {/* Service Preferences */}
       <div className="border rounded-lg p-6 space-y-3">
-        <h3 className="text-lg font-bold text-orange-900">💼 Service Preferences</h3>
+        <h3 className="text-lg font-bold text-[hsl(var(--ui-warning))]">💼 Service Preferences</h3>
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div className="col-span-2">
             <p className="text-gray-600 mb-2">Services Offered:</p>
             <div className="space-y-1">
               {formData.servicesOffered.map((service) => (
                 <div key={service} className="flex items-center gap-2">
-                  <span className="text-green-600">✓</span>
+                  <span className="text-[hsl(var(--ui-success))]">✓</span>
                   <span className="capitalize">{service.replace('-', ' ')}</span>
                 </div>
               ))}
@@ -308,7 +308,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
             <p className="text-gray-600">Online Services</p>
             <p className="font-medium">
               {formData.onlineServicesAvailable ? (
-                <span className="text-green-600">✓ Available</span>
+                <span className="text-[hsl(var(--ui-success))]">✓ Available</span>
               ) : (
                 <span className="text-gray-500">Not available</span>
               )}
@@ -319,18 +319,18 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
 
       {/* Safety & Compliance */}
       <div className="border rounded-lg p-6 space-y-3">
-        <h3 className="text-lg font-bold text-red-900">🛡️ Safety & Compliance</h3>
+        <h3 className="text-lg font-bold text-[hsl(var(--ui-error))]">🛡️ Safety & Compliance</h3>
         <div className="space-y-2 text-sm">
           <div className="flex items-start gap-2">
-            <span className="text-green-600">✓</span>
+            <span className="text-[hsl(var(--ui-success))]">✓</span>
             <span>Terms & Conditions accepted</span>
           </div>
           <div className="flex items-start gap-2">
-            <span className="text-green-600">✓</span>
+            <span className="text-[hsl(var(--ui-success))]">✓</span>
             <span>Safety guidelines accepted</span>
           </div>
           <div className="flex items-start gap-2">
-            <span className="text-green-600">✓</span>
+            <span className="text-[hsl(var(--ui-success))]">✓</span>
             <span>Independent guide status acknowledged</span>
           </div>
         </div>
@@ -355,7 +355,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
         <h3 className="text-lg font-bold">✨ What Happens Next?</h3>
         <ol className="space-y-3 text-sm">
           <li className="flex items-start gap-3">
-            <span className="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold">
+            <span className="flex-shrink-0 w-6 h-6 bg-[hsl(var(--ui-blue-primary))] text-white rounded-full flex items-center justify-center text-xs font-bold">
               1
             </span>
             <div>
@@ -366,7 +366,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <span className="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold">
+            <span className="flex-shrink-0 w-6 h-6 bg-[hsl(var(--ui-blue-primary))] text-white rounded-full flex items-center justify-center text-xs font-bold">
               2
             </span>
             <div>
@@ -377,7 +377,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
             </div>
           </li>
           <li className="flex items-start gap-3">
-            <span className="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold">
+            <span className="flex-shrink-0 w-6 h-6 bg-[hsl(var(--ui-blue-primary))] text-white rounded-full flex items-center justify-center text-xs font-bold">
               3
             </span>
             <div>
@@ -391,7 +391,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
       </div>
 
       {/* Final Confirmation */}
-      <div className="bg-white border-2 border-blue-200 rounded-lg p-6">
+      <div className="bg-white border-2 border-[hsl(var(--ui-blue-primary)/0.3)] rounded-lg p-6">
         <p className="text-sm text-center">
           By submitting this application, you confirm that all information provided is accurate and truthful.
           You understand that you are an independent guide and responsible for your interactions during guide sessions.
@@ -399,7 +399,7 @@ export function ReviewSubmitStep({ formData, errors }: ReviewSubmitStepProps) {
       </div>
 
       {errors.submit && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-800 text-sm">
+        <div className="bg-[hsl(var(--ui-error)/0.1)] border border-[hsl(var(--ui-error)/0.3)] rounded-lg p-4 text-[hsl(var(--ui-error))] text-sm">
           {errors.submit}
         </div>
       )}

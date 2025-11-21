@@ -22,9 +22,9 @@ export function SafetyComplianceStep({ formData, updateFormData, errors }: Safet
       </div>
 
       {/* Platform Terms */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h3 className="font-bold text-blue-900 mb-2">🛡️ Safety First</h3>
-        <p className="text-sm text-blue-800">
+      <div className="bg-[hsl(var(--ui-blue-primary)/0.1)] border border-[hsl(var(--ui-blue-primary)/0.3)] rounded-lg p-4">
+        <h3 className="font-bold text-[hsl(var(--ui-blue-primary))] mb-2">🛡️ Safety First</h3>
+        <p className="text-sm text-[hsl(var(--ui-blue-accent))]">
           WanderNest is committed to creating a safe environment for both guides and tourists.
           Please read our policies carefully and provide accurate emergency contact information.
         </p>
@@ -33,7 +33,7 @@ export function SafetyComplianceStep({ formData, updateFormData, errors }: Safet
       {/* Terms & Conditions Checkbox */}
       <div className="space-y-4">
         <div className={`border-2 rounded-lg p-4 ${
-          errors.termsAccepted ? 'border-red-500 bg-red-50' : 'border-gray-300'
+          errors.termsAccepted ? 'border-[hsl(var(--ui-error))] bg-[hsl(var(--ui-error)/0.1)]' : 'border-gray-300'
         }`}>
           <div className="flex items-start space-x-3">
             <Checkbox
@@ -53,7 +53,7 @@ export function SafetyComplianceStep({ formData, updateFormData, errors }: Safet
                   href="/terms"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 underline hover:text-blue-800"
+                  className="text-[hsl(var(--ui-blue-accent))] underline hover:text-[hsl(var(--ui-blue-primary))]"
                 >
                   Terms & Conditions
                 </a>
@@ -62,22 +62,22 @@ export function SafetyComplianceStep({ formData, updateFormData, errors }: Safet
                   href="/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 underline hover:text-blue-800"
+                  className="text-[hsl(var(--ui-blue-accent))] underline hover:text-[hsl(var(--ui-blue-primary))]"
                 >
                   Privacy Policy
                 </a>
-                {' '}<span className="text-red-500">*</span>
+                {' '}<span className="text-[hsl(var(--ui-error))]">*</span>
               </Label>
             </div>
           </div>
         </div>
         {errors.termsAccepted && (
-          <p className="text-sm text-red-500">{errors.termsAccepted}</p>
+          <p className="text-sm text-[hsl(var(--ui-error))]">{errors.termsAccepted}</p>
         )}
 
         {/* Independent Guide Acknowledgment */}
         <div className={`border-2 rounded-lg p-4 ${
-          errors.independentGuideAcknowledged ? 'border-red-500 bg-red-50' : 'border-gray-300'
+          errors.independentGuideAcknowledged ? 'border-[hsl(var(--ui-error))] bg-[hsl(var(--ui-error)/0.1)]' : 'border-gray-300'
         }`}>
           <div className="flex items-start space-x-3">
             <Checkbox
@@ -94,18 +94,18 @@ export function SafetyComplianceStep({ formData, updateFormData, errors }: Safet
               >
                 I understand that I am an independent guide and responsible for my own interactions,
                 safety, and conduct during guide sessions. WanderNest acts as a connection platform only.
-                {' '}<span className="text-red-500">*</span>
+                {' '}<span className="text-[hsl(var(--ui-error))]">*</span>
               </Label>
             </div>
           </div>
         </div>
         {errors.independentGuideAcknowledged && (
-          <p className="text-sm text-red-500">{errors.independentGuideAcknowledged}</p>
+          <p className="text-sm text-[hsl(var(--ui-error))]">{errors.independentGuideAcknowledged}</p>
         )}
 
         {/* Safety Guidelines Checkbox */}
         <div className={`border-2 rounded-lg p-4 ${
-          errors.safetyGuidelinesAccepted ? 'border-red-500 bg-red-50' : 'border-gray-300'
+          errors.safetyGuidelinesAccepted ? 'border-[hsl(var(--ui-error))] bg-[hsl(var(--ui-error)/0.1)]' : 'border-gray-300'
         }`}>
           <div className="flex items-start space-x-3">
             <Checkbox
@@ -122,20 +122,20 @@ export function SafetyComplianceStep({ formData, updateFormData, errors }: Safet
               >
                 I agree to follow platform safety guidelines, including meeting in public places,
                 sharing trip details with emergency contacts, and maintaining professional conduct at all times.
-                {' '}<span className="text-red-500">*</span>
+                {' '}<span className="text-[hsl(var(--ui-error))]">*</span>
               </Label>
             </div>
           </div>
         </div>
         {errors.safetyGuidelinesAccepted && (
-          <p className="text-sm text-red-500">{errors.safetyGuidelinesAccepted}</p>
+          <p className="text-sm text-[hsl(var(--ui-error))]">{errors.safetyGuidelinesAccepted}</p>
         )}
       </div>
 
       {/* Safety Guidelines Details */}
-      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-        <h3 className="font-bold text-purple-900 mb-2">📋 Key Safety Guidelines</h3>
-        <ul className="text-sm text-purple-800 space-y-1 list-disc list-inside">
+      <div className="bg-[hsl(var(--ui-purple-primary)/0.1)] border border-[hsl(var(--ui-purple-primary)/0.3)] rounded-lg p-4">
+        <h3 className="font-bold text-[hsl(var(--ui-purple-primary))] mb-2">📋 Key Safety Guidelines</h3>
+        <ul className="text-sm text-[hsl(var(--ui-purple-accent))] space-y-1 list-disc list-inside">
           <li>Always meet tourists in public, well-lit areas</li>
           <li>Share your itinerary with your emergency contact before each session</li>
           <li>Maintain professional boundaries and respectful communication</li>
@@ -154,8 +154,8 @@ export function SafetyComplianceStep({ formData, updateFormData, errors }: Safet
           </p>
         </div>
 
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <p className="text-sm text-yellow-900">
+        <div className="bg-[hsl(var(--ui-warning)/0.1)] border border-[hsl(var(--ui-warning)/0.3)] rounded-lg p-4">
+          <p className="text-sm text-[hsl(var(--ui-warning))]">
             <strong>⚠️ Recommended:</strong> While optional, providing emergency contact information
             is strongly recommended for your safety and allows us to reach someone if needed.
           </p>
@@ -171,10 +171,10 @@ export function SafetyComplianceStep({ formData, updateFormData, errors }: Safet
               value={formData.emergencyContactName}
               onChange={(e) => updateFormData({ emergencyContactName: e.target.value })}
               placeholder="e.g., Parent, Sibling, Close Friend"
-              className={errors.emergencyContactName ? 'border-red-500' : ''}
+              className={errors.emergencyContactName ? 'border-[hsl(var(--ui-error))]' : ''}
             />
             {errors.emergencyContactName && (
-              <p className="text-sm text-red-500">{errors.emergencyContactName}</p>
+              <p className="text-sm text-[hsl(var(--ui-error))]">{errors.emergencyContactName}</p>
             )}
           </div>
 
@@ -188,19 +188,19 @@ export function SafetyComplianceStep({ formData, updateFormData, errors }: Safet
               value={formData.emergencyContactPhone}
               onChange={(e) => updateFormData({ emergencyContactPhone: e.target.value })}
               placeholder="+33 6 12 34 56 78"
-              className={errors.emergencyContactPhone ? 'border-red-500' : ''}
+              className={errors.emergencyContactPhone ? 'border-[hsl(var(--ui-error))]' : ''}
             />
             <p className="text-xs text-gray-500">Include country code</p>
             {errors.emergencyContactPhone && (
-              <p className="text-sm text-red-500">{errors.emergencyContactPhone}</p>
+              <p className="text-sm text-[hsl(var(--ui-error))]">{errors.emergencyContactPhone}</p>
             )}
           </div>
         </div>
       </div>
 
       {/* Final Note */}
-      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-        <p className="text-sm text-green-900">
+      <div className="bg-[hsl(var(--ui-success)/0.1)] border border-[hsl(var(--ui-success)/0.3)] rounded-lg p-4">
+        <p className="text-sm text-[hsl(var(--ui-success))]">
           <strong>✓ Almost Done!</strong> After submitting, our team will review your application
           within 2-3 business days. You'll receive an email once approved.
         </p>

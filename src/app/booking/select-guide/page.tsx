@@ -109,13 +109,13 @@ function SelectGuideContent() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-purple-600/10 to-pink-600/15" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/15 via-ui-purple-primary/10 to-ui-purple-accent/15" />
         </div>
         <div className="absolute inset-0 pattern-dots opacity-10" />
 
         <div className="relative z-10 flex items-center justify-center min-h-screen">
           <div className="text-center glass-card rounded-3xl p-8 shadow-premium animate-fade-in">
-            <Loader2 className="h-12 w-12 animate-spin text-blue-600 mx-auto mb-4" />
+            <Loader2 className="h-12 w-12 animate-spin text-ui-blue-primary mx-auto mb-4" />
             <p className="text-gray-700 font-medium">Finding the best guides for you...</p>
           </div>
         </div>
@@ -136,7 +136,7 @@ function SelectGuideContent() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-purple-600/10 to-pink-600/15" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/15 via-ui-purple-primary/10 to-ui-purple-accent/15" />
         </div>
         <div className="absolute inset-0 pattern-dots opacity-10" />
 
@@ -163,7 +163,7 @@ function SelectGuideContent() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-purple-600/10 to-pink-600/15" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/15 via-ui-purple-primary/10 to-ui-purple-accent/15" />
         </div>
         <div className="absolute inset-0 pattern-dots opacity-10" />
 
@@ -200,7 +200,7 @@ function SelectGuideContent() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-purple-600/10 to-pink-600/15" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/15 via-ui-purple-primary/10 to-ui-purple-accent/15" />
       </div>
       <div className="absolute inset-0 pattern-dots opacity-10" />
 
@@ -216,9 +216,9 @@ function SelectGuideContent() {
           </p>
 
           {/* Important Note */}
-          <Alert className="max-w-3xl mx-auto mb-6 border-2 border-blue-300 glass-frosted shadow-premium hover-lift animate-fade-in-up delay-100">
-            <Info className="h-5 w-5 text-blue-600" />
-            <AlertDescription className="text-sm text-blue-900 font-medium">
+          <Alert className="max-w-3xl mx-auto mb-6 border-2 border-ui-blue-accent glass-frosted shadow-premium hover-lift animate-fade-in-up delay-100">
+            <Info className="h-5 w-5 text-ui-blue-primary" />
+            <AlertDescription className="text-sm text-ui-blue-primary font-medium">
               <strong>How it works:</strong> Select one or more guides you're comfortable
               with. We'll notify them about your request, and the first one to accept will
               be your guide. Student identities are partially hidden for privacy until they
@@ -233,7 +233,7 @@ function SelectGuideContent() {
             <h3 className="font-bold text-gray-900 mb-2 text-lg">
               Suggested Price Range
             </h3>
-            <p className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+            <p className="text-3xl font-bold bg-gradient-to-r from-ui-purple-primary to-ui-purple-accent bg-clip-text text-transparent mb-2">
               {suggestedPrice.min}-{suggestedPrice.max} {suggestedPrice.currency}
               {suggestedPrice.type === 'hourly' && (
                 <span className="text-sm font-normal text-gray-600">/hour</span>
@@ -265,7 +265,7 @@ function SelectGuideContent() {
             variant="outline"
             onClick={() => router.push('/booking')}
             disabled={submitting}
-            className="w-full sm:w-auto hover-lift border-2 hover:border-blue-400 hover:text-blue-600"
+            className="w-full sm:w-auto hover-lift border-2 hover:border-ui-blue-accent hover:text-ui-blue-primary"
           >
             Modify Request
           </Button>
@@ -292,8 +292,8 @@ function SelectGuideContent() {
 
         {/* Selection Summary */}
         {selectedStudents.length > 0 && (
-          <div className="max-w-3xl mx-auto mt-6 p-5 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300/60 rounded-xl shadow-soft animate-scale-in">
-            <p className="text-sm text-green-900 text-center font-medium">
+          <div className="max-w-3xl mx-auto mt-6 p-5 bg-gradient-to-br from-ui-success/10 to-ui-success/5 border-2 border-ui-success/60 rounded-xl shadow-soft animate-scale-in">
+            <p className="text-sm text-ui-success text-center font-medium">
               You've selected <strong>{selectedStudents.length}</strong> guide
               {selectedStudents.length > 1 ? 's' : ''}. They will all receive your request,
               and the first to accept will become your guide.
@@ -310,7 +310,7 @@ export default function SelectGuidePage() {
     <Suspense
       fallback={
         <div className="min-h-screen flex items-center justify-center">
-          <Loader2 className="h-12 w-12 animate-spin text-blue-600" />
+          <Loader2 className="h-12 w-12 animate-spin text-ui-blue-primary" />
         </div>
       }
     >

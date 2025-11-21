@@ -122,9 +122,9 @@ export function StudentVerificationStep({ formData, updateFormData, errors }: St
       </div>
 
       {/* Why we need this */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h3 className="font-bold text-blue-900 mb-2">Why do we need these documents?</h3>
-        <ul className="text-sm text-blue-800 space-y-1 list-disc list-inside">
+      <div className="bg-[hsl(var(--ui-blue-primary)/0.1)] border border-[hsl(var(--ui-blue-primary)/0.3)] rounded-lg p-4">
+        <h3 className="font-bold text-[hsl(var(--ui-blue-primary))] mb-2">Why do we need these documents?</h3>
+        <ul className="text-sm text-[hsl(var(--ui-blue-accent))] space-y-1 list-disc list-inside">
           <li>Ensures only verified students can become guides</li>
           <li>Builds trust with tourists and the WanderNest community</li>
           <li>Protects both guides and visitors</li>
@@ -136,12 +136,12 @@ export function StudentVerificationStep({ formData, updateFormData, errors }: St
       <div className="space-y-4">
         <div className="flex justify-between items-center">
           <Label>
-            Student ID Card Upload <span className="text-red-500">*</span>
+            Student ID Card Upload <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
         </div>
 
         <div className={`border-2 border-dashed rounded-lg p-6 text-center ${
-          errors.studentIdFile ? 'border-red-500 bg-red-50' : 'border-gray-300'
+          errors.studentIdFile ? 'border-[hsl(var(--ui-error))] bg-[hsl(var(--ui-error)/0.1)]' : 'border-gray-300'
         }`}>
           {formData.studentIdPreview ? (
             <div className="space-y-4">
@@ -207,7 +207,7 @@ export function StudentVerificationStep({ formData, updateFormData, errors }: St
         {/* Student ID Expiry */}
         <div className="space-y-2">
           <Label htmlFor="studentIdExpiry">
-            Student ID Expiry Date <span className="text-red-500">*</span>
+            Student ID Expiry Date <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <Input
             id="studentIdExpiry"
@@ -215,22 +215,22 @@ export function StudentVerificationStep({ formData, updateFormData, errors }: St
             value={formData.studentIdExpiry}
             onChange={(e) => updateFormData({ studentIdExpiry: e.target.value })}
             min={new Date().toISOString().split('T')[0]}
-            className={errors.studentIdExpiry ? 'border-red-500' : ''}
+            className={errors.studentIdExpiry ? 'border-[hsl(var(--ui-error))]' : ''}
           />
-          {errors.studentIdExpiry && <p className="text-sm text-red-500">{errors.studentIdExpiry}</p>}
+          {errors.studentIdExpiry && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.studentIdExpiry}</p>}
         </div>
 
-        {errors.studentIdFile && <p className="text-sm text-red-500">{errors.studentIdFile}</p>}
+        {errors.studentIdFile && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.studentIdFile}</p>}
       </div>
 
       {/* Government ID Upload */}
       <div className="space-y-4">
         <Label>
-          Government ID Upload (Passport or National ID) <span className="text-red-500">*</span>
+          Government ID Upload (Passport or National ID) <span className="text-[hsl(var(--ui-error))]">*</span>
         </Label>
 
         <div className={`border-2 border-dashed rounded-lg p-6 text-center ${
-          errors.governmentIdFile ? 'border-red-500 bg-red-50' : 'border-gray-300'
+          errors.governmentIdFile ? 'border-[hsl(var(--ui-error))] bg-[hsl(var(--ui-error)/0.1)]' : 'border-gray-300'
         }`}>
           {formData.governmentIdPreview ? (
             <div className="space-y-4">
@@ -296,7 +296,7 @@ export function StudentVerificationStep({ formData, updateFormData, errors }: St
         {/* Government ID Expiry */}
         <div className="space-y-2">
           <Label htmlFor="governmentIdExpiry">
-            Government ID Expiry Date <span className="text-red-500">*</span>
+            Government ID Expiry Date <span className="text-[hsl(var(--ui-error))]">*</span>
           </Label>
           <Input
             id="governmentIdExpiry"
@@ -304,23 +304,23 @@ export function StudentVerificationStep({ formData, updateFormData, errors }: St
             value={formData.governmentIdExpiry}
             onChange={(e) => updateFormData({ governmentIdExpiry: e.target.value })}
             min={new Date().toISOString().split('T')[0]}
-            className={errors.governmentIdExpiry ? 'border-red-500' : ''}
+            className={errors.governmentIdExpiry ? 'border-[hsl(var(--ui-error))]' : ''}
           />
-          {errors.governmentIdExpiry && <p className="text-sm text-red-500">{errors.governmentIdExpiry}</p>}
+          {errors.governmentIdExpiry && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.governmentIdExpiry}</p>}
         </div>
 
-        {errors.governmentIdFile && <p className="text-sm text-red-500">{errors.governmentIdFile}</p>}
+        {errors.governmentIdFile && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.governmentIdFile}</p>}
       </div>
 
       {/* Selfie Upload */}
       <div className="space-y-4">
         <Label>
-          Selfie for Verification <span className="text-red-500">*</span>
+          Selfie for Verification <span className="text-[hsl(var(--ui-error))]">*</span>
         </Label>
         <p className="text-sm text-gray-600">Take a selfie holding your student ID card next to your face</p>
 
         <div className={`border-2 border-dashed rounded-lg p-6 text-center ${
-          errors.selfieFile ? 'border-red-500 bg-red-50' : 'border-gray-300'
+          errors.selfieFile ? 'border-[hsl(var(--ui-error))] bg-[hsl(var(--ui-error)/0.1)]' : 'border-gray-300'
         }`}>
           {formData.selfiePreview ? (
             <div className="space-y-4">
@@ -373,18 +373,18 @@ export function StudentVerificationStep({ formData, updateFormData, errors }: St
           className="hidden"
         />
 
-        {errors.selfieFile && <p className="text-sm text-red-500">{errors.selfieFile}</p>}
+        {errors.selfieFile && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.selfieFile}</p>}
       </div>
 
       {/* Profile Photo Upload */}
       <div className="space-y-4">
         <Label>
-          Profile Photo <span className="text-red-500">*</span>
+          Profile Photo <span className="text-[hsl(var(--ui-error))]">*</span>
         </Label>
         <p className="text-sm text-gray-600">Upload a professional photo for your public guide profile</p>
 
         <div className={`border-2 border-dashed rounded-lg p-6 text-center ${
-          errors.profilePhotoFile ? 'border-red-500 bg-red-50' : 'border-gray-300'
+          errors.profilePhotoFile ? 'border-[hsl(var(--ui-error))] bg-[hsl(var(--ui-error)/0.1)]' : 'border-gray-300'
         }`}>
           {formData.profilePhotoPreview ? (
             <div className="space-y-4">
@@ -437,7 +437,7 @@ export function StudentVerificationStep({ formData, updateFormData, errors }: St
           className="hidden"
         />
 
-        {errors.profilePhotoFile && <p className="text-sm text-red-500">{errors.profilePhotoFile}</p>}
+        {errors.profilePhotoFile && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.profilePhotoFile}</p>}
       </div>
 
       {/* Consent Checkboxes */}
@@ -456,12 +456,12 @@ export function StudentVerificationStep({ formData, updateFormData, errors }: St
               className="text-sm font-normal cursor-pointer leading-relaxed"
             >
               I confirm these documents are mine and the information is accurate.{' '}
-              <span className="text-red-500">*</span>
+              <span className="text-[hsl(var(--ui-error))]">*</span>
             </Label>
           </div>
         </div>
         {errors.documentsOwnedConfirmation && (
-          <p className="text-sm text-red-500">{errors.documentsOwnedConfirmation}</p>
+          <p className="text-sm text-[hsl(var(--ui-error))]">{errors.documentsOwnedConfirmation}</p>
         )}
 
         <div className="flex items-start space-x-3 p-4 border rounded-lg">
@@ -478,12 +478,12 @@ export function StudentVerificationStep({ formData, updateFormData, errors }: St
               className="text-sm font-normal cursor-pointer leading-relaxed"
             >
               I consent to verification of these documents by WanderNest and understand that false information may result in account suspension.{' '}
-              <span className="text-red-500">*</span>
+              <span className="text-[hsl(var(--ui-error))]">*</span>
             </Label>
           </div>
         </div>
         {errors.verificationConsent && (
-          <p className="text-sm text-red-500">{errors.verificationConsent}</p>
+          <p className="text-sm text-[hsl(var(--ui-error))]">{errors.verificationConsent}</p>
         )}
       </div>
 
@@ -500,8 +500,8 @@ export function StudentVerificationStep({ formData, updateFormData, errors }: St
       </div>
 
       {/* Security Note */}
-      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-        <p className="text-sm text-green-900">
+      <div className="bg-[hsl(var(--ui-success)/0.1)] border border-[hsl(var(--ui-success)/0.3)] rounded-lg p-4">
+        <p className="text-sm text-[hsl(var(--ui-success))]">
           <strong>🔒 Privacy & Security:</strong> Your documents are encrypted and only used for verification purposes.
           They will be reviewed by our team and will not be shared publicly or with tourists.
         </p>

@@ -460,7 +460,7 @@ export function OnboardingWizard({ session }: OnboardingWizardProps) {
         {/* Dark overlay for text contrast */}
         <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
         {/* Gradient overlay for visual depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/15 via-blue-600/10 to-pink-600/15" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--ui-purple-accent))]/15 via-[hsl(var(--ui-blue-primary))]/10 to-[hsl(var(--ui-purple-primary))]/15" />
       </div>
       <div className="absolute inset-0 pattern-dots opacity-10" />
 
@@ -579,7 +579,7 @@ export function OnboardingWizard({ session }: OnboardingWizardProps) {
 
                 {/* Submit Error */}
                 {errors.submit && (
-                  <div className="mt-4 p-4 glass-frosted bg-gradient-to-br from-red-50 to-red-100/50 border-2 border-red-300 rounded-2xl text-red-800 text-sm shadow-soft">
+                  <div className="mt-4 p-4 glass-frosted bg-gradient-to-br from-[hsl(var(--ui-error))]/10 to-[hsl(var(--ui-error))]/20 border-2 border-[hsl(var(--ui-error))] rounded-2xl text-[hsl(var(--ui-error))] text-sm shadow-soft">
                     {errors.submit}
                   </div>
                 )}

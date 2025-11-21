@@ -18,7 +18,7 @@ export function Spinner({ size = 'md', className, label = 'Loading...' }: Spinne
     <div className="flex items-center justify-center" role="status" aria-live="polite">
       <div
         className={cn(
-          'animate-spin rounded-full border-blue-600 border-t-transparent',
+          'animate-spin rounded-full border-ui-blue-primary border-t-transparent',
           sizeClasses[size],
           className
         )}

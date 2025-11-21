@@ -226,9 +226,9 @@ export default function StudentDashboard() {
 
   const getServiceTypeBadge = (serviceType: string) => {
     const colors: Record<string, string> = {
-      'local_guide': 'bg-blue-100 text-blue-800',
-      'accommodation': 'bg-green-100 text-green-800',
-      'both': 'bg-purple-100 text-purple-800',
+      'local_guide': 'bg-ui-blue-primary/10 text-ui-blue-primary',
+      'accommodation': 'bg-ui-success/10 text-ui-success',
+      'both': 'bg-ui-purple-primary/10 text-ui-purple-primary',
     }
     return colors[serviceType] || 'bg-gray-100 text-gray-800'
   }
@@ -247,13 +247,13 @@ export default function StudentDashboard() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-purple-600/10 to-pink-600/15" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/15 via-ui-purple-primary/10 to-pink-600/15" />
         </div>
         <div className="absolute inset-0 pattern-dots opacity-10" />
 
         <div className="relative z-10 flex items-center justify-center min-h-screen">
           <div className="text-center glass-card rounded-3xl p-8 shadow-premium animate-fade-in">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-ui-blue-primary mx-auto mb-4"></div>
             <p className="text-gray-700 font-medium">Loading your dashboard...</p>
           </div>
         </div>
@@ -275,13 +275,13 @@ export default function StudentDashboard() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-black/20 backdrop-blur-[4px]" />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/15 via-purple-600/10 to-pink-600/15" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/15 via-ui-purple-primary/10 to-pink-600/15" />
         </div>
         <div className="absolute inset-0 pattern-dots opacity-10" />
 
         <div className="relative z-10 flex items-center justify-center min-h-screen">
           <div className="text-center glass-card rounded-3xl p-8 shadow-premium animate-fade-in">
-            <p className="text-red-600 font-semibold mb-4">Failed to load dashboard data</p>
+            <p className="text-ui-error font-semibold mb-4">Failed to load dashboard data</p>
             <Button onClick={() => router.push('/student/signin')} className="gradient-ocean hover:shadow-glow-blue">
               Back to Sign In
             </Button>
@@ -320,8 +320,8 @@ export default function StudentDashboard() {
 
         {/* Error Alert */}
         {error && (
-          <div className="glass-card bg-red-50/90 border-2 border-red-300 rounded-2xl p-4 mb-6 shadow-premium animate-scale-in">
-            <p className="text-red-700 font-semibold">{error}</p>
+          <div className="glass-card bg-ui-error/10 border-2 border-ui-error/30 rounded-2xl p-4 mb-6 shadow-premium animate-scale-in">
+            <p className="text-ui-error font-semibold">{error}</p>
           </div>
         )}
 
@@ -332,7 +332,7 @@ export default function StudentDashboard() {
               <CardTitle className="text-sm font-medium text-gray-700">Total Bookings</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">{data.stats.totalBookings}</div>
+              <div className="text-3xl font-bold bg-gradient-to-r from-ui-blue-primary to-ui-blue-accent bg-clip-text text-transparent">{data.stats.totalBookings}</div>
             </CardContent>
           </Card>
 
@@ -341,7 +341,7 @@ export default function StudentDashboard() {
               <CardTitle className="text-sm font-medium text-gray-700">Pending Requests</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">{data.stats.pendingRequests}</div>
+              <div className="text-3xl font-bold text-ui-warning">{data.stats.pendingRequests}</div>
             </CardContent>
           </Card>
 
@@ -364,7 +364,7 @@ export default function StudentDashboard() {
               <CardTitle className="text-sm font-medium text-gray-700">Total Earnings</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+              <div className="text-3xl font-bold text-ui-success">
                 ${data.stats.totalEarnings.toFixed(2)}
               </div>
             </CardContent>
@@ -445,8 +445,8 @@ export default function StudentDashboard() {
                       )}
 
                       {isExpired && (
-                        <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-4">
-                          <p className="text-sm text-red-600 font-medium">This request has expired</p>
+                        <div className="bg-ui-error/10 border border-ui-error/30 rounded-lg p-3 mb-4">
+                          <p className="text-sm text-ui-error font-medium">This request has expired</p>
                         </div>
                       )}
 
@@ -484,7 +484,7 @@ export default function StudentDashboard() {
                 const request = booking.request
 
                 return (
-                  <Card key={booking.id} className="glass-card border-2 border-white/40 border-l-4 border-l-green-500 shadow-premium hover-lift animate-fade-in">
+                  <Card key={booking.id} className="glass-card border-2 border-white/40 border-l-4 border-l-ui-success shadow-premium hover-lift animate-fade-in">
                     <CardContent className="p-6">
                       <div className="flex justify-between items-start mb-4">
                         <div>
@@ -493,7 +493,7 @@ export default function StudentDashboard() {
                             Accepted {booking.acceptedAt ? new Date(booking.acceptedAt).toLocaleDateString() : 'N/A'}
                           </p>
                         </div>
-                        <Badge className="bg-green-100 text-green-800">ACCEPTED</Badge>
+                        <Badge className="bg-ui-success/10 text-ui-success">ACCEPTED</Badge>
                       </div>
 
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 text-sm">
@@ -512,12 +512,12 @@ export default function StudentDashboard() {
                         {booking.pricePaid && (
                           <div>
                             <p className="text-gray-500">Earnings</p>
-                            <p className="font-medium text-green-600">${booking.pricePaid.toFixed(2)}</p>
+                            <p className="font-medium text-ui-success">${booking.pricePaid.toFixed(2)}</p>
                           </div>
                         )}
                       </div>
 
-                      <div className="bg-blue-50 rounded-lg p-4 mt-4">
+                      <div className="bg-ui-blue-primary/10 rounded-lg p-4 mt-4">
                         <p className="text-sm font-medium text-gray-700 mb-2">Tourist Contact Information</p>
                         <div className="space-y-1 text-sm">
                           {request.email && (
@@ -586,8 +586,8 @@ export default function StudentDashboard() {
                     )}
 
                     {review.wasNoShow && (
-                      <div className="bg-red-50 border border-red-200 rounded-lg p-3 mt-3">
-                        <p className="text-sm text-red-600 font-medium">Marked as no-show</p>
+                      <div className="bg-ui-error/10 border border-ui-error/30 rounded-lg p-3 mt-3">
+                        <p className="text-sm text-ui-error font-medium">Marked as no-show</p>
                       </div>
                     )}
                   </CardContent>
