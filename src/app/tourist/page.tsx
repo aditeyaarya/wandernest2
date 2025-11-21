@@ -60,44 +60,6 @@ export default function TouristLanding() {
               </div>
             </div>
 
-            {/* Marketplace Disclaimer */}
-            <div className="bg-gradient-to-br from-amber-50 to-yellow-100/50 border-2 border-amber-300/60 rounded-3xl p-6 md:p-8 max-w-4xl mx-auto shadow-premium hover-lift animate-fade-in-up delay-400">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-soft">
-                    <AlertTriangle className="w-6 h-6" />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h2 className="font-bold text-amber-900 mb-3 text-lg">Important Notice</h2>
-                  <p className="text-sm text-amber-900 mb-3 leading-relaxed">
-                    <strong>WanderNest is a marketplace connector only.</strong> We facilitate connections between tourists and local student guides but do not:
-                  </p>
-                  <ul className="space-y-2 text-sm text-amber-900">
-                    <li className="flex items-start">
-                      <span className="mr-2 mt-0.5">•</span>
-                      <span>Handle any payments or financial transactions</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="mr-2 mt-0.5">•</span>
-                      <span>Guarantee the quality of services provided</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="mr-2 mt-0.5">•</span>
-                      <span>Act as an employer or agency for guides</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="mr-2 mt-0.5">•</span>
-                      <span>Assume liability for guide-tourist interactions</span>
-                    </li>
-                  </ul>
-                  <p className="text-sm text-amber-900 mt-3 leading-relaxed">
-                    All arrangements, payments, and services are agreed upon directly between you and your guide.
-                  </p>
-                </div>
-              </div>
-            </div>
-
             {/* Features */}
             <div className="grid md:grid-cols-3 gap-8 pt-8 animate-fade-in-up delay-100">
               <div className="backdrop-blur-md rounded-2xl shadow-lg border border-gray-200 hover-lift group relative overflow-hidden">
@@ -113,7 +75,7 @@ export default function TouristLanding() {
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-blue-300/20" />
-                <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
+                <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
                 <div className="relative z-10 p-8">
                   <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <GraduationCap className="w-8 h-8" />
@@ -138,7 +100,7 @@ export default function TouristLanding() {
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-purple-300/20" />
-                <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
+                <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
                 <div className="relative z-10 p-8">
                   <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <MessageCircle className="w-8 h-8" />
@@ -163,7 +125,7 @@ export default function TouristLanding() {
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-pink-400/20 to-pink-300/20" />
-                <div className="absolute inset-0 bg-white/70 backdrop-blur-sm" />
+                <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
                 <div className="relative z-10 p-8">
                   <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-pink-500 to-pink-600 text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <Star className="w-8 h-8" />
@@ -254,6 +216,44 @@ export default function TouristLanding() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
                   <span className="text-white font-bold text-xl">Rome</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Marketplace Disclaimer */}
+            <div className="mt-16 bg-gradient-to-br from-amber-50 to-yellow-100/50 border-2 border-amber-300/60 rounded-3xl p-6 md:p-8 max-w-4xl mx-auto shadow-premium hover-lift animate-fade-in-up delay-400">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white shadow-soft">
+                    <AlertTriangle className="w-6 h-6" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h2 className="font-bold text-amber-900 mb-3 text-lg">Important Notice</h2>
+                  <p className="text-sm text-amber-900 mb-3 leading-relaxed">
+                    <strong>WanderNest is a marketplace connector only.</strong> We facilitate connections between tourists and local student guides but do not:
+                  </p>
+                  <ul className="space-y-2 text-sm text-amber-900">
+                    <li className="flex items-start">
+                      <span className="mr-2 mt-0.5">•</span>
+                      <span>Handle any payments or financial transactions</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-2 mt-0.5">•</span>
+                      <span>Guarantee the quality of services provided</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-2 mt-0.5">•</span>
+                      <span>Act as an employer or agency for guides</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-2 mt-0.5">•</span>
+                      <span>Assume liability for guide-tourist interactions</span>
+                    </li>
+                  </ul>
+                  <p className="text-sm text-amber-900 mt-3 leading-relaxed">
+                    All arrangements, payments, and services are agreed upon directly between you and your guide.
+                  </p>
                 </div>
               </div>
             </div>
