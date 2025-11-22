@@ -9,7 +9,6 @@ import { PreferencesStep } from './PreferencesStep'
 import { ContactStep } from './ContactStep'
 import { FormProgressHeader } from '@/components/shared/FormProgressHeader'
 import { PrimaryCTAButton } from '@/components/ui/PrimaryCTAButton'
-import { useDevAuth } from '@/lib/dev-auth-bypass'
 
 export type BookingFormData = {
   // Step 1: Trip Details
@@ -47,7 +46,6 @@ const STEPS = [
 
 export function BookingForm() {
   const router = useRouter()
-  const devAuth = useDevAuth()
   const [currentStep, setCurrentStep] = useState(1)
   const [completedSteps, setCompletedSteps] = useState<number[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -170,20 +168,12 @@ export function BookingForm() {
 
     setIsSubmitting(true)
     try {
-      // Build headers with dev bypass support
-      const headers: HeadersInit = {
-        'Content-Type': 'application/json',
-      }
-
-      // Add dev auth header if bypass is enabled
-      if (devAuth.isDevBypassEnabled && devAuth.devUserType) {
-        headers['x-dev-user-type'] = devAuth.devUserType
-      }
-
       // Use the new authenticated endpoint
       const response = await fetch('/api/tourist/request/create', {
         method: 'POST',
-        headers,
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           city: formData.city,
           dates: formData.dates,
