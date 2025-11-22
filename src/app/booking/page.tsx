@@ -5,14 +5,16 @@ import Image from 'next/image'
 import { BookingForm } from '@/components/booking/BookingForm'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-// import { useSession, signIn } from 'next-auth/react'
+import { useSession, signIn } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
-import { AlertTriangle } from 'lucide-react'
+import { AlertTriangle, Loader2, LogIn } from 'lucide-react'
 import FAQAccordion from '@/components/shared/FAQAccordion'
 import { paymentFAQs } from '@/lib/faq/data'
 
 export default function BookingPage() {
-  const isTourist = true
+  const { data: session, status } = useSession()
+  const loading = status === 'loading'
+  const isTourist = session?.user?.userType === 'tourist'
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
@@ -60,7 +62,54 @@ export default function BookingPage() {
           </div>
 
           <div className="relative">
-            <BookingForm />
+            {loading ? (
+              <div className="glass-card rounded-3xl border-2 border-white/40 shadow-premium p-12 text-center">
+                <Loader2 className="h-12 w-12 animate-spin text-ui-blue-primary mx-auto mb-4" />
+                <p className="text-gray-700 font-medium">Loading...</p>
+              </div>
+            ) : !session ? (
+              <div className="glass-card rounded-3xl border-2 border-white/40 shadow-premium p-8 md:p-12 text-center">
+                <div className="max-w-md mx-auto">
+                  <LogIn className="h-16 w-16 text-ui-blue-primary mx-auto mb-6" />
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                    Sign In to Book
+                  </h2>
+                  <p className="text-gray-700 mb-6 leading-relaxed">
+                    To create a booking request and connect with local student guides,
+                    you need to sign in with your Google account. This helps us protect both
+                    tourists and students on our platform.
+                  </p>
+                  <Button
+                    onClick={() => signIn('google', { callbackUrl: '/booking' })}
+                    className="bg-ui-blue-primary hover:bg-ui-blue-accent text-white px-8 py-6 text-lg shadow-lg hover-lift"
+                  >
+                    <LogIn className="mr-2 h-5 w-5" />
+                    Sign In with Google
+                  </Button>
+                </div>
+              </div>
+            ) : !isTourist ? (
+              <div className="glass-card rounded-3xl border-2 border-white/40 shadow-premium p-8 md:p-12 text-center">
+                <div className="max-w-md mx-auto">
+                  <AlertTriangle className="h-16 w-16 text-ui-warning mx-auto mb-6" />
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                    Tourist Account Required
+                  </h2>
+                  <p className="text-gray-700 mb-6 leading-relaxed">
+                    You're signed in with a student account. To book a guide, please sign in
+                    with a personal (non-.edu) email address.
+                  </p>
+                  <Button
+                    onClick={() => signIn('google', { callbackUrl: '/booking' })}
+                    className="bg-ui-blue-primary hover:bg-ui-blue-accent text-white px-8 py-6 text-lg shadow-lg hover-lift"
+                  >
+                    Sign In with Different Account
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <BookingForm />
+            )}
           </div>
 
           <section aria-label="Frequently asked questions" className="mt-16">
