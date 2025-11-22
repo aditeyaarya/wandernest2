@@ -1,3 +1,4 @@
+// Visual: Using design system border radii, shadows, and typography for consistency
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
@@ -178,16 +179,21 @@ export default function WhyChooseCarousel() {
   }
 
   return (
-    <div className="pt-8 space-y-4 animate-fade-in-up delay-300">
+    <div className="pt-12 space-y-6 animate-fade-in-up delay-300">
       {/* Section Title */}
-      <h2 className="text-2xl md:text-3xl font-serif font-bold text-center text-white text-shadow-lg tracking-tight px-4">
-        Why Choose WanderNest?
-      </h2>
+      <div className="text-center space-y-2 px-4">
+        <h2 className="text-3xl md:text-4xl font-serif font-bold text-white text-shadow-lg tracking-tight">
+          Why Choose WanderNest?
+        </h2>
+        <p className="text-base md:text-lg text-white/90 text-shadow max-w-2xl mx-auto">
+          Experience travel differently with our verified student guides
+        </p>
+      </div>
 
       {/* Carousel Container */}
-      <div className="relative w-full max-w-4xl mx-auto px-4">
+      <div className="relative w-full max-w-5xl mx-auto px-4">
         <div
-          className="relative rounded-3xl overflow-hidden shadow-elevated"
+          className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/20"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -196,111 +202,92 @@ export default function WhyChooseCarousel() {
           aria-live="polite"
         >
           {/* Main Image Background */}
-          <div className="relative w-full h-[250px] md:h-[300px] lg:h-[325px]">
-            <AnimatePresence initial={false} custom={direction} mode="wait">
-              <motion.div
-                key={currentIndex}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.4 }
-                }}
-                className="absolute inset-0"
+          <div className="relative w-full h-[400px] md:h-[450px] lg:h-[500px]">
+            {features.map((feature, index) => (
+              <div
+                key={feature.title}
+                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                  index === currentIndex ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}
               >
                 <Image
                   src={currentFeature.image}
                   alt={currentFeature.imageAlt}
                   fill
-                  loading={currentIndex === 0 ? 'eager' : 'lazy'}
-                  quality={80}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  quality={85}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 85vw, 1200px"
                   className="object-cover"
                 />
-                {/* Gradient overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/20" />
-              </motion.div>
-            </AnimatePresence>
+                {/* Refined gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
+              </div>
+            ))}
 
-            {/* Floating Glass Content Card */}
-            <div className="absolute inset-0 flex items-end md:items-center justify-center p-2 md:p-4 pointer-events-none">
-              <AnimatePresence initial={false} custom={direction} mode="wait">
-                <motion.div
-                  key={currentIndex}
-                  custom={direction}
-                  variants={contentVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{
-                    duration: 0.5,
-                    ease: [0.4, 0, 0.2, 1]
-                  }}
-                  className="w-full max-w-xl glass-card rounded-xl md:rounded-2xl p-3 md:p-4 lg:p-5 space-y-2 md:space-y-3"
-                >
-                  {/* Title */}
-                  <h3 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground tracking-tight">
+            {/* Content Card - Better positioned and styled */}
+            <div className="absolute inset-0 flex items-end md:items-center justify-center p-4 md:p-6">
+              <div
+                className={`w-full max-w-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-10 space-y-4 md:space-y-5 transition-all duration-500 border border-white/40 dark:border-gray-700/40 shadow-xl ${
+                  isTransitioning ? 'opacity-0 scale-95 translate-y-4' : 'opacity-100 scale-100 translate-y-0'
+                }`}
+              >
+                {/* Title with accent color bar */}
+                <div className="space-y-3">
+                  <div className={`w-16 h-1 rounded-full ${colors.dot}`} />
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-gray-900 dark:text-white tracking-tight">
                     {currentFeature.title}
                   </h3>
+                </div>
 
-                  {/* Description */}
-                  <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                    {currentFeature.description}
-                  </p>
+                {/* Description */}
+                <p className="text-sm md:text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
+                  {currentFeature.description}
+                </p>
 
-                  {/* Bullet Points */}
-                  <ul className="space-y-1 md:space-y-2">
-                    {currentFeature.bullets.map((bullet, idx) => (
-                      <motion.li
-                        key={idx}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: idx * 0.1 + 0.2 }}
-                        className="flex items-start"
-                      >
-                        <span className={`mr-1.5 md:mr-2 font-bold text-base md:text-lg ${colors.check}`}>
-                          ✓
-                        </span>
-                        <span className="text-xs md:text-sm text-foreground leading-relaxed">
-                          {bullet}
-                        </span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </motion.div>
-              </AnimatePresence>
+                {/* Bullet Points with improved styling */}
+                <ul className="space-y-3 pt-2">
+                  {currentFeature.bullets.map((bullet, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-start transition-all duration-300"
+                      style={{ animationDelay: `${idx * 100}ms` }}
+                    >
+                      <span className={`mr-3 font-bold text-xl flex-shrink-0 ${colors.check}`}>
+                        ✓
+                      </span>
+                      <span className="text-sm md:text-base text-gray-800 dark:text-gray-200 leading-relaxed font-medium">
+                        {bullet}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-            {/* Navigation Arrows - Enhanced Design */}
-            <motion.button
+            {/* Navigation Arrows - Refined design */}
+            <button
               onClick={prevSlide}
               disabled={isTransitioning}
-              whileHover={{ scale: 1.1, x: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="absolute left-1.5 md:left-2 top-1/2 -translate-y-1/2 p-2 md:p-2.5 rounded-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-3 focus-visible:outline-blue-500 focus-visible:outline-offset-2 border border-white/20"
+              className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white border border-white/40 dark:border-gray-700/40"
               aria-label="Previous feature"
             >
-              <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-foreground" strokeWidth={2.5} />
-            </motion.button>
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-gray-900 dark:text-white" />
+            </button>
 
             <motion.button
               onClick={nextSlide}
               disabled={isTransitioning}
-              whileHover={{ scale: 1.1, x: 2 }}
-              whileTap={{ scale: 0.95 }}
-              className="absolute right-1.5 md:right-2 top-1/2 -translate-y-1/2 p-2 md:p-2.5 rounded-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg hover:shadow-xl transition-shadow disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-3 focus-visible:outline-blue-500 focus-visible:outline-offset-2 border border-white/20"
+              className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white border border-white/40 dark:border-gray-700/40"
               aria-label="Next feature"
             >
-              <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-foreground" strokeWidth={2.5} />
-            </motion.button>
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-900 dark:text-white" />
+            </button>
           </div>
         </div>
 
-        {/* Dot Indicators - Enhanced Design */}
-        <div className="flex justify-center items-center gap-2 md:gap-2.5 mt-3 md:mt-4">
+        {/* Dot Indicators - Refined design */}
+        <div className="flex justify-center items-center gap-2 md:gap-3 mt-5 md:mt-6">
           {features.map((feature, index) => {
             const dotColors = accentColors[feature.accentColor as keyof typeof accentColors]
             const isActive = index === currentIndex
@@ -312,26 +299,17 @@ export default function WhyChooseCarousel() {
                   goToSlide(index, dir)
                 }}
                 disabled={isTransitioning}
-                whileHover={{ scale: isActive ? 1 : 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                className="group focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded-full transition-all duration-300 relative"
+                className={`group transition-all duration-300 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded-full ${
+                  index === currentIndex ? 'w-10 md:w-12' : 'w-2.5 md:w-3'
+                }`}
                 aria-label={`Go to ${feature.title}`}
                 aria-current={isActive ? 'true' : 'false'}
               >
-                <motion.div
-                  animate={{
-                    width: isActive ? '40px' : '12px',
-                    height: '12px',
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 25
-                  }}
-                  className={`rounded-full transition-all duration-300 ${
-                    isActive
-                      ? `${dotColors.dotActive} ${dotColors.dotGlow}`
-                      : 'bg-white/50 hover:bg-white/70'
+                <div
+                  className={`h-2.5 md:h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? `${dotColors.dotActive} shadow-md`
+                      : 'bg-white/70 hover:bg-white/90'
                   }`}
                 />
               </motion.button>
@@ -340,14 +318,9 @@ export default function WhyChooseCarousel() {
         </div>
 
         {/* Swipe Hint for Mobile */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="text-center text-xs text-white/80 mt-2 md:hidden text-shadow-sm"
-        >
-          Swipe left or right to explore
-        </motion.p>
+        <p className="text-center text-sm text-white/80 mt-3 md:hidden text-shadow-sm font-medium">
+          Swipe to explore more features
+        </p>
       </div>
     </div>
   )
