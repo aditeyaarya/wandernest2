@@ -9,14 +9,21 @@ import TouristCTA from '@/components/cta/TouristCTA'
 import StudentCTA from '@/components/cta/StudentCTA'
 import WhyChooseCarousel from '@/components/WhyChooseCarousel'
 import { getWebsiteStructuredData, getOrganizationStructuredData } from '@/lib/structuredData'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function MainLanding() {
   const structuredData = getWebsiteStructuredData()
   const organizationData = getOrganizationStructuredData()
+  const heroRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start']
+  })
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150])
 
   return (
-    <div className="min-h-screen flex flex-col relative overflow-hidden">
+    <div ref={heroRef} className="min-h-screen flex flex-col relative overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -25,15 +32,20 @@ export default function MainLanding() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
       />
-
-      {/* Boutique neutral background with grain overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-stone-50 via-neutral-100 to-stone-100" />
-      <div
-        className="absolute inset-0 opacity-[0.015]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }}
-      />
+      <motion.div className="absolute inset-0" style={{ y }}>
+        <Image
+          src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&q=80"
+          alt="Beautiful Paris cityscape with Eiffel Tower"
+          fill
+          priority
+          quality={80}
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-[4px]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-accent/15 via-ui-purple-accent/10 to-ui-purple-primary/15" />
+      </motion.div>
+      <div className="absolute inset-0 pattern-dots opacity-20" />
 
       <div className="relative z-10 flex flex-col min-h-screen">
         <Navigation variant="default" />
