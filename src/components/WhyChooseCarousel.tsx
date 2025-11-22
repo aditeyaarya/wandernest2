@@ -1,3 +1,4 @@
+// Visual: Using design system border radii, shadows, and typography for consistency
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
@@ -138,14 +139,14 @@ export default function WhyChooseCarousel() {
   return (
     <div className="pt-8 space-y-4 animate-fade-in-up delay-300">
       {/* Section Title */}
-      <h2 className="text-2xl md:text-3xl font-serif font-bold text-center text-white text-shadow-lg tracking-tight px-4">
+      <h2 className="text-3xl md:text-4xl font-bold font-serif text-center text-white text-shadow-lg px-4">
         Why Choose WanderNest?
       </h2>
 
       {/* Carousel Container */}
       <div className="relative w-full max-w-4xl mx-auto px-4">
         <div
-          className="relative rounded-3xl overflow-hidden shadow-elevated"
+          className="relative rounded-2xl overflow-hidden shadow-elevated"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -178,17 +179,17 @@ export default function WhyChooseCarousel() {
             {/* Floating Glass Content Card */}
             <div className="absolute inset-0 flex items-end md:items-center justify-center p-2 md:p-4">
               <div
-                className={`w-full max-w-xl glass-card rounded-xl md:rounded-2xl p-3 md:p-4 lg:p-5 space-y-2 md:space-y-3 transition-all duration-500 ${
+                className={`w-full max-w-xl glass-card rounded-xl p-3 md:p-4 lg:p-5 space-y-2 md:space-y-3 transition-all duration-500 ${
                   isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
                 }`}
               >
                 {/* Title */}
-                <h3 className="text-lg md:text-xl lg:text-2xl font-serif font-bold text-foreground tracking-tight">
+                <h3 className="text-xl md:text-2xl font-bold font-serif text-foreground">
                   {currentFeature.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {currentFeature.description}
                 </p>
 
@@ -203,7 +204,7 @@ export default function WhyChooseCarousel() {
                       <span className={`mr-1.5 md:mr-2 font-bold text-base md:text-lg ${colors.check}`}>
                         ✓
                       </span>
-                      <span className="text-xs md:text-sm text-foreground leading-relaxed">
+                      <span className="text-sm text-foreground leading-relaxed">
                         {bullet}
                       </span>
                     </li>
