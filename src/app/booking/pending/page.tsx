@@ -271,6 +271,17 @@ function PendingContent() {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
       <div className="max-w-3xl mx-auto">
+        {/* Success Notification */}
+        <div className="mb-8 animate-fade-in-up">
+          <Alert className="border-2 border-ui-success bg-gradient-to-br from-ui-success/10 to-ui-success/5 shadow-premium">
+            <CheckCircle2 className="h-5 w-5 text-ui-success" />
+            <AlertDescription className="text-ui-success font-medium">
+              <strong>Booking Request Initiated!</strong> Your request has been sent to {status.selectionsCount} guide
+              {status.selectionsCount > 1 ? 's' : ''}. Check your email for further details and updates.
+            </AlertDescription>
+          </Alert>
+        </div>
+
         {/* Waiting Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-ui-blue-primary/20 rounded-full mb-4">
@@ -280,8 +291,7 @@ function PendingContent() {
             Waiting for Response
           </h1>
           <p className="text-lg text-gray-600">
-            Your request has been sent to {status.selectionsCount} guide
-            {status.selectionsCount > 1 ? 's' : ''}
+            We'll notify you as soon as a guide accepts
           </p>
         </div>
 
