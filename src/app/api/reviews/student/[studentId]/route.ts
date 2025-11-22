@@ -26,11 +26,11 @@ export async function GET(
         'Cache-Control': `public, s-maxage=${CACHE_TTL.REVIEWS}, stale-while-revalidate=1200`,
       },
     })
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching reviews:', error)
     return NextResponse.json({
       success: false,
-      error: error.message,
+      error: error instanceof Error ? error.message : "An error occurred",
     }, { status: 500 })
   }
 }

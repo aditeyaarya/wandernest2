@@ -1,5 +1,6 @@
 import 'server-only'
 import nodemailer from 'nodemailer'
+import type { Student, TouristRequest } from '@prisma/client'
 
 // Helper function to get base URL - requires environment variable
 function getBaseUrl(): string {
@@ -125,8 +126,8 @@ export async function sendBookingConfirmation(
 }
 
 export async function sendStudentRequestNotification(
-  student: any,
-  touristRequest: any
+  student: Student,
+  touristRequest: TouristRequest
 ): Promise<void> {
   // Mock mode - log only in development
   if (MOCK_EMAIL_MODE) {
@@ -307,8 +308,8 @@ export async function sendStudentRequestNotification(
 
 export async function sendTouristAcceptanceNotification(
   touristEmail: string,
-  student: any,
-  touristRequest: any
+  student: Student,
+  touristRequest: TouristRequest
 ): Promise<void> {
   // Mock mode - log only in development
   if (MOCK_EMAIL_MODE) {

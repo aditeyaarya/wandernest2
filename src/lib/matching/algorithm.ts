@@ -21,6 +21,7 @@ interface StudentWithScore {
     endTime: string
   }[]
   score: number
+  availability?: StudentAvailability[]
 }
 
 interface MatchingFilters {
@@ -126,7 +127,7 @@ export async function findMatches(request: TouristRequest): Promise<StudentWithS
  * - Reliability: 20 points
  * - Interest overlap: 20 points
  */
-function calculateScore(student: any, request: TouristRequest): number {
+function calculateScore(student: Student & { availability?: StudentAvailability[] }, request: TouristRequest): number {
   let score = 0
 
   // 1. Availability match (40 points)
@@ -162,7 +163,7 @@ function calculateScore(student: any, request: TouristRequest): number {
 /**
  * Check if guide is available for requested dates
  */
-function checkAvailability(student: any, requestedDates: any): boolean {
+function checkAvailability(student: { availability?: StudentAvailability[] }, requestedDates: Prisma.JsonValue): boolean {
   try {
     if (!student.availability || student.availability.length === 0) {
       return false
@@ -195,7 +196,7 @@ function checkAvailability(student: any, requestedDates: any): boolean {
     // Check if guide is available for all requested dates
     return checkDates.every(date => {
       const dayOfWeek = date.getDay()
-      return student.availability.some((avail: any) => avail.dayOfWeek === dayOfWeek)
+      return student.availability?.some((avail: StudentAvailability) => avail.dayOfWeek === dayOfWeek) ?? false
     })
   } catch (error) {
     console.error('Error checking availability:', error)

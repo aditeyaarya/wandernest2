@@ -33,11 +33,11 @@ export async function GET(
         'Cache-Control': `public, s-maxage=${CACHE_TTL.STUDENT_METRICS}, stale-while-revalidate=3600`,
       },
     })
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching metrics:', error)
     return NextResponse.json({
       success: false,
-      error: error.message,
+      error: error instanceof Error ? error.message : "An error occurred",
     }, { status: 500 })
   }
 }

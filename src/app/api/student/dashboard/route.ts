@@ -129,7 +129,7 @@ async function getStudentDashboard(req: NextRequest) {
 
     // Calculate stats
     const totalEarnings = acceptedBookings.reduce(
-      (sum, booking) => sum + (booking.pricePaid || 0),
+      (sum: number, booking: { pricePaid: number | null }) => sum + (booking.pricePaid || 0),
       0
     )
 
@@ -195,7 +195,7 @@ async function getStudentDashboard(req: NextRequest) {
         budget: request.request.budget,
         expiresAt: request.request.expiresAt,
       },
-      acceptedBookings: acceptedBookings.map((booking) => ({
+      acceptedBookings: acceptedBookings.map((booking: { id: string; requestId: string; status: string; pricePaid: number | null; acceptedAt: Date | null; request: { id: string; city: string; dates: unknown; numberOfGuests: number; groupType: string; serviceType: string; interests: string[]; preferredTime: string; tripNotes: string | null; email: string; phone: string | null; whatsapp: string | null; contactMethod: string | null; status: string } }) => ({
         id: booking.id,
         requestId: booking.requestId,
         status: booking.status,
@@ -203,7 +203,7 @@ async function getStudentDashboard(req: NextRequest) {
         acceptedAt: booking.acceptedAt,
         request: booking.request,
       })),
-      pendingRequests: pendingRequests.map((request) => ({
+      pendingRequests: pendingRequests.map((request: { id: string; requestId: string; status: string; createdAt: Date; request: { id: string; city: string; dates: unknown; numberOfGuests: number; groupType: string; serviceType: string; interests: string[]; preferredTime: string; tripNotes: string | null; expiresAt: Date; budget: number | null } }) => ({
         id: request.id,
         requestId: request.requestId,
         status: request.status,
