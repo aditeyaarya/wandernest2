@@ -1,8 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { Globe, Menu, X, User, LogOut, LayoutDashboard, ChevronLeft } from 'lucide-react'
+import { Menu, X, User, LogOut, LayoutDashboard, ChevronLeft } from 'lucide-react'
 import { useSession, signOut } from 'next-auth/react'
 import { useState, useEffect } from 'react'
 
@@ -38,12 +39,28 @@ export default function Navigation({ variant = 'default', showBackButton = false
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2.5 group">
-            <div className="p-1 rounded-lg bg-white/10 text-white backdrop-blur-sm border border-white/20 transition-all duration-200 hover:bg-white/20 hover:scale-105 active:scale-95">
-              <Globe className="w-5 h-5" />
-            </div>
-            <span className="text-xl md:text-2xl font-sans font-semibold text-white tracking-tight transition-opacity duration-200 hover:opacity-90">
-              WanderNest
-            </span>
+            <motion.div
+              className="relative w-10 h-10 rounded-lg overflow-hidden bg-white/5 backdrop-blur-sm border border-white/20"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            >
+              <Image
+                src="/images/logo-large.png"
+                alt="WanderNest Logo"
+                fill
+                className="object-cover"
+                sizes="40px"
+                priority
+              />
+            </motion.div>
+            <motion.span
+              className="text-xl md:text-2xl font-sans font-semibold text-white tracking-tight"
+              whileHover={{ opacity: 0.9 }}
+              transition={{ duration: 0.2 }}
+            >
+              TourWiseCo
+            </motion.span>
           </Link>
 
           {/* Desktop Navigation */}
