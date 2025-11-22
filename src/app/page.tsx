@@ -7,7 +7,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import TouristCTA from '@/components/cta/TouristCTA'
 import StudentCTA from '@/components/cta/StudentCTA'
-import WhyChooseCarousel from '@/components/WhyChooseCarousel'
+import ExperienceRevealSection from '@/components/ExperienceRevealSection'
 import { getWebsiteStructuredData, getOrganizationStructuredData } from '@/lib/structuredData'
 import { motion } from 'framer-motion'
 
@@ -256,7 +256,7 @@ export default function MainLanding() {
               </Link>
             </motion.div>
 
-            <WhyChooseCarousel />
+            <ExperienceRevealSection />
           </div>
         </main>
 
