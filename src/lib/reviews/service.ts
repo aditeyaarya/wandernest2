@@ -90,11 +90,11 @@ export async function updateStudentMetrics(
     allReviews.reduce((acc: number, r: any) => acc + r.rating, 0) / allReviews.length
 
   // Calculate completion rate (percentage of non-no-show experiences)
-  const completedExperiences = allReviews.filter((r) => !r.noShow).length
+  const completedExperiences = allReviews.filter((r: any) => !r.noShow).length
   const completionRate = (completedExperiences / allReviews.length) * 100
 
   // Calculate no-show count
-  const noShowCount = allReviews.filter((r) => r.noShow).length
+  const noShowCount = allReviews.filter((r: any) => r.noShow).length
 
   // Determine reliability badge
   let badge: ReliabilityBadge = 'bronze'
