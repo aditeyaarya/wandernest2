@@ -220,7 +220,28 @@ async function submitOnboarding(req: NextRequest) {
           date: exception.date,
           reason: exception.reason,
         })),
-      })
+      });
+    }
+
+    return NextResponse.json({
+      success: true,
+      studentId: student.id,
+      profileCompleteness: completeness,
+      message: 'Onboarding submitted successfully. Your profile is under review.',
+    });
+  } catch (error) {
+    console.error('Onboarding error:', error);
+
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: 'Invalid data provided', details: error.errors },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json(
+      { error: 'Failed to submit onboarding. Please try again.' },
+      { status: 500 }
     );
   }
 

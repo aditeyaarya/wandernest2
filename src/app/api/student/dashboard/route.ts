@@ -1,9 +1,11 @@
-// Force dynamic rendering for Vercel
+// Use ISR with 3-minute revalidation for dashboard
 export const dynamic = 'force-dynamic'
+export const revalidate = 180 // 3 minutes
 
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { withErrorHandler, withDatabaseRetry, AppError } from '@/lib/error-handler'
+import { cache } from '@/lib/cache'
+import { CACHE_TTL } from '@/lib/constants'
 
 async function getStudentDashboard(req: NextRequest) {
   // Get student identifier from query parameters (email or ID)
@@ -15,50 +17,115 @@ async function getStudentDashboard(req: NextRequest) {
     throw new AppError(400, 'Student email or ID required', 'MISSING_IDENTIFIER')
   }
 
-  // Get student with all related data with retry logic
-  const student = await withDatabaseRetry(async () =>
-    prisma.student.findFirst({
+    // Get student basic info first
+    const student = await prisma.student.findFirst({
       where: studentEmail ? { email: studentEmail } : { id: studentId! },
-      include: {
-        requestSelections: {
-          include: {
-            request: true,
-          },
-          orderBy: {
-            createdAt: 'desc',
-          },
-        },
-        reviews: {
-          include: {
-            request: true,
-          },
-          orderBy: {
-            createdAt: 'desc',
-          },
-        },
-        availability: {
-          orderBy: {
-            dayOfWeek: 'asc',
-          },
-        },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        city: true,
+        institute: true,
+        averageRating: true,
+        tripsHosted: true,
+        status: true,
+        reliabilityBadge: true,
+        languages: true,
+        interests: true,
       },
-    })
-  )
+      { ttl: CACHE_TTL.DASHBOARD }
+    )
 
-  if (!student) {
-    throw new AppError(404, 'Student not found', 'STUDENT_NOT_FOUND')
-  }
+    if (!dashboardData) {
+      return NextResponse.json(
+        { error: 'Student not found' },
+        { status: 404 }
+      )
+    }
 
-    // Separate bookings by status
-    const acceptedBookings = student.requestSelections.filter(
-      (sel) => sel.status === 'accepted'
-    )
-    const pendingRequests = student.requestSelections.filter(
-      (sel) => sel.status === 'pending'
-    )
-    const rejectedBookings = student.requestSelections.filter(
-      (sel) => sel.status === 'rejected'
-    )
+    // Fetch bookings by status in parallel (filter at database level)
+    const [acceptedBookings, pendingRequests, reviews, availability] = await Promise.all([
+      prisma.requestSelection.findMany({
+        where: {
+          studentId: student.id,
+          status: 'accepted',
+        },
+        include: {
+          request: {
+            select: {
+              id: true,
+              city: true,
+              dates: true,
+              numberOfGuests: true,
+              groupType: true,
+              serviceType: true,
+              interests: true,
+              preferredTime: true,
+              tripNotes: true,
+              email: true,
+              phone: true,
+              whatsapp: true,
+              contactMethod: true,
+              status: true,
+            },
+          },
+        },
+        orderBy: {
+          createdAt: 'desc',
+        },
+      }),
+      prisma.requestSelection.findMany({
+        where: {
+          studentId: student.id,
+          status: 'pending',
+        },
+        include: {
+          request: {
+            select: {
+              id: true,
+              city: true,
+              dates: true,
+              numberOfGuests: true,
+              groupType: true,
+              serviceType: true,
+              interests: true,
+              preferredTime: true,
+              tripNotes: true,
+              budget: true,
+              expiresAt: true,
+            },
+          },
+        },
+        orderBy: {
+          createdAt: 'desc',
+        },
+      }),
+      prisma.review.findMany({
+        where: {
+          studentId: student.id,
+        },
+        include: {
+          request: {
+            select: {
+              city: true,
+              dates: true,
+              serviceType: true,
+            },
+          },
+        },
+        orderBy: {
+          createdAt: 'desc',
+        },
+      }),
+      prisma.studentAvailability.findMany({
+        where: {
+          studentId: student.id,
+        },
+        orderBy: {
+          dayOfWeek: 'asc',
+        },
+      }),
+    ])
 
     // Calculate stats
     const totalEarnings = acceptedBookings.reduce(
@@ -128,21 +195,42 @@ async function getStudentDashboard(req: NextRequest) {
         budget: request.request.budget,
         expiresAt: request.request.expiresAt,
       },
-    })),
-    reviews: student.reviews.map((review) => ({
-      id: review.id,
-      rating: review.rating,
-      comment: review.comment,
-      createdAt: review.createdAt,
-      wasNoShow: review.wasNoShow,
-      request: {
-        city: review.request.city,
-        dates: review.request.dates,
-        serviceType: review.request.serviceType,
-      },
-    })),
-    availability: student.availability,
-  })
+      acceptedBookings: acceptedBookings.map((booking) => ({
+        id: booking.id,
+        requestId: booking.requestId,
+        status: booking.status,
+        pricePaid: booking.pricePaid,
+        acceptedAt: booking.acceptedAt,
+        request: booking.request,
+      })),
+      pendingRequests: pendingRequests.map((request) => ({
+        id: request.id,
+        requestId: request.requestId,
+        status: request.status,
+        createdAt: request.createdAt,
+        request: request.request,
+      })),
+      reviews: reviews.map((review) => ({
+        id: review.id,
+        rating: review.rating,
+        text: review.text,
+        createdAt: review.createdAt,
+        noShow: review.noShow,
+        request: {
+          city: review.request.city,
+          dates: review.request.dates,
+          serviceType: review.request.serviceType,
+        },
+      })),
+      availability: availability,
+    })
+  } catch (error) {
+    console.error('Error fetching student dashboard:', error)
+    return NextResponse.json(
+      { error: 'Failed to fetch dashboard data' },
+      { status: 500 }
+    )
+  }
 }
 
 export const GET = withErrorHandler(getStudentDashboard, 'GET /api/student/dashboard');

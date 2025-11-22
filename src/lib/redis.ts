@@ -33,11 +33,15 @@ function getRedisClient(): Redis | null {
     })
 
     client.on('error', (err) => {
-      console.error('Redis connection error:', err.message)
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Redis connection error:', err.message)
+      }
     })
 
     client.on('connect', () => {
-      console.log('Redis connected successfully')
+      if (process.env.NODE_ENV === 'development') {
+        console.log('Redis connected successfully')
+      }
     })
 
     // Cache the client globally for reuse across serverless invocations
@@ -45,9 +49,14 @@ function getRedisClient(): Redis | null {
 
     return client
   } catch (error) {
-    console.error('Failed to create Redis client:', error)
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Failed to create Redis client:', error)
+    }
     globalForRedis.redis = null
     return null
   }
 }
+
+// Export the Redis client
+export const redis = getRedisClient()
 
