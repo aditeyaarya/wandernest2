@@ -1,8 +1,11 @@
-// Force dynamic rendering for Vercel
+// Use ISR with 3-minute revalidation for dashboard
 export const dynamic = 'force-dynamic'
+export const revalidate = 180 // 3 minutes
 
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { cache } from '@/lib/cache'
+import { CACHE_TTL } from '@/lib/constants'
 
 export async function GET(req: NextRequest) {
   try {
@@ -34,9 +37,10 @@ export async function GET(req: NextRequest) {
         languages: true,
         interests: true,
       },
-    })
+      { ttl: CACHE_TTL.DASHBOARD }
+    )
 
-    if (!student) {
+    if (!dashboardData) {
       return NextResponse.json(
         { error: 'Student not found' },
         { status: 404 }

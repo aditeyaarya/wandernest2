@@ -34,29 +34,49 @@ interface MatchingFilters {
 }
 
 /**
+ * Get all approved students in a city (cached for 15 minutes)
+ */
+async function getApprovedStudentsByCity(city: string) {
+  return cache.cached(
+    `students:approved:${city}`,
+    async () => {
+      return prisma.student.findMany({
+        where: {
+          city,
+          status: 'APPROVED',
+        },
+        include: {
+          availability: true,
+        },
+      })
+    },
+    { ttl: CACHE_TTL.APPROVED_STUDENTS }
+  )
+}
+
+/**
  * Find matching guides for a tourist request
  * Returns top 4 matches based on scoring algorithm
  */
 export async function findMatches(request: TouristRequest): Promise<StudentWithScore[]> {
-  // Build the filtering criteria
-  const filters: MatchingFilters = {
-    city: request.city,
-    status: 'APPROVED',
-  }
+  // Fetch all approved students in the city (cached)
+  const allCandidates = await getApprovedStudentsByCity(request.city)
 
-  // Optional filters
+  // Filter candidates based on preferences (in-memory filtering)
+  let candidates = allCandidates
+
   if (request.preferredNationality) {
-    filters.nationality = request.preferredNationality
+    candidates = candidates.filter(s => s.nationality === request.preferredNationality)
   }
 
   if (request.preferredLanguages && request.preferredLanguages.length > 0) {
-    filters.languages = {
-      hasSome: request.preferredLanguages
-    }
+    candidates = candidates.filter(s =>
+      request.preferredLanguages!.some(lang => s.languages.includes(lang))
+    )
   }
 
   if (request.preferredGender && request.preferredGender !== 'no_preference') {
-    filters.gender = request.preferredGender
+    candidates = candidates.filter(s => s.gender === request.preferredGender)
   }
 
   // Fetch candidate guides with only necessary fields

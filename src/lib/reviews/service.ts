@@ -2,6 +2,8 @@ import 'server-only'
 import { prisma } from '@/lib/prisma'
 import { CreateReviewInput, ReviewMetrics, ReliabilityBadge } from './types'
 import { isValidAttribute } from './constants'
+import { cache, cacheInvalidation } from '@/lib/cache'
+import { CACHE_TTL } from '@/lib/constants'
 
 /**
  * Maximum allowed characters for review text
@@ -54,6 +56,9 @@ export async function createReview(input: CreateReviewInput) {
 
   // Update student metrics
   await updateStudentMetrics(input.studentId, review)
+
+  // Invalidate student caches
+  await cacheInvalidation.student(input.studentId)
 
   return review
 }
@@ -119,26 +124,32 @@ export async function updateStudentMetrics(
 }
 
 /**
- * Get all reviews for a student
+ * Get all reviews for a student (cached for 10 minutes)
  */
 export async function getStudentReviews(studentId: string) {
-  return prisma.review.findMany({
-    where: { studentId },
-    include: {
-      request: {
-        select: {
-          city: true,
-          dates: true,
-          groupType: true,
+  return cache.cached(
+    `student:${studentId}:reviews`,
+    async () => {
+      return prisma.review.findMany({
+        where: { studentId },
+        include: {
+          request: {
+            select: {
+              city: true,
+              dates: true,
+              groupType: true,
+            },
+          },
         },
-      },
+        orderBy: { createdAt: 'desc' },
+      })
     },
-    orderBy: { createdAt: 'desc' },
-  })
+    { ttl: CACHE_TTL.REVIEWS }
+  )
 }
 
 /**
- * Get a student's current metrics
+ * Get a student's current metrics (cached for 30 minutes)
  */
 export async function getStudentMetrics(studentId: string): Promise<ReviewMetrics | null> {
   const student = await prisma.student.findUnique({
