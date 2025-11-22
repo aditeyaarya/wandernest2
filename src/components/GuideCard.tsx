@@ -2,6 +2,7 @@
 'use client'
 
 import { AnonymizedGuide } from '@/types'
+import { motion } from 'framer-motion'
 
 interface GuideCardProps {
   guide: AnonymizedGuide
@@ -51,7 +52,7 @@ export default function GuideCard({ guide, isSelected, onSelect }: GuideCardProp
   }
 
   return (
-    <div
+    <motion.div
       className={`
         relative border rounded-xl p-6 cursor-pointer transition-all glass-card hover-lift
         ${isSelected
@@ -60,9 +61,28 @@ export default function GuideCard({ guide, isSelected, onSelect }: GuideCardProp
         }
       `}
       onClick={() => onSelect(guide.id)}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{
+        y: -6,
+        transition: {
+          type: "spring",
+          stiffness: 300,
+          damping: 20
+        }
+      }}
+      whileTap={{ scale: 0.98 }}
+      transition={{
+        duration: 0.3,
+        ease: [0.4, 0, 0.2, 1]
+      }}
     >
       {/* Selection Checkbox */}
-      <div className="absolute top-4 right-4">
+      <motion.div
+        className="absolute top-4 right-4"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
         <input
           type="checkbox"
           checked={isSelected}
@@ -70,7 +90,7 @@ export default function GuideCard({ guide, isSelected, onSelect }: GuideCardProp
           className="w-5 h-5 text-primary rounded-md focus:ring-primary"
           onClick={(e) => e.stopPropagation()}
         />
-      </div>
+      </motion.div>
 
       {/* Anonymous ID */}
       <div className="mb-4">
@@ -90,12 +110,12 @@ export default function GuideCard({ guide, isSelected, onSelect }: GuideCardProp
         <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Languages</p>
         <div className="flex flex-wrap gap-2 mt-1">
           {guide.languages.map((lang, index) => (
-            <span
+            <motion.span
               key={index}
               className="px-2 py-1 bg-primary/10 text-primary text-sm rounded-md border border-primary/20"
             >
               {lang}
-            </span>
+            </motion.span>
           ))}
         </div>
       </div>
@@ -121,7 +141,12 @@ export default function GuideCard({ guide, isSelected, onSelect }: GuideCardProp
 
       {/* Badge */}
       {guide.badge && guide.badge !== 'none' && (
-        <div className="mt-4">
+        <motion.div
+          className="mt-4"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
           <span
             className={`
               inline-block px-3 py-1.5 rounded-full text-xs font-semibold
@@ -130,7 +155,7 @@ export default function GuideCard({ guide, isSelected, onSelect }: GuideCardProp
           >
             {guide.badge.charAt(0).toUpperCase() + guide.badge.slice(1)} Badge
           </span>
-        </div>
+        </motion.div>
       )}
 
       {/* Score (for debugging - can be removed in production) */}
@@ -139,6 +164,21 @@ export default function GuideCard({ guide, isSelected, onSelect }: GuideCardProp
           Match Score: {guide.score}
         </div>
       )}
-    </div>
+
+      {/* Selection indicator overlay */}
+      {isSelected && (
+        <motion.div
+          className="absolute inset-0 rounded-lg border-2 border-primary pointer-events-none"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 25
+          }}
+        />
+      )}
+    </motion.div>
   )
 }

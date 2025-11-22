@@ -4,6 +4,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface Feature {
   title: string
@@ -61,38 +62,45 @@ const accentColors = {
     check: 'text-blue-600 dark:text-blue-400',
     dot: 'bg-blue-600',
     dotActive: 'bg-blue-500',
+    dotGlow: 'shadow-[0_0_12px_rgba(59,130,246,0.6)]',
   },
   purple: {
     check: 'text-purple-600 dark:text-purple-400',
     dot: 'bg-purple-600',
     dotActive: 'bg-purple-500',
+    dotGlow: 'shadow-[0_0_12px_rgba(168,85,247,0.6)]',
   },
   green: {
     check: 'text-green-600 dark:text-green-400',
     dot: 'bg-green-600',
     dotActive: 'bg-green-500',
+    dotGlow: 'shadow-[0_0_12px_rgba(34,197,94,0.6)]',
   },
 }
 
 export default function WhyChooseCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [direction, setDirection] = useState(0) // -1 for left, 1 for right
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
 
-  const goToSlide = useCallback((index: number) => {
+  const goToSlide = useCallback((index: number, dir: number) => {
     if (isTransitioning) return
     setIsTransitioning(true)
+    setDirection(dir)
     setCurrentIndex(index)
-    setTimeout(() => setIsTransitioning(false), 500)
+    setTimeout(() => setIsTransitioning(false), 600)
   }, [isTransitioning])
 
   const nextSlide = useCallback(() => {
-    goToSlide((currentIndex + 1) % features.length)
+    const newIndex = (currentIndex + 1) % features.length
+    goToSlide(newIndex, 1)
   }, [currentIndex, goToSlide])
 
   const prevSlide = useCallback(() => {
-    goToSlide((currentIndex - 1 + features.length) % features.length)
+    const newIndex = (currentIndex - 1 + features.length) % features.length
+    goToSlide(newIndex, -1)
   }, [currentIndex, goToSlide])
 
   // Handle touch events for mobile swipe
@@ -136,6 +144,40 @@ export default function WhyChooseCarousel() {
   const currentFeature = features[currentIndex]
   const colors = accentColors[currentFeature.accentColor as keyof typeof accentColors]
 
+  // Slide animation variants
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+    }),
+  }
+
+  const contentVariants = {
+    enter: {
+      opacity: 0,
+      y: 20,
+      scale: 0.95,
+    },
+    center: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      scale: 0.95,
+    },
+  }
+
   return (
     <div className="pt-12 space-y-6 animate-fade-in-up delay-300">
       {/* Section Title */}
@@ -157,6 +199,7 @@ export default function WhyChooseCarousel() {
           onTouchEnd={handleTouchEnd}
           role="region"
           aria-label="Why choose WanderNest carousel"
+          aria-live="polite"
         >
           {/* Main Image Background */}
           <div className="relative w-full h-[400px] md:h-[450px] lg:h-[500px]">
@@ -168,8 +211,8 @@ export default function WhyChooseCarousel() {
                 }`}
               >
                 <Image
-                  src={feature.image}
-                  alt={feature.imageAlt}
+                  src={currentFeature.image}
+                  alt={currentFeature.imageAlt}
                   fill
                   loading={index === 0 ? 'eager' : 'lazy'}
                   quality={85}
@@ -232,7 +275,7 @@ export default function WhyChooseCarousel() {
               <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-gray-900 dark:text-white" />
             </button>
 
-            <button
+            <motion.button
               onClick={nextSlide}
               disabled={isTransitioning}
               className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white border border-white/40 dark:border-gray-700/40"
@@ -247,16 +290,20 @@ export default function WhyChooseCarousel() {
         <div className="flex justify-center items-center gap-2 md:gap-3 mt-5 md:mt-6">
           {features.map((feature, index) => {
             const dotColors = accentColors[feature.accentColor as keyof typeof accentColors]
+            const isActive = index === currentIndex
             return (
-              <button
+              <motion.button
                 key={feature.title}
-                onClick={() => goToSlide(index)}
+                onClick={() => {
+                  const dir = index > currentIndex ? 1 : -1
+                  goToSlide(index, dir)
+                }}
                 disabled={isTransitioning}
                 className={`group transition-all duration-300 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded-full ${
                   index === currentIndex ? 'w-10 md:w-12' : 'w-2.5 md:w-3'
                 }`}
                 aria-label={`Go to ${feature.title}`}
-                aria-current={index === currentIndex ? 'true' : 'false'}
+                aria-current={isActive ? 'true' : 'false'}
               >
                 <div
                   className={`h-2.5 md:h-3 rounded-full transition-all duration-300 ${
@@ -265,7 +312,7 @@ export default function WhyChooseCarousel() {
                       : 'bg-white/70 hover:bg-white/90'
                   }`}
                 />
-              </button>
+              </motion.button>
             )
           })}
         </div>
