@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { OnboardingFormData } from './OnboardingWizard';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import { getUniversityOptionsByCity, type UniversityOption } from '@/config/universityOptions';
 
 interface BasicProfileStepProps {
   formData: OnboardingFormData;
@@ -14,11 +15,6 @@ interface BasicProfileStepProps {
   errors: Record<string, string>;
   cities: string[];
 }
-
-const CAMPUSES = {
-  Paris: ['Sorbonne University', 'Sciences Po', 'HEC Paris', 'ESSEC', 'Panthéon-Sorbonne', 'Paris-Saclay', 'Other'],
-  London: ['UCL', 'Imperial College', 'LSE', 'King\'s College', 'Queen Mary', 'City University', 'Other'],
-};
 
 const YEAR_OF_STUDY_OPTIONS = [
   '1st year Undergrad',
@@ -57,7 +53,7 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
     }
   };
 
-  const campusOptions = formData.city ? (CAMPUSES[formData.city as keyof typeof CAMPUSES] || []) : [];
+  const campusOptions: UniversityOption[] = formData.city ? getUniversityOptionsByCity(formData.city) : [];
 
   return (
     <div className="space-y-6">
@@ -212,10 +208,14 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
               Campus <span className="text-[hsl(var(--ui-error))]">*</span>
             </Label>
             <Select value={formData.campus} onValueChange={(value) => {
+              // Find the selected option to get its label
+              const selectedOption = campusOptions.find(opt => opt.value === value);
+              const label = selectedOption?.label || value;
+
               updateFormData({
                 campus: value,
                 // Sync institute field with campus selection (unless "Other" is selected)
-                institute: value !== 'Other' ? value : formData.institute
+                institute: value !== 'other' ? label : formData.institute
               });
             }}>
               <SelectTrigger className={errors.campus ? 'border-[hsl(var(--ui-error))]' : ''}>
@@ -223,13 +223,13 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
               </SelectTrigger>
               <SelectContent>
                 {campusOptions.map((campus) => (
-                  <SelectItem key={campus} value={campus}>
-                    {campus}
+                  <SelectItem key={campus.value} value={campus.value}>
+                    {campus.label}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
-            {formData.campus === 'Other' && (
+            {formData.campus === 'other' && (
               <Input
                 value={formData.institute}
                 onChange={(e) => updateFormData({ institute: e.target.value })}
@@ -255,12 +255,17 @@ export function BasicProfileStep({ formData, updateFormData, errors, cities }: B
           </Label>
           <Input
             id="institute"
-            value={formData.campus === 'Other' ? formData.institute : formData.campus}
+            value={formData.institute}
             onChange={(e) => updateFormData({ institute: e.target.value })}
             placeholder="e.g., Sorbonne University, Imperial College London"
             className={errors.institute ? 'border-[hsl(var(--ui-error))]' : ''}
-            disabled={formData.campus !== 'Other' && !!formData.campus}
+            disabled={formData.campus !== 'other' && !!formData.campus}
           />
+          <p className="text-xs text-gray-500">
+            {formData.campus && formData.campus !== 'other'
+              ? 'Auto-filled from your campus selection'
+              : 'This will be used in your profile'}
+          </p>
           {errors.institute && <p className="text-sm text-[hsl(var(--ui-error))]">{errors.institute}</p>}
         </div>
 
