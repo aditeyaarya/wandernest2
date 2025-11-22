@@ -9,14 +9,21 @@ import TouristCTA from '@/components/cta/TouristCTA'
 import StudentCTA from '@/components/cta/StudentCTA'
 import WhyChooseCarousel from '@/components/WhyChooseCarousel'
 import { getWebsiteStructuredData, getOrganizationStructuredData } from '@/lib/structuredData'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function MainLanding() {
   const structuredData = getWebsiteStructuredData()
   const organizationData = getOrganizationStructuredData()
+  const heroRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start']
+  })
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150])
 
   return (
-    <div className="min-h-screen flex flex-col relative overflow-hidden">
+    <div ref={heroRef} className="min-h-screen flex flex-col relative overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -25,7 +32,7 @@ export default function MainLanding() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
       />
-      <div className="absolute inset-0">
+      <motion.div className="absolute inset-0" style={{ y }}>
         <Image
           src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&q=80"
           alt="Beautiful Paris cityscape with Eiffel Tower"
@@ -37,7 +44,7 @@ export default function MainLanding() {
         />
         <div className="absolute inset-0 bg-black/30 backdrop-blur-[4px]" />
         <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-accent/15 via-ui-purple-accent/10 to-ui-purple-primary/15" />
-      </div>
+      </motion.div>
       <div className="absolute inset-0 pattern-dots opacity-20" />
 
       <div className="relative z-10 flex flex-col min-h-screen">
