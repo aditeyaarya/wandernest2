@@ -32,30 +32,30 @@ export default function TouristLanding() {
         {/* Header - Dynamically imported to reduce initial bundle */}
         <DynamicNavigation variant="tourist" />
 
-        {/* Hero Section */}
-        <main className="flex-1 container mx-auto px-4 py-16">
-          <div className="max-w-5xl mx-auto space-y-16">
-            <div className="text-center space-y-8 animate-slide-up-fade">
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight text-white text-shadow-lg">
+        {/* Hero Section - Optimized for mobile: reduced padding */}
+        <main className="flex-1 container mx-auto px-4 py-8 md:py-16">
+          <div className="max-w-5xl mx-auto space-y-10 md:space-y-16">
+            <div className="text-center space-y-6 md:space-y-8 animate-slide-up-fade">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight text-white text-shadow-lg">
                 Experience{' '}
-                <span className="text-gradient-vibrant animate-gradient-shift inline-block bg-white/10 px-4 py-2 rounded-2xl">
+                <span className="text-gradient-vibrant animate-gradient-shift inline-block bg-white/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl">
                   Authentic Travel
                 </span>
                 <br />
                 with Local Student Guides
               </h1>
 
-              <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed font-medium text-shadow">
+              <p className="text-lg sm:text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed font-medium text-shadow">
                 Connect with verified university students who will show you their city
                 through a local&apos;s eyes. Get personalized recommendations and authentic
                 experiences.
               </p>
 
-              <p className="text-sm md:text-base text-white/90 max-w-2xl mx-auto leading-relaxed text-shadow-sm">
+              <p className="text-sm sm:text-sm md:text-base text-white/90 max-w-2xl mx-auto leading-relaxed text-shadow-sm">
                 Choose a guide from your home country for added comfort, or explore connections with local students—it&apos;s entirely up to you.
               </p>
 
-              <div className="flex justify-center gap-4 pt-4 animate-fade-in-up delay-300">
+              <div className="flex justify-center gap-3 sm:gap-4 pt-4 animate-fade-in-up delay-300">
                 <Link href="/booking">
                   <Button size="lg" className="text-lg px-10 py-7 gradient-ocean hover:shadow-glow-blue shadow-premium text-white font-semibold group hover-lift">
                     Start Your Adventure
