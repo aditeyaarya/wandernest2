@@ -150,10 +150,10 @@ export default function StudentLandingPage() {
                 </div>
 
                 <div className="text-center space-y-5 group hover-lift">
-                  <div className="w-24 h-24 gradient-blue-purple rounded-2xl flex items-center justify-center mx-auto text-4xl font-bold text-white shadow-premium group-hover:shadow-soft group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 border border-black">
+                  <div className="w-24 h-24 gradient-vibrant rounded-2xl flex items-center justify-center mx-auto text-4xl font-bold text-white shadow-premium group-hover:shadow-glow-purple group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300 border border-black">
                     3
                   </div>
-                  <h3 className="font-bold text-xl text-white group-hover:text-ui-success transition-colors">Create Profile</h3>
+                  <h3 className="font-bold text-xl text-white group-hover:text-ui-purple-primary transition-colors">Create Profile</h3>
                   <p className="text-base text-white/90 leading-relaxed font-medium px-2">
                     Describe your ideal day-out and share your expertise
                   </p>
