@@ -7,6 +7,8 @@ import Navigation from '@/components/Navigation'
 // import { useSession, signIn } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { AlertTriangle } from 'lucide-react'
+import FAQAccordion from '@/components/shared/FAQAccordion'
+import { paymentFAQs } from '@/lib/faq/data'
 
 // AUTH DISABLED FOR DEVELOPMENT - DATABASE_URL not configured
 export default function BookingPage() {
