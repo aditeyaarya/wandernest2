@@ -159,8 +159,8 @@ export default function MainLanding() {
                 >
                   <div className="relative w-full h-full">
                     <Image
-                      src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80"
-                      alt="University students collaborating and learning together"
+                      src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80"
+                      alt="London cityscape with iconic Tower Bridge at sunset"
                       fill
                       loading="lazy"
                       quality={85}
