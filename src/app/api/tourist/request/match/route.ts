@@ -3,8 +3,28 @@ export const dynamic = 'force-dynamic'
 
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
-import { getStudentsByCity } from '@/lib/demo/dummyStudents'
-import { findMatchingStudents, calculateSuggestedPrice, TouristRequest } from '@/lib/demo/matchingAlgorithm'
+
+// Helper function to calculate suggested price range
+function calculateSuggestedPrice(city: string, serviceType: string): { min: number; max: number } {
+  const cityRates: Record<string, { min: number; max: number }> = {
+    paris: { min: 25, max: 50 },
+    london: { min: 30, max: 60 },
+    barcelona: { min: 20, max: 40 },
+    berlin: { min: 20, max: 45 },
+  }
+
+  const baseRate = cityRates[city.toLowerCase()] || { min: 20, max: 40 }
+
+  // Adjust for service type
+  if (serviceType === 'guided_experience') {
+    return {
+      min: Math.round(baseRate.min * 1.2),
+      max: Math.round(baseRate.max * 1.2),
+    }
+  }
+
+  return baseRate
+}
 
 // Access the same in-memory storage as the create endpoint
 declare global {
@@ -196,54 +216,6 @@ export async function POST(req: NextRequest) {
       interests: touristRequest.interests,
       dates: touristRequest.dates as { start: string; end?: string },
       preferredTime: touristRequest.preferredTime,
-    }
-
-    // If database is not available, use dummy students
-    if (!prisma) {
-      console.log(`[DEMO MODE] Using dummy students for matching in ${criteria.city}`);
-
-      const studentsInCity = getStudentsByCity(criteria.city);
-
-      if (studentsInCity.length === 0) {
-        return NextResponse.json({
-          success: true,
-          matches: [],
-          message: `No students available in ${criteria.city}`,
-        });
-      }
-
-      // Convert criteria to TouristRequest format for matching algorithm
-      const demoRequest: TouristRequest = {
-        city: criteria.city,
-        dates: criteria.dates,
-        preferredTime: criteria.preferredTime as any,
-        numberOfGuests: touristRequest.numberOfGuests || 1,
-        groupType: touristRequest.groupType || '',
-        accessibilityNeeds: touristRequest.accessibilityNeeds,
-        preferredNationality: criteria.preferredNationality,
-        preferredLanguages: criteria.preferredLanguages,
-        preferredGender: criteria.preferredGender as any,
-        serviceType: criteria.serviceType as any,
-        interests: criteria.interests,
-        totalBudget: touristRequest.budget,
-        email: touristRequest.email,
-        phone: touristRequest.phone,
-        whatsapp: touristRequest.whatsapp,
-        contactMethod: touristRequest.contactMethod as any,
-        tripNotes: touristRequest.tripNotes,
-      };
-
-      const matches = findMatchingStudents(studentsInCity, demoRequest, 5);
-      const suggestedPriceRange = calculateSuggestedPrice(criteria.city, criteria.serviceType);
-
-      console.log(`[DEMO MODE] Found ${matches.length} matching students`);
-
-      return NextResponse.json({
-        success: true,
-        matches,
-        suggestedPriceRange,
-        requestId: touristRequest.id,
-      });
     }
 
     // STEP 1: Build optimized WHERE clause for database-level filtering
