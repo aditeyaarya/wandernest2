@@ -4,12 +4,10 @@ import { Button } from '@/components/ui/button'
 import { GraduationCap, MessageCircle, Star, AlertTriangle } from 'lucide-react'
 import { DynamicNavigation } from '@/components/DynamicNavigation'
 
-// Server Component - no client-side bundle overhead
 export default function TouristLanding() {
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
-      {/* Full-bleed Background with London imagery */}
-      <div className="absolute inset-0" role="img" aria-label="Beautiful London Thames River with iconic architecture">
+      <div className="absolute inset-0">
         <Image
           src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1920&q=80"
           alt="Beautiful London Thames River with iconic architecture"
@@ -19,23 +17,18 @@ export default function TouristLanding() {
           sizes="100vw"
           className="object-cover"
         />
-        {/* Dark overlay for text contrast */}
-        <div className="absolute inset-0 bg-black/25 backdrop-blur-[4px]" />
-        {/* Gradient overlay for visual depth */}
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-[4px]" />
         <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/20 via-ui-blue-accent/15 to-ui-purple-primary/20" />
       </div>
       <div className="absolute inset-0 pattern-dots opacity-15" />
 
-      {/* Content */}
-      <div className="relative z-10">
-        {/* Header - Dynamically imported to reduce initial bundle */}
+      <div className="relative z-10 flex flex-col min-h-screen">
         <DynamicNavigation variant="tourist" />
 
-        {/* Hero Section */}
         <main className="flex-1 container mx-auto px-4 py-16">
           <div className="max-w-5xl mx-auto space-y-16">
-            <div className="text-center space-y-8 animate-slide-up-fade">
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight text-white text-shadow-lg">
+            <section aria-labelledby="tourist-hero-heading" className="text-center space-y-6 animate-slide-up-fade">
+              <h1 id="tourist-hero-heading" className="text-5xl md:text-6xl font-bold leading-tight tracking-tight text-white text-shadow-lg">
                 Experience{' '}
                 <span className="text-gradient-vibrant animate-gradient-shift inline-block bg-white/10 px-4 py-2 rounded-2xl">
                   Authentic Travel
@@ -54,18 +47,17 @@ export default function TouristLanding() {
                 Choose a guide from your home country for added comfort, or explore connections with local students—it&apos;s entirely up to you.
               </p>
 
-              <div className="flex justify-center gap-4 pt-4 animate-fade-in-up delay-300">
+              <div className="flex justify-center gap-4 pt-4">
                 <Link href="/booking">
                   <Button size="lg" className="text-lg px-10 py-7 gradient-ocean hover:shadow-glow-blue shadow-premium text-white font-semibold group hover-lift">
                     Start Your Adventure
-                    <span className="ml-2 group-hover:translate-x-1 transition-transform inline-block">→</span>
+                    <span className="ml-2 group-hover:translate-x-1 transition-transform inline-block" aria-hidden="true">→</span>
                   </Button>
                 </Link>
               </div>
-            </div>
+            </section>
 
-            {/* Features */}
-            <div className="grid md:grid-cols-3 gap-8 pt-8 animate-fade-in-up delay-400">
+            <section aria-label="Features" className="grid md:grid-cols-3 gap-8">
               <div className="backdrop-blur-md rounded-2xl shadow-lg border border-gray-200 hover-lift group relative overflow-hidden">
                 <div className="absolute inset-0 opacity-15 group-hover:opacity-25 transition-opacity duration-500">
                   <Image
@@ -81,11 +73,11 @@ export default function TouristLanding() {
                 <div className="absolute inset-0 bg-gradient-to-br from-ui-blue-primary/20 to-ui-blue-secondary/20" />
                 <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
                 <div className="relative z-10 p-8">
-                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-ui-blue-primary to-ui-blue-accent text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-ui-blue-primary to-ui-blue-accent text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg" aria-hidden="true">
                     <GraduationCap className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold mb-3">Verified Students</h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     All guides are verified university students with local knowledge
                   </p>
                 </div>
@@ -106,11 +98,11 @@ export default function TouristLanding() {
                 <div className="absolute inset-0 bg-gradient-to-br from-ui-purple-primary/20 to-ui-purple-secondary/20" />
                 <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
                 <div className="relative z-10 p-8">
-                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-ui-purple-primary to-ui-purple-accent text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-ui-purple-primary to-ui-purple-accent text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg" aria-hidden="true">
                     <MessageCircle className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold mb-3">Personalized Experience</h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     Get custom itineraries based on your interests and preferences
                   </p>
                 </div>
@@ -131,55 +123,53 @@ export default function TouristLanding() {
                 <div className="absolute inset-0 bg-gradient-to-br from-ui-purple-primary/20 to-ui-purple-secondary/20" />
                 <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
                 <div className="relative z-10 p-8">
-                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-ui-purple-primary to-ui-purple-accent text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-ui-purple-primary to-ui-purple-accent text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg" aria-hidden="true">
                     <Star className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold mb-3">Authentic Adventures</h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     Discover hidden gems and local favorites off the beaten path
                   </p>
                 </div>
               </div>
-            </div>
+            </section>
 
-            {/* How It Works Section */}
-            <div className="space-y-10 pt-12 animate-fade-in-up delay-500">
-              <h2 className="text-4xl font-bold text-center text-white text-shadow-lg">How It Works</h2>
+            <section aria-labelledby="how-it-works-heading" className="space-y-8">
+              <h2 id="how-it-works-heading" className="text-4xl font-bold text-center text-white text-shadow-lg">How It Works</h2>
               <div className="grid md:grid-cols-3 gap-8">
-                <div className="text-center space-y-4 group hover-lift">
-                  <div className="w-20 h-20 gradient-ocean rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-glow-blue group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <article className="text-center space-y-4 group hover-lift">
+                  <div className="w-20 h-20 gradient-ocean rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-glow-blue group-hover:scale-110 transition-all duration-300" aria-hidden="true">
                     1
                   </div>
-                  <h3 className="font-bold text-lg text-white group-hover:text-ui-blue-accent transition-colors">Submit Your Request</h3>
+                  <h3 className="font-bold text-lg text-white">Submit Your Request</h3>
                   <p className="text-sm text-white/90 leading-relaxed font-medium">
                     Tell us about your trip preferences, dates, and interests
                   </p>
-                </div>
+                </article>
 
-                <div className="text-center space-y-4 group hover-lift">
-                  <div className="w-20 h-20 gradient-vibrant rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-glow-purple group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
+                <article className="text-center space-y-4 group hover-lift">
+                  <div className="w-20 h-20 gradient-vibrant rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-glow-purple group-hover:scale-110 transition-all duration-300" aria-hidden="true">
                     2
                   </div>
-                  <h3 className="font-bold text-lg text-white group-hover:text-ui-purple-accent transition-colors">Get Matched with Guides</h3>
+                  <h3 className="font-bold text-lg text-white">Get Matched with Guides</h3>
                   <p className="text-sm text-white/90 leading-relaxed font-medium">
                     We match you with verified student guides who fit your needs—including options from your home country if you prefer
                   </p>
-                </div>
+                </article>
 
-                <div className="text-center space-y-4 group hover-lift">
-                  <div className="w-20 h-20 bg-gradient-to-br from-ui-success to-ui-success rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-soft group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <article className="text-center space-y-4 group hover-lift">
+                  <div className="w-20 h-20 bg-gradient-to-br from-ui-success to-ui-success rounded-2xl flex items-center justify-center mx-auto text-3xl font-bold text-white shadow-premium group-hover:shadow-soft group-hover:scale-110 transition-all duration-300" aria-hidden="true">
                     3
                   </div>
-                  <h3 className="font-bold text-lg text-white group-hover:text-ui-success transition-colors">Experience the City</h3>
+                  <h3 className="font-bold text-lg text-white">Experience the City</h3>
                   <p className="text-sm text-white/90 leading-relaxed font-medium">
                     Connect directly with your guide and enjoy an authentic local experience
                   </p>
-                </div>
+                </article>
               </div>
-            </div>
+            </section>
 
-            {/* Image showcase - lazy loaded */}
-            <div className="grid md:grid-cols-3 gap-6 animate-fade-in-up delay-700">
+            <section aria-label="Popular destinations" className="grid md:grid-cols-3 gap-6">
               <div className="relative h-72 rounded-2xl overflow-hidden shadow-lg group">
                 <Image
                   src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80"
@@ -222,52 +212,52 @@ export default function TouristLanding() {
                   <span className="text-white font-bold text-xl">Rome</span>
                 </div>
               </div>
-            </div>
+            </section>
 
-            {/* Marketplace Disclaimer */}
-            <div className="mt-16 bg-gradient-to-br from-amber-50 to-yellow-100/50 border-2 border-ui-warning/60 rounded-3xl p-6 md:p-8 max-w-4xl mx-auto shadow-premium hover-lift animate-fade-in-up delay-800">
+            <section aria-labelledby="disclaimer-heading" className="bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-amber-600 rounded-3xl p-6 md:p-8 max-w-4xl mx-auto shadow-premium hover-lift">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-ui-warning to-ui-warning text-white shadow-soft">
+                  <div className="p-3 rounded-xl bg-amber-600 text-white shadow-soft" aria-hidden="true">
                     <AlertTriangle className="w-6 h-6" />
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h2 className="font-bold text-ui-warning mb-3 text-lg">Important Notice</h2>
-                  <p className="text-sm text-ui-warning mb-3 leading-relaxed">
+                  <h2 id="disclaimer-heading" className="font-bold text-amber-900 mb-3 text-lg">Important Notice</h2>
+                  <p className="text-sm text-amber-900 mb-3 leading-relaxed">
                     <strong>WanderNest is a marketplace connector only.</strong> We facilitate connections between tourists and local student guides but do not:
                   </p>
-                  <ul className="space-y-2 text-sm text-ui-warning">
+                  <ul className="space-y-2 text-sm text-amber-900">
                     <li className="flex items-start">
-                      <span className="mr-2 mt-0.5">•</span>
+                      <span className="mr-2 mt-0.5" aria-hidden="true">•</span>
                       <span>Handle any payments or financial transactions</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="mr-2 mt-0.5">•</span>
+                      <span className="mr-2 mt-0.5" aria-hidden="true">•</span>
                       <span>Guarantee the quality of services provided</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="mr-2 mt-0.5">•</span>
+                      <span className="mr-2 mt-0.5" aria-hidden="true">•</span>
                       <span>Act as an employer or agency for guides</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="mr-2 mt-0.5">•</span>
+                      <span className="mr-2 mt-0.5" aria-hidden="true">•</span>
                       <span>Assume liability for guide-tourist interactions</span>
                     </li>
                   </ul>
-                  <p className="text-sm text-ui-warning mt-3 leading-relaxed">
+                  <p className="text-sm text-amber-900 mt-3 leading-relaxed">
                     All arrangements, payments, and services are agreed upon directly between you and your guide.
                   </p>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
         </main>
 
-        {/* Footer */}
-        <footer className="border-t bg-white/40 backdrop-blur-md mt-16">
-          <div className="container mx-auto px-4 py-8 text-center text-gray-600">
-            <p>&copy; {new Date().getFullYear()} WanderNest. All rights reserved.</p>
+        <footer className="border-t border-white/20 bg-white/5 backdrop-blur-md mt-auto">
+          <div className="container mx-auto px-4 py-6 text-center">
+            <p className="text-sm text-white/90 text-shadow-sm">
+              &copy; {new Date().getFullYear()} WanderNest. All rights reserved.
+            </p>
           </div>
         </footer>
       </div>

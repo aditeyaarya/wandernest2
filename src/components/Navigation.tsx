@@ -22,11 +22,10 @@ export default function Navigation({ variant = 'default', showBackButton = false
 
   return (
     <header className="border-b border-[var(--nav-border)] bg-[var(--nav-bg)] backdrop-blur-xl sticky top-0 z-50 transition-all duration-300">
-      <div className="container mx-auto px-4 py-2.5">
+      <nav className="container mx-auto px-4 py-3" aria-label="Main navigation">
         <div className="flex justify-between items-center">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2.5 group">
-            <div className="p-1 rounded-lg bg-white/10 text-white backdrop-blur-sm border border-white/20 group-hover:bg-white/20 transition-all duration-300">
+          <Link href="/" className="flex items-center space-x-2.5 group" aria-label="WanderNest home">
+            <div className="p-1 rounded-lg bg-white/10 text-white backdrop-blur-sm border border-white/20 group-hover:bg-white/20 transition-all duration-300" aria-hidden="true">
               <Globe className="w-5 h-5" />
             </div>
             <span className="text-xl md:text-2xl font-sans font-semibold text-white tracking-tight transition-all duration-300 group-hover:text-white/90">
@@ -34,8 +33,7 @@ export default function Navigation({ variant = 'default', showBackButton = false
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-3">
             {showBackButton && (
               <Link href={backHref}>
                 <Button variant="ghost" className="rounded-full px-4 py-2 h-auto text-white/90 hover:bg-white/10 hover:text-white transition-all font-sans text-sm font-medium" aria-label="Go back">
@@ -128,28 +126,25 @@ export default function Navigation({ variant = 'default', showBackButton = false
                 </div>
               </>
             )}
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle mobile menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-white" />
-              ) : (
-                <Menu className="w-6 h-6 text-white" />
-              )}
-            </button>
           </div>
+
+          <button
+            className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+          >
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" aria-hidden="true" />
+            ) : (
+              <Menu className="w-6 h-6" aria-hidden="true" />
+            )}
+          </button>
         </div>
 
-        {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 space-y-2 border-t border-white/20 pt-4 animate-fade-in-up bg-white/5 backdrop-blur-md rounded-lg">
+          <div id="mobile-menu" className="md:hidden mt-4 pb-4 space-y-2 border-t border-white/20 pt-4 animate-fade-in-up bg-white/5 backdrop-blur-md rounded-lg">
             {showBackButton && (
               <Link href={backHref} onClick={() => setMobileMenuOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start rounded-full text-white/90 hover:bg-white/10 hover:text-white transition-all font-sans text-sm font-medium">
@@ -242,9 +237,9 @@ export default function Navigation({ variant = 'default', showBackButton = false
                 </Button>
               </>
             )}
-          </nav>
+          </div>
         )}
-      </div>
+      </nav>
     </header>
   )
 }
