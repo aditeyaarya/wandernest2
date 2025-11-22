@@ -32,7 +32,7 @@ export type BookingFormData = {
   email: string
   phone?: string
   whatsapp?: string
-  contactMethod: 'email' | 'phone' | 'whatsapp' | ''
+  contactMethod: 'email' | 'phone' | 'whatsapp' | 'sms' | ''
   tripNotes?: string
   termsAccepted?: boolean
 }
@@ -59,7 +59,7 @@ export function BookingForm() {
     serviceType: '',
     interests: [],
     email: '',
-    contactMethod: '',
+    contactMethod: 'email',
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
 
