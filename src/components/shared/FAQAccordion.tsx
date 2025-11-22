@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import type { FAQ } from "@/lib/faq/data";
+import { useContactModal } from '@/components/ContactModal/ContactModalProvider';
 
 interface FAQAccordionProps {
   faqs: FAQ[];
@@ -18,6 +19,7 @@ export default function FAQAccordion({
   className = "",
 }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { openContactModal } = useContactModal();
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -140,6 +142,20 @@ export default function FAQAccordion({
             </div>
           );
         })}
+      </div>
+
+      {/* Contact Us Link */}
+      <div className="mt-8 text-center">
+        <p className="text-gray-800 text-base">
+          Still have questions?{' '}
+          <button
+            onClick={openContactModal}
+            className="text-ui-blue-primary underline hover:text-ui-blue-primary/80 transition-colors focus:outline-none focus:ring-2 focus:ring-ui-blue-primary focus:ring-offset-2 rounded"
+          >
+            Contact us
+          </button>
+          .
+        </p>
       </div>
     </section>
   );
